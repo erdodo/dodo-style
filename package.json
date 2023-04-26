@@ -10,7 +10,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "styleguide": "npx styleguidist server",
-    "styleguide:build": "npx styleguidist build",
+    "styleguide:build": "npx styleguidist build && npx tailwindcss -i ./src/index.css -o ./styleguide/output.css --watch",
     "npm:deploy": " npm publish --access public",
     "npm:build": "rm -rf dist && NODE_ENV=production babel src/components --out-dir dist --copy-files && npx tailwindcss -i ./src/index.css -o ./dist/output.css --watch"
   },
