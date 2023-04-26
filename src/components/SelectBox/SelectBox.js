@@ -1,14 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {BiDownArrowAlt,BiUpArrowAlt } from 'react-icons/bi';
+
+//TODO: Multiple olunca içine tag alsın
+
+
 /**
  * Select componenti, options prop'u ile gelen verileri selectbox içerisinde gösterir.
  *
  */
-export default function AutoComplete({classList,size,rounded,disabled,options,onSelect,value }) {
+export default function SelectBox({classList,size,rounded,disabled,options,onSelect,value,multiple }) {
     const [visible, setVisible] = React.useState(false);
     const [filteredOptions, setFilteredOptions] = React.useState([]);
-    const [_value, setValue] = React.useState("");
+    const [_value, setValue] = React.useState(multiple?[]:"");
     let _rounded = rounded ? `rounded-${rounded}` : 'rounded-md';
     const _size = {
         sm: `text-sm`,
@@ -17,14 +21,11 @@ export default function AutoComplete({classList,size,rounded,disabled,options,on
         xl: ` text-xl `,
         "2xl": ` text-2xl `,
     };
-    const _menu_class = {
-        sm: `top-[38px]`,
-        md: `top-[42px]`,
-        lg: `top-[46px]`,
-        xl: `top-[46px]`,
-        "2xl": `top-[50px]`,
-    };
+
+
+    const _disabled = disabled && "opacity-50 cursor-not-allowed";
     React.useEffect(() => {
+
         if(visible){
             document.addEventListener("click", (e)=>{
                 if(e.target.closest(".autocomplete-input")){
@@ -54,25 +55,51 @@ export default function AutoComplete({classList,size,rounded,disabled,options,on
     }
 
     const selectClick = (value) => {
-        setValue(value);
-        onSelect(value.value);
-        setVisible(false);
+        if(multiple){
+            let _values = [..._value];
+            if(_value.find((item)=>item.value===value.value)){
+                _values = _values.filter((item)=>item.value!==value.value);
+            }else{
+                _values.push(value);
+            }
+            setValue(_values);
+            onSelect(_values.map((item)=>item.value));
+            return;
+        }else{
+            setValue(value);
+            onSelect(value.value);
+            setVisible(false);
+            return;
+        }
     }
 
     return (
         <>
-            <div className={`${classList} ${_size[size]} ${_rounded} relative border`}  >
-                <div className={" flex flex-row items-center p-1 cursor-pointer autocomplete-input"} onClick={()=>setVisible(!visible)}>
-                    <input type="text" className={`py-1 px-3`} onChange={inputChange} value={_value.label} />
+            <div className={`${classList} ${_size[size]} ${_disabled} ${_rounded} relative border`}  >
+                <div className={`${disabled?'cursor-not-allowed':'cursor-pointer'} flex flex-row items-center p-1 autocomplete-input` }  onClick={()=> !disabled && setVisible(!visible)}>
+                    {!multiple &&<input type="text" disabled={disabled} className={`py-1 px-3`} onChange={inputChange} value={_value.label} />}
+                    {multiple &&
+                    <div className={`flex flex-row flex-wrap items-center w-[200px]`}>
+                        {_value.map((item,index)=>(
+                            <div key={item.value} className={`flex flex-row items-center py-1 px-3 m-1 bg-gray-200 rounded-md`}>
+                                <span className={`m-1`}>{item.label}</span>
+                                <span className={`cursor-pointer`} onClick={()=>selectClick(item)}>x</span>
+                            </div>
+                        ))}
+                        <input type="text" disabled={disabled} className={`py-1 px-3  focus-visible:outline-none w-auto`} onChange={inputChange}  />
+                    </div>
+
+                    }
                     {!visible && <BiDownArrowAlt className={`${_size[size]} mx-2`} onClick={()=>setVisible(true)}/>}
                     {visible && <BiUpArrowAlt className={`${_size[size]} mx-2`} onClick={()=>setVisible(false)} />}
                 </div>
                 {
                     visible &&
-                    <div className={` bg-white p-2 absolute border left-0 z-10 w-full ${_rounded} ${_menu_class[size]}`}>
+                    <div className={` bg-white p-2 absolute border left-0 z-10 w-full ${_rounded} mt-1`}>
                         {filteredOptions?
                             Object.values(filteredOptions).map((item,index) => (
-                                <div key={item} className={`py-1 px-3 hover:bg-gray-100 cursor-pointer ${_rounded} ${_value.value === item.value ?'bg-gray-200 border':''}`} onClick={()=>selectClick(item)}>
+                                <div key={item} onClick={()=>selectClick(item)}
+                                     className={`py-1 px-3 hover:bg-gray-100 cursor-pointer ${_rounded} ${_value.value === item.value ?'bg-gray-200 border':''} ${_value.includes(item)?'bg-gray-200 border':''}`} >
                                     {item.label}
                                 </div>
                             ))
@@ -89,7 +116,7 @@ export default function AutoComplete({classList,size,rounded,disabled,options,on
     );
 }
 
-AutoComplete.propTypes = {
+SelectBox.propTypes = {
     /** AutoComplete class'ı */
     classList: PropTypes.string,
 
@@ -110,9 +137,12 @@ AutoComplete.propTypes = {
 
     /** selected value */
     value: PropTypes.string,
+
+    /** multiple */
+    multiple: PropTypes.bool,
 };
 
-AutoComplete.defaultProps = {
+SelectBox.defaultProps = {
     options: [],
     size:"md",
     onSelect: (value) => {

@@ -8,19 +8,19 @@ Büyüklük örnekleri
 ```js
 <div style={{display:"flex",flexDirection:"row",alignItems:"center",flexWrap:"wrap"}}>
     <div style={{margin:"5px",}}>
-        <Tag type="primary" size="sm" >Tıkla bana</Tag>
+        <Tag type="primary" size="sm" >Örnek Yazı</Tag>
     </div>
     <div style={{margin:"5px",}}>
-        <Tag type="primary" size="md" >Tıkla bana</Tag>
+        <Tag type="primary" size="md" >Örnek Yazı</Tag>
     </div>
     <div style={{margin:"5px",}}>
-        <Tag type="primary" size="lg" >Tıkla bana</Tag>
+        <Tag type="primary" size="lg" >Örnek Yazı</Tag>
     </div>
     <div style={{margin:"5px",}}>
-        <Tag type="primary" size="xl" >Tıkla bana</Tag>
+        <Tag type="primary" size="xl" >Örnek Yazı</Tag>
     </div>
     <div style={{margin:"5px",}}>
-        <Tag type="primary" size="2xl" >Tıkla bana</Tag>
+        <Tag type="primary" size="2xl" >Örnek Yazı</Tag>
     </div>
 </div>
 ```
@@ -30,28 +30,28 @@ Renk Tipi Örnekleri
 ```js { "props": { "className": "checks" } }
 <div style={{display:"flex",flexDirection:"row",alignItems:"center",flexWrap:"wrap"}}>
     <div style={{margin:"5px",}}>
-        <Tag type="primary" >Tıkla bana</Tag>
+        <Tag type="primary" >Örnek Yazı</Tag>
     </div>
     <div style={{margin:"5px",}}>
-        <Tag type="secondary" >Tıkla bana</Tag>
+        <Tag type="secondary" >Örnek Yazı</Tag>
     </div>
     <div style={{margin:"5px",}}>
-        <Tag type="info" >Tıkla bana</Tag>
+        <Tag type="info" >Örnek Yazı</Tag>
     </div>
     <div style={{margin:"5px",}}>
-        <Tag type="danger" >Tıkla bana</Tag>
+        <Tag type="danger" >Örnek Yazı</Tag>
     </div>
     <div style={{margin:"5px",}}>
-        <Tag type="success" >Tıkla bana</Tag>
+        <Tag type="success" >Örnek Yazı</Tag>
     </div>
     <div style={{margin:"5px",}}>
-        <Tag type="warning" >Tıkla bana</Tag>
+        <Tag type="warning" >Örnek Yazı</Tag>
     </div>
     <div style={{margin:"5px",}}>
-        <Tag type="light" >Tıkla bana</Tag>
+        <Tag type="light" >Örnek Yazı</Tag>
     </div>
     <div style={{margin:"5px",}}>
-        <Tag type="dark" >Tıkla bana</Tag>
+        <Tag type="dark" >Örnek Yazı</Tag>
     </div>
 </div>
 ```
@@ -59,28 +59,28 @@ Renk Tipi Örnekleri
 ```js { "props": { "className": "checks" } }
 <div style={{display:"flex",flexDirection:"row",alignItems:"center",flexWrap:"wrap"}}>
     <div style={{margin:"5px",}}>
-        <Tag type="primary"  outline>Tıkla bana</Tag>
+        <Tag type="primary"  outline>Örnek Yazı</Tag>
     </div>
     <div style={{margin:"5px",}}>
-        <Tag type="secondary" outline >Tıkla bana</Tag>
+        <Tag type="secondary" outline >Örnek Yazı</Tag>
     </div>
     <div style={{margin:"5px",}}>
-        <Tag type="info" outline >Tıkla bana</Tag>
+        <Tag type="info" outline >Örnek Yazı</Tag>
     </div>
     <div style={{margin:"5px",}}>
-        <Tag type="danger" outline>Tıkla bana</Tag>
+        <Tag type="danger" outline>Örnek Yazı</Tag>
     </div>
     <div style={{margin:"5px",}}>
-        <Tag type="success" outline>Tıkla bana</Tag>
+        <Tag type="success" outline>Örnek Yazı</Tag>
     </div>
     <div style={{margin:"5px",}}>
-        <Tag type="warning" outline>Tıkla bana</Tag>
+        <Tag type="warning" outline>Örnek Yazı</Tag>
     </div>
     <div style={{margin:"5px",}}>
-        <Tag type="light" outline>Tıkla bana</Tag>
+        <Tag type="light" outline>Örnek Yazı</Tag>
     </div>
     <div style={{margin:"5px",}}>
-        <Tag type="dark" outline>Tıkla bana</Tag>
+        <Tag type="dark" outline>Örnek Yazı</Tag>
     </div>
 </div>
 ```
@@ -89,28 +89,28 @@ Sade Örnekleri
 ```js { "props": { "className": "checks" } }
 <div style={{display:"flex",flexDirection:"row",alignItems:"center",flexWrap:"wrap"}}>
     <div style={{margin:"5px",}}>
-        <Tag type="primary"  plain>Tıkla bana</Tag>
+        <Tag type="primary"  plain>Örnek Yazı</Tag>
     </div>
     <div style={{margin:"5px",}}>
-        <Tag type="secondary" plain >Tıkla bana</Tag>
+        <Tag type="secondary" plain >Örnek Yazı</Tag>
     </div>
     <div style={{margin:"5px",}}>
-        <Tag type="info" plain >Tıkla bana</Tag>
+        <Tag type="info" plain >Örnek Yazı</Tag>
     </div>
     <div style={{margin:"5px",}}>
-        <Tag type="danger" plain>Tıkla bana</Tag>
+        <Tag type="danger" plain>Örnek Yazı</Tag>
     </div>
     <div style={{margin:"5px",}}>
-        <Tag type="success" plain>Tıkla bana</Tag>
+        <Tag type="success" plain>Örnek Yazı</Tag>
     </div>
     <div style={{margin:"5px",}}>
-        <Tag type="warning" plain>Tıkla bana</Tag>
+        <Tag type="warning" plain>Örnek Yazı</Tag>
     </div>
     <div style={{margin:"5px",}}>
-        <Tag type="light" plain>Tıkla bana</Tag>
+        <Tag type="light" plain>Örnek Yazı</Tag>
     </div>
     <div style={{margin:"5px",}}>
-        <Tag type="dark" plain>Tıkla bana</Tag>
+        <Tag type="dark" plain>Örnek Yazı</Tag>
     </div>
 </div>
 ```
@@ -119,19 +119,19 @@ Köşe Yumuşatma Örnekleri
 ```js { "props": { "className": "checks" } }
 <div style={{display:"flex",flexDirection:"row",alignItems:"center",flexWrap:"wrap"}}>
     <div style={{margin:"5px",}}>
-        <Tag type="primary"  rounded="sm">Tıkla bana</Tag>
+        <Tag type="primary"  rounded="sm">Örnek Yazı</Tag>
     </div>
     <div style={{margin:"5px",}}>
-        <Tag type="primary"  rounded="md">Tıkla bana</Tag>
+        <Tag type="primary"  rounded="md">Örnek Yazı</Tag>
     </div>
     <div style={{margin:"5px",}}>
-        <Tag type="primary"  rounded="lg">Tıkla bana</Tag>
+        <Tag type="primary"  rounded="lg">Örnek Yazı</Tag>
     </div>
     <div style={{margin:"5px",}}>
-        <Tag type="primary" rounded="xl">Tıkla bana</Tag>
+        <Tag type="primary" rounded="xl">Örnek Yazı</Tag>
     </div>
     <div style={{margin:"5px",}}>
-        <Tag type="primary" rounded="full">Tıkla bana</Tag>
+        <Tag type="primary" rounded="full">Örnek Yazı</Tag>
     </div>
 </div>
 ```

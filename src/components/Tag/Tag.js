@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-
+//TODO: Kapatma seçeneği ekle
 
 /**
  * Özel yazılar için kullanılabilir

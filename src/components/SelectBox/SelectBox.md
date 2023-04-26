@@ -1,6 +1,6 @@
 Kullanım
 ```js static
-import {AutoComplete} from '@erdodocomp/dodo-style'
+import {SelectBox} from '@erdodocomp/dodo-style'
 ```
 
 Büyüklük örnekleri
@@ -9,19 +9,19 @@ let options = [{value:"key1",label:"value1"},{value:"key2",label:"value2"},{valu
 
 <div style={{display:"flex",flexDirection:"row",alignItems:"center",flexWrap:"wrap"}}>
     <div style={{margin:"5px"}}>
-        <AutoComplete  size="sm" >Tıkla bana</AutoComplete>
+        <SelectBox  size="sm" disabled>Tıkla bana</SelectBox>
     </div>
     <div style={{margin:"5px",}}>
-        <AutoComplete  size="md" >Tıkla bana</AutoComplete>
+        <SelectBox  size="md" multiple options={options}>Tıkla bana</SelectBox>
     </div>
     <div style={{margin:"5px",}}>
-        <AutoComplete  size="lg" >Tıkla bana</AutoComplete>
+        <SelectBox  size="lg" >Tıkla bana</SelectBox>
     </div>
     <div style={{margin:"5px",}}>
-        <AutoComplete  size="xl" options={options} value="key1">Tıkla bana</AutoComplete>
+        <SelectBox  size="xl" options={options} value="key1">Tıkla bana</SelectBox>
     </div>
     <div style={{margin:"5px",}}>
-        <AutoComplete  size="2xl" >Tıkla bana</AutoComplete>
+        <SelectBox  size="2xl" >Tıkla bana</SelectBox>
     </div>
 </div>
 ```

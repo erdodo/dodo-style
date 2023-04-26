@@ -1,8 +1,9 @@
 
 import Button from "./components/Button/Button";
 import Tag from "./components/Tag/Tag";
+import AutoComplete from "./components/SelectBox";
 
-export { Button, Tag };
+export { Button, Tag, AutoComplete };
 
 /*import React from 'react';
 import ReactDOM from 'react-dom/client';

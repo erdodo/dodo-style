@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 
 /**
- * Component is described here.
+ * Button Componenti
  *
  */
 export default function Button({classList, type,onClick,disabled,children,size,outline,plain,rounded,link }) {
