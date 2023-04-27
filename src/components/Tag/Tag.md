@@ -22,6 +22,9 @@ Büyüklük örnekleri
     <div style={{margin:"5px",}}>
         <Tag type="primary" size="2xl" >Örnek Yazı</Tag>
     </div>
+    <div style={{margin:"5px",}}>
+        <Tag type="primary" size="3xl" >Örnek Yazı</Tag>
+    </div>
 </div>
 ```
 
@@ -52,6 +55,36 @@ Renk Tipi Örnekleri
     </div>
     <div style={{margin:"5px",}}>
         <Tag type="dark" >Örnek Yazı</Tag>
+    </div>
+</div>
+```
+Kapatılabilir Örnekleri
+
+```js { "props": { "className": "checks" } }
+<div style={{display:"flex",flexDirection:"row",alignItems:"center",flexWrap:"wrap"}}>
+    <div style={{margin:"5px",}}>
+        <Tag type="primary" close>Örnek Yazı</Tag>
+    </div>
+    <div style={{margin:"5px",}}>
+        <Tag type="secondary" close outline>Örnek Yazı</Tag>
+    </div>
+    <div style={{margin:"5px",}}>
+        <Tag type="info" close plain>Örnek Yazı</Tag>
+    </div>
+    <div style={{margin:"5px",}}>
+        <Tag type="danger" close>Örnek Yazı</Tag>
+    </div>
+    <div style={{margin:"5px",}}>
+        <Tag type="success" close size="sm"> Örnek Yazı</Tag>
+    </div>
+    <div style={{margin:"5px",}}>
+        <Tag type="warning" close size="lg">Örnek Yazı</Tag>
+    </div>
+    <div style={{margin:"5px",}}>
+        <Tag type="light" close size="xl" plain>Örnek Yazı</Tag>
+    </div>
+    <div style={{margin:"5px",}}>
+        <Tag type="dark" close size="2xl" rounded="full" outline>Örnek Yazı</Tag>
     </div>
 </div>
 ```

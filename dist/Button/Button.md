@@ -1,5 +1,7 @@
-Büyüklük örnekleri
+---
 
+
+Büyüklük örnekleri
 ```js
 <div style={{display:"flex",flexDirection:"row",alignItems:"center",flexWrap:"wrap"}}>
     <div style={{margin:"5px",}}>
@@ -221,3 +223,4 @@ Devre Dışı Link Buton örnekleri
     </div>
 </div>
 ```
+---

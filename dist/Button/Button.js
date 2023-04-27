@@ -8,7 +8,7 @@ var _react = _interopRequireDefault(require("react"));
 var _propTypes = _interopRequireDefault(require("prop-types"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 /**
- * Component is described here.
+ * Button Componenti
  *
  */
 function Button(_ref) {
@@ -18,14 +18,12 @@ function Button(_ref) {
     disabled = _ref.disabled,
     children = _ref.children,
     size = _ref.size,
-    color = _ref.color,
     outline = _ref.outline,
     plain = _ref.plain,
     rounded = _ref.rounded,
     link = _ref.link;
-  var _color = color ? " bg-".concat(color, "-700 hover:bg-").concat(color, "-600") : '';
   var _rounded = rounded ? "rounded-".concat(rounded) : 'rounded-md';
-  var _classList = {
+  var _size = {
     sm: "py-1 px-2  text-sm ",
     md: "py-2 px-4  text-md",
     lg: "py-3 px-6  text-lg ",
@@ -107,7 +105,7 @@ function Button(_ref) {
     _type = types[type];
   }
   return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("button", {
-    className: "".concat(classList, " ").concat(_classList[size], " ").concat(_rounded, " ").concat(_type, " ").concat(_color, " "),
+    className: "".concat(classList, " ").concat(_size[size], " ").concat(_rounded, " ").concat(_type, " "),
     onClick: onClick,
     disabled: disabled
   }, children));
@@ -119,8 +117,6 @@ Button.propTypes = {
   classList: _propTypes.default.string,
   /** Buton tipi */
   type: _propTypes.default.oneOf(['primary', 'secondary', 'danger', 'warning', 'success', 'info', 'light', 'dark']),
-  /** Özel renk kodu */
-  color: _propTypes.default.string,
   /** Buton sadece borderlardan oluşsun mu */
   outline: _propTypes.default.bool,
   /** Buton arka planı daha açık olsun mu */
@@ -137,7 +133,6 @@ Button.propTypes = {
   onClick: _propTypes.default.func
 };
 Button.defaultProps = {
-  color: '#333',
   children: 'Button',
   size: "md",
   onClick: function onClick(event) {

@@ -1,6 +1,8 @@
 {
   "name": "@erdodocomp/dodo-style",
-  "version": "0.1.29",
+  "author": "Erdoğan Yeşil",
+  "version": "0.1.31",
+  "homepage": "https://github.com/erdodo/dodo-style",
   "private": false,
   "main": "dist/index.js",
   "module": "dist/index.js",
@@ -11,8 +13,11 @@
     "eject": "react-scripts eject",
     "styleguide": "npx styleguidist server",
     "styleguide:build": "npx styleguidist build && npx tailwindcss -i ./src/index.css -o ./styleguide/output.css",
-    "npm:deploy": " npm publish --access public",
-    "npm:build": "rm -rf dist && NODE_ENV=production babel src/components --out-dir dist --copy-files && npx tailwindcss -i ./src/index.css -o ./dist/output.css --watch"
+    "styleguide:deploy": "npx styleguidist build && npx tailwindcss -i ./src/index.css -o ./styleguide/output.css && vercel --prod",
+    "npm:deploy": "npm run npm:build && npm publish --access public",
+    "npm:build": "rm -rf dist && NODE_ENV=production babel src/components --out-dir dist --copy-files && npx tailwindcss -i ./src/index.css -o ./dist/output.css",
+    "tailwind:watch": "npx tailwindcss -i ./src/index.css -o ./dist/output.css --watch",
+    "tailwind:build": "npx tailwindcss -i ./src/index.css -o ./dist/output.css"
   },
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
