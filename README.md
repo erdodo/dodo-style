@@ -68,5 +68,5 @@ Dodo Style, birçok farklı bileşen içermektedir.
 Bu bileşenlerin her biri, kullanıcının bir arayüz öğesini oluşturmasına yardımcı olur. 
 Aşağıdaki liste, Dodo Style tarafından sunulan bileşenleri ve kullanım örneklerini içermektedir:
 
-- [Button Kullanımı]("Button")
+- [Button Kullanımı](https://github.com/erdodo/dodo-style/blob/main/dist/Button/Button.md)
 
