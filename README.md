@@ -1,70 +1,72 @@
-# Getting Started with Create React App
+# Dodo Style
+Dodo Style, React için bir UI kitidir. Element Plus, Material UI ve 
+Bootstrap gibi popüler UI kitleriyle benzer bir yapıya sahip olan Dodo Style, 
+kullanıcı arayüzleri geliştirmeye yardımcı olmak için tasarlanmıştır.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Özellikleri
+Dodo Style, aşağıdaki özelliklere sahiptir:
 
-## Available Scripts
+- Kolay kullanım
+- Responsive tasarım
+- Çeşitli renk şemaları
+- Ikon desteği
+- Tooltip desteği
+- Modal desteği
+- Form kontrolü desteği
+- Button, Input, Select, Checkbox, Radio Button, Slider, 
+Switch, Spinner, Badge, Alert, Card, Divider, Pagination, Table, Tabs, 
+Toast, Menu, Navbar, Sidebar gibi birçok öğe ve bileşeni içerir
 
-In the project directory, you can run:
+## Kurulum
+Dodo Style'ı kullanmak için öncelikle npm paketi olarak kurmanız gerekmektedir. 
+Aşağıdaki komutu kullanarak Dodo Style'ı kurabilirsiniz:
 
-### `npm start`
+```bash
+  npm install @erdodocomp/dodo-style
+```
+Kurulum işlemi tamamlandıktan sonra, Dodo Style bileşenlerini kullanmaya başlayabilirsiniz. 
+Örneğin, Button bileşenini aşağıdaki gibi kullanabilirsiniz:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```jsx
+    import { Button } from '@erdodocomp/dodo-style';
+    
+    function App() {
+        return (
+            <div>
+                <Button>Bir Buton</Button>
+            </div>
+        );
+    }
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Kullanım
+Dodo Style, React ile yazılmıştır ve React bileşenleri olarak sunulmaktadır. 
+Kullanımı oldukça kolaydır ve her bileşenin ayrıntılı belgeleri mevcuttur.
 
-### `npm test`
+Dodo Style kullanarak bir buton oluşturmak istediğinizi varsayalım. 
+Bunun için, öncelikle Button bileşenini içe aktarmanız gerekmektedir. 
+Ardından, butonun görüntüsünü değiştirmek için desteklenen özellikleri kullanabilirsiniz. 
+Aşağıdaki örnek, bir buton oluşturmak için temel adımları göstermektedir:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```jsx
+    import { Button } from '@erdodocomp/dodo-style';
+    
+    function App() {
+        return (
+            <div>
+                <Button>Kaydet</Button>
+                <Button type="secondary">İptal</Button>
+                <Button outlined>Düzenle</Button>
+                <Button disabled>Devam Et</Button>
+            </div>
+        );
+    }
+```
 
-### `npm run build`
+## Bileşenler
+Dodo Style, birçok farklı bileşen içermektedir. 
+Bu bileşenlerin her biri, kullanıcının bir arayüz öğesini oluşturmasına yardımcı olur. 
+Aşağıdaki liste, Dodo Style tarafından sunulan bileşenleri ve kullanım örneklerini içermektedir:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- [Button Kullanımı]("Button")
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

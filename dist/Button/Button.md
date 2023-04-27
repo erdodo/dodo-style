@@ -1,3 +1,8 @@
+Kullanım
+```js static
+import {Button} from '@erdodocomp/dodo-style'
+```
+<br />  
 ---
 
 
@@ -52,6 +57,94 @@ Renk Tipi Örnekleri
     </div>
 </div>
 ```
+İcon Örnekleri
+
+```js { "props": { "className": "checks" } }
+import {FaFacebookF,FaLinkedinIn,FaGithub,FaYoutube,FaWhatsapp,FaSnapchatGhost,FaTumblr,FaSteamSymbol} from "react-icons/fa";
+<div style={{display:"flex",flexDirection:"row",alignItems:"center",flexWrap:"wrap"}}>
+    <div style={{margin:"5px",}}>
+        <Button type="primary" ><FaLinkedinIn/></Button>
+    </div>
+    <div style={{margin:"5px",}}>
+        <Button type="secondary" ><FaGithub/></Button>
+    </div>
+    <div style={{margin:"5px",}}>
+        <Button type="info" ><FaFacebookF/></Button>
+    </div>
+    <div style={{margin:"5px",}}>
+        <Button type="danger" ><FaYoutube/></Button>
+    </div>
+    <div style={{margin:"5px",}}>
+        <Button type="success" ><FaWhatsapp/></Button>
+    </div>
+    <div style={{margin:"5px",}}>
+        <Button type="warning" ><FaSnapchatGhost/></Button>
+    </div>
+    <div style={{margin:"5px",}}>
+        <Button type="light" ><FaTumblr/></Button>
+    </div>
+    <div style={{margin:"5px",}}>
+        <Button type="dark" ><FaSteamSymbol/></Button>
+    </div>
+    <div style={{width:"1px","border":"1px solid gray",height:"50px"}}></div>
+    <div style={{margin:"5px",}}>
+        <Button type="primary" outline rounded="full" classList="py-4" ><FaLinkedinIn/></Button>
+    </div>
+    <div style={{margin:"5px",}}>
+        <Button type="secondary"  plain rounded="full" classList="py-4" ><FaGithub/></Button>
+    </div>
+    <div style={{margin:"5px",}}>
+        <Button type="info" disabled rounded="full" classList="py-4" ><FaFacebookF/></Button>
+    </div>
+    <div style={{margin:"5px",}}>
+        <Button type="danger"  outline rounded="full" size="sm" classList="!py-2 !px-2"><FaYoutube/></Button>
+    </div>
+    <div style={{margin:"5px",}}>
+        <Button type="success" plain rounded="full" size="sm" classList="!py-2 !px-2" ><FaWhatsapp/></Button>
+    </div>
+    <div style={{margin:"5px",}}>
+        <Button classList="bg-red-600 text-yellow-200" rounded="full" ><FaSnapchatGhost/></Button>
+    </div>
+    <div style={{margin:"5px",}}>
+        <Button type="light" disabled><FaTumblr/></Button>
+    </div>
+    <div style={{margin:"5px",}}>
+        <Button type="dark" plain><FaSteamSymbol/></Button>
+    </div>
+</div>
+```
+
+Geçişli Renk Tipi Örnekleri
+
+```js { "props": { "className": "checks" } }
+<div style={{display:"flex",flexDirection:"row",alignItems:"center",flexWrap:"wrap"}}>
+    <div style={{margin:"5px",}}>
+        <Button type="primary" gradient>Tıkla bana</Button>
+    </div>
+    <div style={{margin:"5px",}}>
+        <Button type="secondary" gradient>Tıkla bana</Button>
+    </div>
+    <div style={{margin:"5px",}}>
+        <Button type="info" gradient>Tıkla bana</Button>
+    </div>
+    <div style={{margin:"5px",}}>
+        <Button type="danger" gradient>Tıkla bana</Button>
+    </div>
+    <div style={{margin:"5px",}}>
+        <Button type="success" gradient>Tıkla bana</Button>
+    </div>
+    <div style={{margin:"5px",}}>
+        <Button type="warning" gradient>Tıkla bana</Button>
+    </div>
+    <div style={{margin:"5px",}}>
+        <Button type="light" gradient>Tıkla bana</Button>
+    </div>
+    <div style={{margin:"5px",}}>
+        <Button type="dark" gradient>Tıkla bana</Button>
+    </div>
+</div>
+```
+
 Çerçeveli Örnekleri
 ```js { "props": { "className": "checks" } }
 <div style={{display:"flex",flexDirection:"row",alignItems:"center",flexWrap:"wrap"}}>
