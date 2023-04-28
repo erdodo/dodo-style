@@ -68,7 +68,7 @@ Dodo Style, birçok farklı bileşen içermektedir.
 Bu bileşenlerin her biri, kullanıcının bir arayüz öğesini oluşturmasına yardımcı olur. 
 Aşağıdaki liste, Dodo Style tarafından sunulan bileşenleri ve kullanım örneklerini içermektedir:
 
-- [Button Kullanımı](https://dodo-style.vercel.app/#!/Button)
-- [SelectBox Kullanımı](https://dodo-style.vercel.app/#!/SelectBox)
-- [Tag Kullanımı](https://dodo-style.vercel.app/#!/Tag)
+- [Button Kullanımı](https://dodo-style.vercel.app/?path=/docs/components-form-button--docs)
+- [SelectBox Kullanımı](https://dodo-style.vercel.app/?path=/docs/components-form-selectbox--docs)
+- [Tag Kullanımı](https://dodo-style.vercel.app/?path=/docs/components-form-tag--docs)
 
