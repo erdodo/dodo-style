@@ -1,0 +1,488 @@
+import Button from "./Button";
+import {FaFacebookF,FaLinkedinIn,FaGithub,FaYoutube,FaWhatsapp,FaSnapchatGhost,FaTumblr,FaSteamSymbol} from "react-icons/fa";
+
+# Button
+
+## Kullanım
+
+```js
+    import {Button} from '@erdodocomp/dodo-style'
+```
+## Büyüklük örnekleri
+<div style={{display:"flex",flexDirection:"row",alignItems:"center",flexWrap:"wrap"}}>
+    <div style={{margin:"5px"}}>
+        <Button type="primary" size="sm" >Tıkla bana</Button>
+    </div>
+    <div style={{margin:"5px"}}>
+        <Button type="primary" size="md" >Tıkla bana</Button>
+    </div>
+    <div style={{margin:"5px"}}>
+        <Button type="primary" size="lg" >Tıkla bana</Button>
+    </div>
+    <div style={{margin:"5px"}}>
+        <Button type="primary" size="xl" >Tıkla bana</Button>
+    </div>
+    <div style={{margin:"5px"}}>
+        <Button type="primary" size="2xl" >Tıkla bana</Button>
+    </div>
+</div>
+
+
+```jsx
+<Button type="primary" size="sm" >Tıkla bana</Button>
+<Button type="primary" size="md" >Tıkla bana</Button>
+<Button type="primary" size="lg" >Tıkla bana</Button>
+<Button type="primary" size="xl" >Tıkla bana</Button>
+<Button type="primary" size="2xl" >Tıkla bana</Button>
+
+```
+
+## Renk Tipi Örnekleri
+<div style={{display:"flex",flexDirection:"row",alignItems:"center",flexWrap:"wrap"}}>
+    <div style={{margin:"5px"}}>
+        <Button type="primary" >Tıkla bana</Button>
+    </div>
+    <div style={{margin:"5px"}}>
+        <Button type="secondary" >Tıkla bana</Button>
+    </div>
+    <div style={{margin:"5px"}}>
+        <Button type="info" >Tıkla bana</Button>
+    </div>
+    <div style={{margin:"5px"}}>
+        <Button type="danger" >Tıkla bana</Button>
+    </div>
+    <div style={{margin:"5px"}}>
+        <Button type="success" >Tıkla bana</Button>
+    </div>
+    <div style={{margin:"5px"}}>
+        <Button type="warning" >Tıkla bana</Button>
+    </div>
+    <div style={{margin:"5px"}}>
+        <Button type="light" >Tıkla bana</Button>
+    </div>
+    <div style={{margin:"5px"}}>
+        <Button type="dark" >Tıkla bana</Button>
+    </div>
+</div>
+
+```jsx
+<Button type="primary" >Tıkla bana</Button>
+<Button type="secondary" >Tıkla bana</Button>
+<Button type="info" >Tıkla bana</Button>
+<Button type="danger" >Tıkla bana</Button>
+<Button type="success" >Tıkla bana</Button>
+<Button type="warning" >Tıkla bana</Button>
+<Button type="light" >Tıkla bana</Button>
+<Button type="dark" >Tıkla bana</Button>
+
+```
+
+## İcon Örnekleri
+<div style={{display:"flex",flexDirection:"row",alignItems:"center",flexWrap:"wrap"}}>
+    <div style={{margin:"5px"}}>
+        <Button type="primary" ><FaLinkedinIn/></Button>
+    </div>
+    <div style={{margin:"5px"}}>
+        <Button type="secondary" ><FaGithub/></Button>
+    </div>
+    <div style={{margin:"5px"}}>
+        <Button type="info" ><FaFacebookF/></Button>
+    </div>
+    <div style={{margin:"5px"}}>
+        <Button type="danger" ><FaYoutube/></Button>
+    </div>
+    <div style={{margin:"5px"}}>
+        <Button type="success" ><FaWhatsapp/></Button>
+    </div>
+    <div style={{margin:"5px"}}>
+        <Button type="warning" ><FaSnapchatGhost/></Button>
+    </div>
+    <div style={{margin:"5px"}}>
+        <Button type="light" ><FaTumblr/></Button>
+    </div>
+    <div style={{margin:"5px"}}>
+        <Button type="dark" ><FaSteamSymbol/></Button>
+    </div>
+    <div style={{margin:"5px"}}>
+        <Button type="primary" outline rounded="full" classList="py-4" ><FaLinkedinIn/></Button>
+    </div>
+    <div style={{margin:"5px"}}>
+        <Button type="secondary"  plain rounded="full" classList="py-4" ><FaGithub/></Button>
+    </div>
+    <div style={{margin:"5px"}}>
+        <Button type="info" disabled rounded="full" classList="py-4" ><FaFacebookF/></Button>
+    </div>
+    <div style={{margin:"5px"}}>
+        <Button type="danger"  outline rounded="full" size="sm" classList="!py-2 !px-2"><FaYoutube/></Button>
+    </div>
+    <div style={{margin:"5px"}}>
+        <Button type="success" plain rounded="full" size="sm" classList="!py-2 !px-2" ><FaWhatsapp/></Button>
+    </div>
+    <div style={{margin:"5px"}}>
+        <Button classList="bg-red-600 text-yellow-200" rounded="full" ><FaSnapchatGhost/></Button>
+    </div>
+    <div style={{margin:"5px"}}>
+        <Button type="light" disabled><FaTumblr/></Button>
+    </div>
+    <div style={{margin:"5px"}}>
+        <Button type="dark" plain><FaSteamSymbol/></Button>
+    </div>
+</div>
+
+```jsx
+<Button type="primary" ><FaLinkedinIn/></Button>
+<Button type="secondary" ><FaGithub/></Button>
+<Button type="info" ><FaFacebookF/></Button>
+<Button type="danger" ><FaYoutube/></Button>
+<Button type="success" ><FaWhatsapp/></Button>
+<Button type="warning" ><FaSnapchatGhost/></Button>
+<Button type="light" ><FaTumblr/></Button>
+<Button type="dark" ><FaSteamSymbol/></Button>
+<Button type="primary" outline rounded="full" classList="py-4" ><FaLinkedinIn/></Button>
+<Button type="secondary"  plain rounded="full" classList="py-4" ><FaGithub/></Button>
+<Button type="info" disabled rounded="full" classList="py-4" ><FaFacebookF/></Button>
+<Button type="danger"  outline rounded="full" size="sm" classList="!py-2 !px-2"><FaYoutube/></Button>
+<Button type="success" plain rounded="full" size="sm" classList="!py-2 !px-2" ><FaWhatsapp/></Button>
+<Button classList="bg-red-600 text-yellow-200" rounded="full" ><FaSnapchatGhost/></Button>
+<Button type="light" disabled><FaTumblr/></Button>
+<Button type="dark" plain><FaSteamSymbol/></Button>
+
+```
+
+## Geçişli Renk Tipi Örnekleri
+<div style={{display:"flex",flexDirection:"row",alignItems:"center",flexWrap:"wrap"}}>
+    <div style={{margin:"5px"}}>
+        <Button type="primary" gradient>Tıkla bana</Button>
+    </div>
+    <div style={{margin:"5px"}}>
+        <Button type="secondary" gradient>Tıkla bana</Button>
+    </div>
+    <div style={{margin:"5px"}}>
+        <Button type="info" gradient>Tıkla bana</Button>
+    </div>
+    <div style={{margin:"5px"}}>
+        <Button type="danger" gradient>Tıkla bana</Button>
+    </div>
+    <div style={{margin:"5px"}}>
+        <Button type="success" gradient>Tıkla bana</Button>
+    </div>
+    <div style={{margin:"5px"}}>
+        <Button type="warning" gradient>Tıkla bana</Button>
+    </div>
+    <div style={{margin:"5px"}}>
+        <Button type="light" gradient>Tıkla bana</Button>
+    </div>
+    <div style={{margin:"5px"}}>
+        <Button type="dark" gradient>Tıkla bana</Button>
+    </div>
+</div>
+
+```jsx
+<Button type="primary" gradient>Tıkla bana</Button>
+<Button type="secondary" gradient>Tıkla bana</Button>
+<Button type="info" gradient>Tıkla bana</Button>
+<Button type="danger" gradient>Tıkla bana</Button>
+<Button type="success" gradient>Tıkla bana</Button>
+<Button type="warning" gradient>Tıkla bana</Button>
+<Button type="light" gradient>Tıkla bana</Button>
+<Button type="dark" gradient>Tıkla bana</Button>
+
+```
+
+## Çerçeveli Örnekleri
+<div style={{display:"flex",flexDirection:"row",alignItems:"center",flexWrap:"wrap"}}>
+    <div style={{margin:"5px"}}>
+        <Button type="primary"  outline>Tıkla bana</Button>
+    </div>
+    <div style={{margin:"5px"}}>
+        <Button type="secondary" outline >Tıkla bana</Button>
+    </div>
+    <div style={{margin:"5px"}}>
+        <Button type="info" outline >Tıkla bana</Button>
+    </div>
+    <div style={{margin:"5px"}}>
+        <Button type="danger" outline>Tıkla bana</Button>
+    </div>
+    <div style={{margin:"5px"}}>
+        <Button type="success" outline>Tıkla bana</Button>
+    </div>
+    <div style={{margin:"5px"}}>
+        <Button type="warning" outline>Tıkla bana</Button>
+    </div>
+    <div style={{margin:"5px"}}>
+        <Button type="light" outline>Tıkla bana</Button>
+    </div>
+    <div style={{margin:"5px"}}>
+        <Button type="dark" outline>Tıkla bana</Button>
+    </div>
+</div>
+
+```jsx
+<Button type="primary"  outline>Tıkla bana</Button>
+<Button type="secondary" outline >Tıkla bana</Button>
+<Button type="info" outline >Tıkla bana</Button>
+<Button type="danger" outline>Tıkla bana</Button>
+<Button type="success" outline>Tıkla bana</Button>
+<Button type="warning" outline>Tıkla bana</Button>
+<Button type="light" outline>Tıkla bana</Button>
+<Button type="dark" outline>Tıkla bana</Button>
+```
+
+## Sade Örnekleri
+<div style={{display:"flex",flexDirection:"row",alignItems:"center",flexWrap:"wrap"}}>
+    <div style={{margin:"5px"}}>
+        <Button type="primary"  plain>Tıkla bana</Button>
+    </div>
+    <div style={{margin:"5px"}}>
+        <Button type="secondary" plain >Tıkla bana</Button>
+    </div>
+    <div style={{margin:"5px"}}>
+        <Button type="info" plain >Tıkla bana</Button>
+    </div>
+    <div style={{margin:"5px"}}>
+        <Button type="danger" plain>Tıkla bana</Button>
+    </div>
+    <div style={{margin:"5px"}}>
+        <Button type="success" plain>Tıkla bana</Button>
+    </div>
+    <div style={{margin:"5px"}}>
+        <Button type="warning" plain>Tıkla bana</Button>
+    </div>
+    <div style={{margin:"5px"}}>
+        <Button type="light" plain>Tıkla bana</Button>
+    </div>
+    <div style={{margin:"5px"}}>
+        <Button type="dark" plain>Tıkla bana</Button>
+    </div>
+</div>
+
+```jsx
+<Button type="primary"  plain>Tıkla bana</Button>
+<Button type="secondary" plain >Tıkla bana</Button>
+<Button type="info" plain >Tıkla bana</Button>
+<Button type="danger" plain>Tıkla bana</Button>
+<Button type="success" plain>Tıkla bana</Button>
+<Button type="warning" plain>Tıkla bana</Button>
+<Button type="light" plain>Tıkla bana</Button>
+<Button type="dark" plain>Tıkla bana</Button>
+```
+
+## Çerçevesiz Sade Örnekleri
+<div style={{display:"flex",flexDirection:"row",alignItems:"center",flexWrap:"wrap"}}>
+    <div style={{margin:"5px"}}>
+        <Button type="primary"  plain notOutline>Tıkla bana</Button>
+    </div>
+    <div style={{margin:"5px"}}>
+        <Button type="secondary" plain notOutline>Tıkla bana</Button>
+    </div>
+    <div style={{margin:"5px"}}>
+        <Button type="info" plain notOutline>Tıkla bana</Button>
+    </div>
+    <div style={{margin:"5px"}}>
+        <Button type="danger" plain notOutline>Tıkla bana</Button>
+    </div>
+    <div style={{margin:"5px"}}>
+        <Button type="success" plain notOutline>Tıkla bana</Button>
+    </div>
+    <div style={{margin:"5px"}}>
+        <Button type="warning" plain notOutline>Tıkla bana</Button>
+    </div>
+    <div style={{margin:"5px"}}>
+        <Button type="light" plain notOutline>Tıkla bana</Button>
+    </div>
+    <div style={{margin:"5px"}}>
+        <Button type="dark" plain notOutline>Tıkla bana</Button>
+    </div>
+</div>
+
+```jsx
+<Button type="primary"  plain notOutline>Tıkla bana</Button>
+<Button type="secondary" plain notOutline>Tıkla bana</Button>
+<Button type="info" plain notOutline>Tıkla bana</Button>
+<Button type="danger" plain notOutline>Tıkla bana</Button>
+<Button type="success" plain notOutline>Tıkla bana</Button>
+<Button type="warning" plain notOutline>Tıkla bana</Button>
+<Button type="light" plain notOutline>Tıkla bana</Button>
+<Button type="dark" plain notOutline>Tıkla bana</Button>
+```
+
+## Köşe Yumuşatma Örnekleri
+<div style={{display:"flex",flexDirection:"row",alignItems:"center",flexWrap:"wrap"}}>
+    <div style={{margin:"5px"}}>
+        <Button type="primary" outline rounded="sm">Tıkla bana</Button>
+    </div>
+    <div style={{margin:"5px"}}>
+        <Button type="primary" outline rounded="md">Tıkla bana</Button>
+    </div>
+    <div style={{margin:"5px"}}>
+        <Button type="primary" outline rounded="lg">Tıkla bana</Button>
+    </div>
+    <div style={{margin:"5px"}}>
+        <Button type="primary" outline rounded="xl">Tıkla bana</Button>
+    </div>
+    <div style={{margin:"5px"}}>
+        <Button type="primary" outline rounded="2xl">Tıkla bana</Button>
+    </div>
+    <div style={{margin:"5px"}}>
+        <Button type="primary" outline rounded="3xl">Tıkla bana</Button>
+    </div>
+    <div style={{margin:"5px"}}>
+        <Button type="primary" outline rounded="full">Tıkla bana</Button>
+    </div>
+</div>
+
+```jsx
+<Button type="primary" outline rounded="sm">Tıkla bana</Button>
+<Button type="primary" outline rounded="md">Tıkla bana</Button>
+<Button type="primary" outline rounded="lg">Tıkla bana</Button>
+<Button type="primary" outline rounded="xl">Tıkla bana</Button>
+<Button type="primary" outline rounded="2xl">Tıkla bana</Button>
+<Button type="primary" outline rounded="3xl">Tıkla bana</Button>
+<Button type="primary" outline rounded="full">Tıkla bana</Button>
+
+```
+
+
+## Devre Dışı örnekleri
+<div style={{display:"flex",flexDirection:"row",alignItems:"center",flexWrap:"wrap"}}>
+    <div style={{margin:"5px"}}>
+        <Button type="primary" disabled>Tıkla bana</Button>
+    </div>
+    <div style={{margin:"5px"}}>
+        <Button type="secondary" disabled>Tıkla bana</Button>
+    </div>
+    <div style={{margin:"5px"}}>
+        <Button type="info" disabled>Tıkla bana</Button>
+    </div>
+    <div style={{margin:"5px"}}>
+        <Button type="danger" disabled>Tıkla bana</Button>
+    </div>
+    <div style={{margin:"5px"}}>
+        <Button type="success" disabled>Tıkla bana</Button>
+    </div>
+    <div style={{margin:"5px"}}>
+        <Button type="warning" disabled>Tıkla bana</Button>
+    </div>
+    <div style={{margin:"5px"}}>
+        <Button type="light" disabled>Tıkla bana</Button>
+    </div>
+    <div style={{margin:"5px"}}>
+        <Button type="dark" disabled>Tıkla bana</Button>
+    </div>
+</div>
+
+```jsx
+<Button type="primary" disabled>Tıkla bana</Button>
+<Button type="secondary" disabled>Tıkla bana</Button>
+<Button type="info" disabled>Tıkla bana</Button>
+<Button type="danger" disabled>Tıkla bana</Button>
+<Button type="success" disabled>Tıkla bana</Button>
+<Button type="warning" disabled>Tıkla bana</Button>
+<Button type="light" disabled>Tıkla bana</Button>
+<Button type="dark" disabled>Tıkla bana</Button>
+
+```
+
+## Link Buton örnekleri
+<div style={{display:"flex",flexDirection:"row",alignItems:"center",flexWrap:"wrap"}}>
+    <div style={{margin:"5px"}}>
+        <Button type="primary" link>Tıkla bana</Button>
+    </div>
+    <div style={{margin:"5px"}}>
+        <Button type="secondary" link>Tıkla bana</Button>
+    </div>
+    <div style={{margin:"5px"}}>
+        <Button type="info" link>Tıkla bana</Button>
+    </div>
+    <div style={{margin:"5px"}}>
+        <Button type="danger" link>Tıkla bana</Button>
+    </div>
+    <div style={{margin:"5px"}}>
+        <Button type="success" link>Tıkla bana</Button>
+    </div>
+    <div style={{margin:"5px"}}>
+        <Button type="warning" link>Tıkla bana</Button>
+    </div>
+    <div style={{margin:"5px"}}>
+        <Button type="light" link>Tıkla bana</Button>
+    </div>
+    <div style={{margin:"5px"}}>
+        <Button type="dark" link>Tıkla bana</Button>
+    </div>
+</div>
+
+```jsx
+<Button type="primary" link>Tıkla bana</Button>
+<Button type="secondary" link>Tıkla bana</Button>
+<Button type="info" link>Tıkla bana</Button>
+<Button type="danger" link>Tıkla bana</Button>
+<Button type="success" link>Tıkla bana</Button>
+<Button type="warning" link>Tıkla bana</Button>
+<Button type="light" link>Tıkla bana</Button>
+<Button type="dark" link>Tıkla bana</Button>
+
+```
+
+## Devre Dışı Link Buton örnekleri
+<div style={{display:"flex",flexDirection:"row",alignItems:"center",flexWrap:"wrap"}}>
+    <div style={{margin:"5px"}}>
+        <Button type="primary" link disabled>Tıkla bana</Button>
+    </div>
+    <div style={{margin:"5px"}}>
+        <Button type="secondary" link disabled >Tıkla bana</Button>
+    </div>
+    <div style={{margin:"5px"}}>
+        <Button type="info" link disabled>Tıkla bana</Button>
+    </div>
+    <div style={{margin:"5px"}}>
+        <Button type="danger" link disabled>Tıkla bana</Button>
+    </div>
+    <div style={{margin:"5px"}}>
+        <Button type="success" link disabled>Tıkla bana</Button>
+    </div>
+    <div style={{margin:"5px"}}>
+        <Button type="warning" link disabled>Tıkla bana</Button>
+    </div>
+    <div style={{margin:"5px"}}>
+        <Button type="light" link disabled>Tıkla bana</Button>
+    </div>
+    <div style={{margin:"5px"}}>
+        <Button type="dark" link disabled>Tıkla bana</Button>
+    </div>
+</div>
+
+```jsx
+<Button type="primary" link disabled>Tıkla bana</Button>
+<Button type="secondary" link disabled >Tıkla bana</Button>
+<Button type="info" link disabled>Tıkla bana</Button>
+<Button type="danger" link disabled>Tıkla bana</Button>
+<Button type="success" link disabled>Tıkla bana</Button>
+<Button type="warning" link disabled>Tıkla bana</Button>
+<Button type="light" link disabled>Tıkla bana</Button>
+<Button type="dark" link disabled>Tıkla bana</Button>
+
+```
+
+## Özel class örneği
+<div style={{display:"flex",flexDirection:"row",alignItems:"center",flexWrap:"wrap"}}>
+    <div style={{margin:"5px"}}>
+        <Button classList={"bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 transition ease-in-out delay-150 duration-300 transform hover:-translate-y-1 hover:scale-110"} >Tıkla bana</Button>
+    </div>
+</div>
+
+```jsx
+<Button classList={"bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 transition ease-in-out delay-150 duration-300 transform hover:-translate-y-1 hover:scale-110"}>Tıkla bana</Button>
+
+```
+
+## Özel style örneği
+<div style={{display:"flex",flexDirection:"row",alignItems:"center",flexWrap:"wrap"}}>
+    <div style={{margin:"5px"}}>
+        <Button style={{width:"500px",backgroundColor:"#90a9d1",border:"1px solid #6189c7"}} >Tıkla bana</Button>
+    </div>
+</div>
+
+```jsx
+<Button style={{width:"500px",backgroundColor:"#90a9d1",border:"1px solid #6189c7"}}>Tıkla bana</Button>
+
+```

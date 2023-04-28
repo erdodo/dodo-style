@@ -1,22 +1,37 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {BsArrowDownShort,BsArrowUpShort } from 'react-icons/bs';
+import {BsArrowDownShort,BsArrowUpShort,BsX } from 'react-icons/bs';
+import {BiLeftArrow,BiRightArrow} from 'react-icons/bi';
 import Tag from "../Tag";
-//TODO: Hover olduğunda açılsın seçeneği
+
+//Tüm elemanlara özel css ve class isimleri tanımla
 
 
 /**
  * Select componenti, options prop'u ile gelen verileri selectbox içerisinde gösterir.
  *
  */
-export default function SelectBox({classList,size,rounded,disabled,options,onSelect,value,multiple,tag,search }) {
-    const _id = new Date().getTime()
-    const inputRef = React.useRef(null);
-    const [visible, setVisible] = React.useState(false);
-    const [filteredOptions, setFilteredOptions] = React.useState([]);
-    const [_value, setValue] = React.useState(multiple?[]:"");
-    const [inputWidth, setInputWidth] = React.useState(150);
+export default function SelectBox({classList,size,rounded,disabled,options,onSelect,value,multiple,tag,search,max,maxShow,placeholder,style,clearable,hover }) {
+    const _id = new Date().getTime() //Focus ayarları yapabilmek için selecte özel oluşturulan id
+    const [_maxShow, setMaxShow] = React.useState(maxShow);// Gösterilecek maksimum tag sayısı içeride aç kapa yapabilmek için yapılan tanımlama
+    const inputRef = React.useRef(null);// Input elementine erişmek için oluşturulan ref (arama inputu)
+    const [visible, setVisible] = React.useState(false);// Seçeneklerin açık olup olmadığını tutan state
+    const [filteredOptions, setFilteredOptions] = React.useState([]);// Arama inputuna göre filtrelenmiş seçeneklerin tutulduğu state
+    const [_value, setValue] = React.useState(multiple?[]:"");// Seçilen değerlerin tutulduğu state
+    const [filteredTags, setFilteredTags] = React.useState([]);// Gösterilecek maksimum tag sayısı içeride aç kapa yapabilmek için yapılan tanımlama
+    const [inputWidth, setInputWidth] = React.useState(150);// Arama inputunun genişliğini tutan state / içine yazılan değere göre genişliği değişir
+    const [error, setError] = React.useState("");// Hata mesajı tutan state (max değer seçildi gibi)
+
+    /*
+    * Props olarak gelen rounded değerlerine göre class isimleri oluşturuluyor
+    * */
     let _rounded = rounded ? `rounded-${rounded}` : 'rounded-md';
+    if(rounded==='2xl') _rounded = 'rounded-[1rem]';
+    if(rounded==='3xl') _rounded = 'rounded-[1.2rem]';
+
+    /*
+    * Props olarak gelen boyut değerine göre yazı ve yükseklik class isimleri oluşturuluyor
+    * */
     const _size = {
         sm: `text-sm`,
         md: `text-md`,
@@ -25,18 +40,23 @@ export default function SelectBox({classList,size,rounded,disabled,options,onSel
         "2xl": ` text-2xl `,
     };
     const _height = {
-        sm: `h-[32px]`,
-        md: `h-[36px]`,
-        lg: `h-[46px] `,
-        xl: ` h-[44px] `,
-        "2xl": ` h-[58px] `,
-        "3xl": ` h-[66px] `,
+        sm: `min-h-[32px]`,
+        md: `min-h-[36px]`,
+        lg: `min-h-[46px] `,
+        xl: `min-h-[44px] `,
+        "2xl": `min-h-[58px] `,
+        "3xl": `min-h-[66px] `,
     }
 
-
+    /*
+    * Props olarak gelen disabled değerine göre class isimleri oluşturuluyor
+    * */
     const _disabled = disabled && "opacity-50 cursor-not-allowed";
+
     React.useEffect(() => {
-        console.log(tag?.props)
+        /*
+        * Select dışında bir yere tıklandığında seçeneklerin kapanması için event listener ekleniyor
+        * */
         if(visible){
             document.addEventListener("click", (e)=>{
                 if(e.target.closest(".autocomplete-input")){
@@ -47,11 +67,18 @@ export default function SelectBox({classList,size,rounded,disabled,options,onSel
         }
     }, [visible]);
     React.useEffect(() => {
+        /*
+        * Props olarak gelen optionlar daha sonra içinde filter işlemi yapabilmek için state'e aktarılıyor
+        * */
         if(options){
             setFilteredOptions(options);
         }
     }, [options]);
     React.useEffect(() => {
+        /*
+        * Props olarak gelen value değeri daha sonra değiştirebilmek için state'e aktarılıyor
+         */
+        setError("");
         if(multiple){
             if(value){
                 setValue(value.map((item)=>options.find((option)=>option.value===item)));
@@ -62,9 +89,31 @@ export default function SelectBox({classList,size,rounded,disabled,options,onSel
             }
         }
     }, [value]);
-
+    React.useEffect(() => {
+        /*
+        * Multiple değeri developlent ortamında değiştiği için her değişimde value state'i sıfırlanıyor
+         */
+        setValue(multiple?[]:"");
+    },[multiple]);
+    React.useEffect(() => {
+        /*
+        * Props olarak gelen maxShow değerine göre gösterilecek tagler state'e aktarılıyor
+         */
+        _value && _value.length>0 && setFilteredTags(_value.slice(0,maxShow));
+        _value.length<=0 && setFilteredTags([]);
+    },[_value]);
+    React.useEffect(() => {
+        setMaxShow(maxShow);
+    },[maxShow]);
     const inputChange = (e) => {
-        setInputWidth(inputRef.current.scrollWidth)
+        /*
+        * Arama inputuna yazıldığında çalışan fonksiyon
+        * İnputun genişliğini ayarlamak için inputun genişliği state'e aktarılıyor
+        * Arama inputuna yazılan değere göre filtreleme yapılıyor
+        * Seçenekler görünür hale getiriliyor
+         */
+        setInputWidth(inputRef.current?.scrollWidth)
+        setValue("");
         let value = e.target.value;
         let filtered = options.filter((item) => {
             return item.label.toLowerCase().includes(value.toLowerCase());
@@ -74,9 +123,20 @@ export default function SelectBox({classList,size,rounded,disabled,options,onSel
 
     }
 
+    //Seçeneklerden birine tıklandığında çalışan fonksiyon
     const selectClick = (value) => {
+        setError("")
         if(value){
-            document.getElementById(_id+'_searchInput').value = "";
+            //Seçeneklerden birine tıklandığında inputun içi boşaltılıyor
+            if(search) document.getElementById(_id+'_searchInput').value = "";
+
+            // max değer seçildiğinde hata mesajı gösteriliyor
+            if(multiple && _value.length>=max && !_value.find((item)=>item.value===value.value)){
+                setError("Maksimum "+max+" adet seçim yapabilirsiniz.");
+                return;
+            }
+
+            // multiple değeri true ise seçilen değerler state'e aktarılıyor eğer varsa seçim iptal ediliyor
             if(multiple){
                 let _values = [..._value];
                 if(_value.find((item)=>item.value===value.value)){
@@ -102,11 +162,11 @@ export default function SelectBox({classList,size,rounded,disabled,options,onSel
             inputRef.current && inputRef.current.focus();
         },100)
     }
+    const clearValue = () => {
+        setValue(multiple?[]:"");
+        onSelect(multiple?[]:"");
+    }
     const parentKeyDown = (e) => {
-
-
-        console.log('key:',e.key)
-        console.log('target id:',e.target.id)
         if(!visible) setVisible(true)
         let rules = [
             {
@@ -182,13 +242,23 @@ export default function SelectBox({classList,size,rounded,disabled,options,onSel
                 action: () => setVisible(false)
             },
             {
-                key: ['Escape'],
+                key: ['Escape',"Backspace"],
                 id: "_tag_"+e.target.tabIndex,
                 nextEl:'',
                 action: () => {
                     setVisible(false)
                     selectItem(e.target.tabIndex)
                     nextFocus(e.target,document.getElementById(_id+'_searchInput'))
+                }
+            },
+            {
+                key: ['Backspace'],
+                id: "_searchInput",
+                nextEl:'',
+                action: () => {
+                    if(_value.length>0 && document.getElementById(_id+'_searchInput').value===''){
+                     nextFocus(document.getElementById(_id+'_searchInput'),document.getElementById(_id+'_tag_'+(_value.length-1)))
+                    }
                 }
             }
 
@@ -199,6 +269,7 @@ export default function SelectBox({classList,size,rounded,disabled,options,onSel
                 isDefault = true;
             }
         })
+        if(e.key === "Backspace" && document.getElementById(_id+'_searchInput').value!=='') isDefault = false;
         isDefault && e.preventDefault()
         let nextFocus = (el,nextEl) => {
             el && el.blur();
@@ -210,110 +281,175 @@ export default function SelectBox({classList,size,rounded,disabled,options,onSel
         }
 
         rules.forEach((rule)=>{
-            console.log("Tuş:",e.shiftKey ? 'Shift_' + e.key:e.key)
             if(rule.key.includes(e.shiftKey ? 'Shift_' + e.key:e.key) && _id+rule.id===e.target.id){
-                console.log('rule:',rule)
                 let nextEl = document.getElementById(rule.nextEl);
                 rule.action(e.target,nextEl);
             }
         })
 
     }
+    const parentMouseEnter = () => {
+        hover && setVisible(true)
+    }
+    const parentMouseLeave = () => {
+        hover && setVisible(false)
+    }
 
 
     return (
         <>
-            <div className={`${classList} ${_size[size]} ${_height[size]} ${_disabled} ${_rounded} relative border`} onKeyDown={parentKeyDown} >
 
-                <div className={`${disabled?'cursor-not-allowed':'cursor-pointer'} flex flex-row items-center  h-full w-full autocomplete-input` } tabIndex={0}  onClick={autoCompleteInputClick} >
-                    {!multiple && search && <input type="text" id={_id+'_searchInput'} disabled={disabled} className={`px-3 focus-visible:outline-none ${_disabled}`}  onChange={inputChange} value={_value.label} />}
+            <div className={`${classList} ${_size[size]} ${_height[size]} ${_disabled} ${_rounded} relative border`} onKeyDown={parentKeyDown} style={style} onMouseEnter={parentMouseEnter} onMouseLeave={parentMouseLeave}>
+                <input type={"hidden"} value={JSON.stringify(_value)}/>
+                <div className={`${disabled?'cursor-not-allowed':'cursor-pointer'} flex flex-row items-center  ${_height[size]} w-full autocomplete-input` } tabIndex={0}  onClick={autoCompleteInputClick} >
+                    {
+                        ((!_value || _value.length <= 0) && !search) &&
+                        <span className={"px-3 opacity-50"}>{placeholder}</span>
+                    }
+                    {/* Normal modda arama inputu */
+                        !multiple && search &&
+                        <input type="text" id={_id+'_searchInput'} placeholder={placeholder} disabled={disabled}
+                               className={`px-3 focus-visible:outline-none w-full ${_disabled}`}  onChange={inputChange} value={_value.label} />
+                    }
                     {multiple &&
                          <div className={`flex flex-row  items-center w-full  flex-wrap` }>
-                            {_value.map((item,index)=>(
-                                <div tabIndex={index} id={_id+'_tag_'+index}>
-                                    <Tag {...tag?.props} size={size} id={_id+'_tag_'+index} type={tag?.props?.type?tag?.props?.type:"primary"} classList={"m-[2px]"} close onClose={()=>selectClick(item)}>{item.label}</Tag>
+                            {/*Max show kısıtlaması yokken tagler*/
+                                !_maxShow && _value && _value.map((item,index)=>(
+                                <div tabIndex={index} id={_id+'_tag_'+index} className={"!m-[2px]"}>
+                                    <Tag {...tag?.props} size={size} id={_id+'_tag_'+index} type={tag?.props?.type?tag?.props?.type:"primary"} classList={"autocomplete-input"}  close onClose={()=>selectClick(item)}>{item.label}</Tag>
                                 </div>
-                                /*<div key={item.value} className={`flex flex-row items-center py-1 px-3 m-1 bg-gray-200 rounded-md`}>
-                                    <span className={`m-1`}>{item.label}</span>
-                                    <span className={`cursor-pointer`} onClick={()=>selectClick(item)}>x</span>
-                                </div>*/
                             ))}
-
-                            {search && <input ref={inputRef} type="text" id={_id+'_searchInput'} disabled={disabled} className={`${_disabled} px-3 bg-transparent focus-visible:outline-none min-w-60px max-w-[160px] `} style={{width:inputWidth+'px'}} onChange={inputChange}  />}
+                            {/*Max show kısıtlaması olan taglar*/
+                                _maxShow && _value && filteredTags.map((item,index)=>(
+                                 <div tabIndex={index} id={_id+'_tag_'+index} className={"!m-[2px]"}>
+                                     <Tag {...tag?.props} size={size} id={_id+'_tag_'+index} type={tag?.props?.type?tag?.props?.type:"primary"} classList={"autocomplete-input"} close onClose={()=>selectClick(item)}>{item.label}</Tag>
+                                 </div>
+                             ))}
+                             {/*Max show kısıtlaması iptal butonu*/
+                                 maxShow && _maxShow && _value && _value.length> _maxShow &&
+                                 <span className={"px-3 w-fit h-full"} onClick={()=>setMaxShow(false)} tabIndex={_value.length-1} id={_id+"_tag_"+(_value.length-1)}><BiRightArrow/></span>
+                             }
+                             {/*Max show kısıtlaması yap butonu*/
+                                 maxShow && !_maxShow && _value && _value.length> _maxShow &&
+                                 <span className={"px-3 w-fit"} onClick={()=>setMaxShow(true)}><BiLeftArrow/></span>
+                             }
+                            {/*Multiple modda arama inputu*/
+                                search &&
+                                <input ref={inputRef} type="text" id={_id+'_searchInput'} disabled={disabled} style={{width:inputWidth+'px'}} onChange={inputChange} placeholder={placeholder}
+                                       className={`${_disabled} px-3 bg-transparent focus-visible:outline-none min-w-60px max-w-[160px] `}   />
+                            }
 
 
                         </div>
                     }
-                    { !search && !multiple && <span className={`px-3 w-[100px] ${_disabled}`}>{_value.label}</span>}
-                    { !search && multiple && _value.length<1 &&  <span className={"w-[100px]"}></span>}
+                    {/*Arama ve multiple kapalıyken seçilen verinin gösterildiği yazı*/
+                        !search && !multiple &&
+                        <span className={`px-3 min-w-[100px] w-full ${_disabled}`}>{_value.label}</span>
+                    }
+                    {/*Arama kapalıyken bilerek bırakılan boşluk */
+                        !search && multiple && _value.length<1 &&
+                        <span className={"min-w-[100px] w-full"}></span>
+                    }
+                    {
+                        (clearable && (multiple? _value.length>0:_value)) &&
+                        <span className={"px-1 w-[30px]  "} onClick={clearValue}>
+                            <BsX className={`${_size[size]} autocomplete-input`} />
+                        </span>
+                    }
                     <div className={"px-1 w-[30px]  "} >
-                        {!visible && <BsArrowDownShort className={`${_size[size]} autocomplete-input`} />}
-                        {visible && <BsArrowUpShort className={`${_size[size]} autocomplete-input`} />}
+                        {/*Select menüsü kapalıyken gösterilen ikon*/
+                            !visible && <BsArrowDownShort className={`${_size[size]} autocomplete-input`} />
+                        }
+                        {/*Select menüsü açıkken gösterilen ikon*/
+                            visible && <BsArrowUpShort className={`${_size[size]} autocomplete-input`} />
+                        }
                     </div>
                 </div>
                 {
                     visible &&
-                    <div className={` bg-white p-2 absolute border left-0 z-10 w-full rounded-md mt-1`}>
-                        {filteredOptions.length>0?
-                            Object.values(filteredOptions).map((item,index) => (
-                                <div key={item.value} id={_id+'_option_'+index} tabIndex={index} value={item}
-                                     onClick={()=>selectClick(item)}
-                                     className={`py-1 px-3 hover:bg-gray-100 cursor-pointer mb-1 ${_rounded} ${_value.value === item.value ?'bg-gray-200 border':''} ${multiple && _value.includes(item)?'bg-gray-200 border':''}`} >
-                                    {item.label}
-                                    <input type={"hidden"} value={item} id={_id+'_option_input_'+index}/>
+                    <div className={" absolute left-0 w-full z-10"}>
+                        <div className={` bg-white p-2 !mt-1  border  w-full rounded-md `}>
+                            {filteredOptions.length>0?
+                                Object.values(filteredOptions).map((item,index) => (
+                                    <div key={item.value} id={_id+'_option_'+index} tabIndex={index} onClick={()=>selectClick(item)}
+                                         className={`py-1 px-3 hover:bg-gray-100 cursor-pointer mb-1 ${_rounded} ${_value.value === item.value ?'bg-gray-200 border':''} ${multiple && _value.includes(item)?'bg-gray-200 border':''}`} >
+                                        {item.label}
+                                        <input type={"hidden"} value={item} id={_id+'_option_input_'+index}/>
+                                    </div>
+                                ))
+                                :
+                                <div className={`py-1 px-3 ${_rounded}`}>
+                                    Veri Bulunamadı
                                 </div>
-                            ))
-                            :
-                            <div className={`py-1 px-3 ${_rounded}`}>
-                                Veri Bulunamadı
-                            </div>
-                        }
+                            }
+                        </div>
                     </div>
                 }
-
             </div>
+            {error && <span className={"text-red-500 text-xs"}>{error}</span>}
         </>
     );
 }
 
 
 SelectBox.propTypes = {
-    /** AutoComplete class'ı */
+    /** Uygulanmak istenen class listesi */
     classList: PropTypes.string,
 
-    /** AutoComplete köşe yumuşak olsun mu */
+    /** Köşe yumuşatma seviyesi */
     rounded: PropTypes.oneOf(['sm', 'md', 'lg', 'xl', 'full']),
 
-    /** AutoComplete büyüklüğü */
+    /** Büyüklük */
     size: PropTypes.oneOf(['sm', 'md', 'lg', 'xl', '2xl']),
 
-    /** AutoComplete disable olsun mu */
+    /** Disabled seçeneği */
     disabled: PropTypes.bool,
 
-    /** AutoComplete options */
+    /** Listelenecek veriler */
     options: PropTypes.array,
 
-    /** selected value */
+    /** Seçilen veri */
     onSelect: PropTypes.func,
 
-    /** selected value */
+    /** Varsayılan veri */
     value: PropTypes.any,
 
-    /** multiple */
+    /** Birden fazla seçilebilsin mi */
     multiple: PropTypes.bool,
 
-    /** tag */
+    /** Hangi tag elemanı kullanılsın */
     tag: PropTypes.node,
 
-    /** search */
+    /** Arama Seçeneği olsun mu */
     search: PropTypes.bool,
+
+    /** Inline style'ı */
+    style: PropTypes.object,
+
+    /** en fazla kaç veri seçilebilsin */
+    max: PropTypes.number,
+
+    /** en fazla kaç veri gösterilsin */
+    maxShow: PropTypes.number,
+
+    /** placeholder */
+    placeholder: PropTypes.string,
+
+    /** Temizleme butonu */
+    clearable: PropTypes.bool,
+
+    /** Hover durumunda menü açılsın mı */
+    hover: PropTypes.bool,
+
 };
 
 SelectBox.defaultProps = {
-    options: [],
+    options:[{value:"key1",label:"value 1"},{value:"key2",label:"value 2"},{value:"key3",label:"value 3"}],
     size:"md",
     onSelect: (value) => {
         // eslint-disable-next-line no-console
         console.log('You have clicked me!', value);
-    }
+    },
+
+
 };

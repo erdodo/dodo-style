@@ -1,18 +1,13 @@
-import Button  from './Button';
+import Tag  from './Tag';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 export default {
-  title: 'Örnekler/Button',
-  component: Button,
+  title: 'Örnekler/Tag',
+  component: Tag,
   tags: ['autodocs'],
   argTypes: {
     children: {
         type: 'string',
-    },
-    onClick: {
-      table: {
-        category: 'Olay',
-      },
     },
   },
 };

@@ -1,15 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { BsXCircle } from "react-icons/bs";
-//TODO: Kapatma seçeneği ekle
-
+//todo: özel class list ve style örnekleri
 /**
  * Özel yazılar için kullanılabilir
  *
  */
-export default function Tag({classList, type,onClick,children,size,outline,plain,rounded,close,onClose, ...props }) {
+export default function Tag({classList, type,onClick,children,size,outline,notOutline,plain,gradient,rounded,close,onClose,style }) {
 
     let _rounded = rounded ? `rounded-${rounded}` : 'rounded-md';
+    if(rounded==='2xl') _rounded = 'rounded-[1rem]';
+    if(rounded==='3xl') _rounded = 'rounded-[1.2rem]';
     const _size = {
         sm: `py-0.5 px-1 text-sm `,
         md: `py-1 px-1.5 text-sm `,
@@ -49,6 +50,16 @@ export default function Tag({classList, type,onClick,children,size,outline,plain
         info: 'bg-blue-200 text-blue-900 border border-blue-500',
         light: 'bg-gray-200 text-gray-900 border border-gray-500',
         dark: 'bg-gray-700 text-gray-100 border border-gray-500',
+    }
+    const gradientTypes = {
+        primary:  'bg-gradient-to-r from-cyan-500 to-blue-600 text-white',
+        secondary: 'bg-gradient-to-r from-fuchsia-500 to-purple-600 text-white',
+        danger: 'bg-gradient-to-r from-rose-500 to-pink-600 text-white',
+        warning: 'bg-gradient-to-r from-orange-500 to-amber-600 text-white',
+        success: 'bg-gradient-to-r from-emerald-500 to-green-600 text-white',
+        info: 'bg-gradient-to-r from-blue-500 to-cyan-600 text-white',
+        light: 'bg-gradient-to-r from-black/10 to-black/40 text-black',
+        dark: 'bg-gradient-to-r from-black/60 to-black/90 text-white',
     }
 
     const _closeButtonsize = {
@@ -90,14 +101,17 @@ export default function Tag({classList, type,onClick,children,size,outline,plain
         light: 'text-gray-900 px-0 py-0 hover:shadow-gray-400 hover:shadow-md rounded-full cursor-pointer',
         dark: 'text-gray-900 px-0 py-0 hover:shadow-gray-400 hover:shadow-md rounded-full cursor-pointer',
     }
-
+    const _notOutline = notOutline && "!border-[transparent]"
     if(outline){
         _type = outlineTypes[type];
     } else if (plain){
         _type = plainTypes[type];
+    }else if(gradient){
+        _type = gradientTypes[type];
     } else{
         _type = types[type];
     }
+
     if(close && outline){
         _closeType = closeOutlineTypes[type];
     }else if(close && plain){
@@ -107,7 +121,7 @@ export default function Tag({classList, type,onClick,children,size,outline,plain
     }
     return (
         <>
-            <div className={`${classList} ${_size[size]} ${_rounded} ${_type} flex flex-row items-center`} onClick={onClick} {...props} >
+            <div className={`${classList} ${_size[size]} ${_rounded} ${_type} ${_notOutline} w-fit flex flex-row items-center`} style={style} onClick={onClick}  >
                 {children}
                 {close && <BsXCircle onClick={onClose} className={`ml-2  ${_closeButtonsize[size]} ${_closeType}`} />}
             </div>
@@ -118,46 +132,42 @@ export default function Tag({classList, type,onClick,children,size,outline,plain
 
 Tag.propTypes = {
 
-
-    /** Buton içerine yazılacak yazılar */
+    /** Child elemanı */
     children: PropTypes.node.isRequired,
 
-    /** Buton class'ı */
+    /** Uygulanmak istenen class listesi */
     classList: PropTypes.string,
 
-    /** Buton tipi */
+    /** Tip */
     type: PropTypes.oneOf(['primary', 'secondary', 'danger', 'warning', 'success', 'info', 'light', 'dark']),
 
-    /** Buton sadece borderlardan oluşsun mu */
+    /** Sadece çerçeveden oluşsun */
     outline: PropTypes.bool,
 
-    /** Buton arka planı daha açık olsun mu */
+    /** Hiçbir border olmasın */
+    notOutline: PropTypes.bool,
+
+    /** Arka planı daha açık renkte olsun */
     plain: PropTypes.bool,
 
-    /** Buton köşe yumuşak olsun mu */
-    rounded: PropTypes.oneOf(['sm', 'md', 'lg', 'xl', 'full']),
+    /** Köşe yumuşatma seviyesi */
+    rounded: PropTypes.oneOf(['sm', 'md', 'lg', 'xl','2xl','3xl', 'full']),
 
-    /** Buton büyüklüğü */
+    /** Büyüklük */
     size: PropTypes.oneOf(['sm', 'md', 'lg', 'xl', '2xl']),
 
     /** Kapatma seçeneği ekle */
     close: PropTypes.bool,
 
-    /** Gets called when the user clicks on the button */
-    onClick: PropTypes.func,
-
     /** Tag kapatma fonksiyonu */
     onClose: PropTypes.func,
 
-    /** diğer özellikler */
-    props: PropTypes.object,
+    /** Inline style'ı */
+    style: PropTypes.object,
 };
 
 Tag.defaultProps = {
-    children: 'Button',
-    size:"md",
-    onClick: (event) => {
-        // eslint-disable-next-line no-console
-        console.log('You have clicked me!', event.target);
-    },
+    type:"primary",
+    children: "Tag",
+    size:"md"
 };

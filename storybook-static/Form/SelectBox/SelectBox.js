@@ -36,6 +36,7 @@ function SelectBox(_ref) {
     multiple = _ref.multiple,
     tag = _ref.tag,
     search = _ref.search;
+  var _id = new Date().getTime();
   var inputRef = _react.default.useRef(null);
   var _React$useState = _react.default.useState(false),
     _React$useState2 = _slicedToArray(_React$useState, 2),
@@ -49,7 +50,7 @@ function SelectBox(_ref) {
     _React$useState6 = _slicedToArray(_React$useState5, 2),
     _value = _React$useState6[0],
     setValue = _React$useState6[1];
-  var _React$useState7 = _react.default.useState(50),
+  var _React$useState7 = _react.default.useState(150),
     _React$useState8 = _slicedToArray(_React$useState7, 2),
     inputWidth = _React$useState8[0],
     setInputWidth = _React$useState8[1];
@@ -113,27 +114,29 @@ function SelectBox(_ref) {
     setVisible(true);
   };
   var selectClick = function selectClick(value) {
-    console.log(value);
-    if (multiple) {
-      var _values = _toConsumableArray(_value);
-      if (_value.find(function (item) {
-        return item.value === value.value;
-      })) {
-        _values = _values.filter(function (item) {
-          return item.value !== value.value;
-        });
+    if (value) {
+      document.getElementById(_id + '_searchInput').value = "";
+      if (multiple) {
+        var _values = _toConsumableArray(_value);
+        if (_value.find(function (item) {
+          return item.value === value.value;
+        })) {
+          _values = _values.filter(function (item) {
+            return item.value !== value.value;
+          });
+        } else {
+          _values.push(value);
+        }
+        setValue(_values);
+        onSelect(_values.map(function (item) {
+          return item.value;
+        }));
+        return;
       } else {
-        _values.push(value);
+        setValue(value);
+        onSelect(value.value);
+        return;
       }
-      setValue(_values);
-      onSelect(_values.map(function (item) {
-        return item.value;
-      }));
-      return;
-    } else {
-      setValue(value);
-      onSelect(value.value);
-      return;
     }
   };
   var autoCompleteInputClick = function autoCompleteInputClick() {
@@ -142,13 +145,138 @@ function SelectBox(_ref) {
       inputRef.current && inputRef.current.focus();
     }, 100);
   };
+  var parentKeyDown = function parentKeyDown(e) {
+    console.log('key:', e.key);
+    console.log('target id:', e.target.id);
+    if (!visible) setVisible(true);
+    var rules = [{
+      key: ["ArrowDown", "ArrowRight", "Tab"],
+      id: "_searchInput",
+      nextEl: _id + "_option_0",
+      action: function action(el, nextEl) {
+        return nextFocus(el, nextEl);
+      }
+    }, {
+      key: ["ArrowDown", "ArrowRight", "Tab"],
+      id: "_option_" + e.target.tabIndex,
+      nextEl: _id + "_option_" + (e.target.tabIndex + 1),
+      action: function action(el, nextEl) {
+        return nextFocus(el, nextEl);
+      }
+    }, {
+      key: ["ArrowUp", "ArrowLeft", "Shift_Tab"],
+      id: "_option_" + e.target.tabIndex,
+      nextEl: _id + "_option_" + (e.target.tabIndex - 1),
+      action: function action(el, nextEl) {
+        return nextFocus(el, nextEl);
+      }
+    }, {
+      key: ["ArrowUp", "ArrowLeft", "Shift_Tab"],
+      id: "_option_0",
+      nextEl: _id + "_searchInput",
+      action: function action(el, nextEl) {
+        return nextFocus(el, nextEl);
+      }
+    }, {
+      key: ["ArrowUp", "ArrowLeft", "Shift_Tab"],
+      id: "_searchInput",
+      nextEl: _id + "_tag_" + (_value.length - 1),
+      action: function action(el, nextEl) {
+        return nextFocus(el, nextEl);
+      }
+    }, {
+      key: ["ArrowDown", "ArrowRight", "Tab"],
+      id: "_tag_" + (_value.length - 1),
+      nextEl: _id + "_searchInput",
+      action: function action(el, nextEl) {
+        return nextFocus(el, nextEl);
+      }
+    }, {
+      key: ["ArrowUp", "ArrowLeft", "Shift_Tab"],
+      id: "_tag_" + e.target.tabIndex,
+      nextEl: _id + "_tag_" + (e.target.tabIndex - 1),
+      action: function action(el, nextEl) {
+        return nextFocus(el, nextEl);
+      }
+    }, {
+      key: ["ArrowDown", "ArrowRight", "Tab"],
+      id: "_tag_" + e.target.tabIndex,
+      nextEl: _id + "_tag_" + (e.target.tabIndex + 1),
+      action: function action(el, nextEl) {
+        return nextFocus(el, nextEl);
+      }
+    }, {
+      key: ['Enter', ' '],
+      id: "_option_" + e.target.tabIndex,
+      nextEl: '',
+      action: function action() {
+        return selectItem(e.target.tabIndex);
+      }
+    }, {
+      key: ['Enter', ' '],
+      id: "_searchInput",
+      nextEl: '',
+      action: function action() {
+        return selectItem(0);
+      }
+    }, {
+      key: ['Escape'],
+      id: "_searchInput",
+      nextEl: '',
+      action: function action() {
+        return setVisible(false);
+      }
+    }, {
+      key: ['Escape'],
+      id: "_option_" + e.target.tabIndex,
+      nextEl: '',
+      action: function action() {
+        return setVisible(false);
+      }
+    }, {
+      key: ['Escape'],
+      id: "_tag_" + e.target.tabIndex,
+      nextEl: '',
+      action: function action() {
+        setVisible(false);
+        selectItem(e.target.tabIndex);
+        nextFocus(e.target, document.getElementById(_id + '_searchInput'));
+      }
+    }];
+    var isDefault = false;
+    rules.forEach(function (rule) {
+      if (rule.key.includes(e.shiftKey ? 'Shift_' + e.key : e.key) && _id + rule.id === e.target.id) {
+        isDefault = true;
+      }
+    });
+    isDefault && e.preventDefault();
+    var nextFocus = function nextFocus(el, nextEl) {
+      el && el.blur();
+      nextEl && nextEl.focus();
+    };
+    var selectItem = function selectItem(index) {
+      var option = filteredOptions[index];
+      selectClick(option);
+    };
+    rules.forEach(function (rule) {
+      console.log("Tuş:", e.shiftKey ? 'Shift_' + e.key : e.key);
+      if (rule.key.includes(e.shiftKey ? 'Shift_' + e.key : e.key) && _id + rule.id === e.target.id) {
+        console.log('rule:', rule);
+        var nextEl = document.getElementById(rule.nextEl);
+        rule.action(e.target, nextEl);
+      }
+    });
+  };
   return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("div", {
-    className: "".concat(classList, " ").concat(_size[size], " ").concat(_height[size], " ").concat(_disabled, " ").concat(_rounded, " relative border")
+    className: "".concat(classList, " ").concat(_size[size], " ").concat(_height[size], " ").concat(_disabled, " ").concat(_rounded, " relative border"),
+    onKeyDown: parentKeyDown
   }, /*#__PURE__*/_react.default.createElement("div", {
-    className: "".concat(disabled ? 'cursor-not-allowed' : 'cursor-pointer', " flex flex-row items-center h-full w-full autocomplete-input"),
+    className: "".concat(disabled ? 'cursor-not-allowed' : 'cursor-pointer', " flex flex-row items-center  h-full w-full autocomplete-input"),
+    tabIndex: 0,
     onClick: autoCompleteInputClick
   }, !multiple && search && /*#__PURE__*/_react.default.createElement("input", {
     type: "text",
+    id: _id + '_searchInput',
     disabled: disabled,
     className: "px-3 focus-visible:outline-none ".concat(_disabled),
     onChange: inputChange,
@@ -157,15 +285,19 @@ function SelectBox(_ref) {
     className: "flex flex-row  items-center w-full  flex-wrap"
   }, _value.map(function (item, index) {
     var _tag$props, _tag$props2;
-    return /*#__PURE__*/_react.default.createElement(_Tag.default, _extends({}, tag === null || tag === void 0 ? void 0 : tag.props, {
+    return /*#__PURE__*/_react.default.createElement("div", {
+      tabIndex: index,
+      id: _id + '_tag_' + index
+    }, /*#__PURE__*/_react.default.createElement(_Tag.default, _extends({}, tag === null || tag === void 0 ? void 0 : tag.props, {
       size: size,
+      id: _id + '_tag_' + index,
       type: tag !== null && tag !== void 0 && (_tag$props = tag.props) !== null && _tag$props !== void 0 && _tag$props.type ? tag === null || tag === void 0 ? void 0 : (_tag$props2 = tag.props) === null || _tag$props2 === void 0 ? void 0 : _tag$props2.type : "primary",
       classList: "m-[2px]",
       close: true,
       onClose: function onClose() {
         return selectClick(item);
       }
-    }), item.label)
+    }), item.label))
     /*<div key={item.value} className={`flex flex-row items-center py-1 px-3 m-1 bg-gray-200 rounded-md`}>
         <span className={`m-1`}>{item.label}</span>
         <span className={`cursor-pointer`} onClick={()=>selectClick(item)}>x</span>
@@ -173,6 +305,7 @@ function SelectBox(_ref) {
   }), search && /*#__PURE__*/_react.default.createElement("input", {
     ref: inputRef,
     type: "text",
+    id: _id + '_searchInput',
     disabled: disabled,
     className: "".concat(_disabled, " px-3 bg-transparent focus-visible:outline-none min-w-60px max-w-[160px] "),
     style: {
@@ -194,11 +327,18 @@ function SelectBox(_ref) {
   }, filteredOptions.length > 0 ? Object.values(filteredOptions).map(function (item, index) {
     return /*#__PURE__*/_react.default.createElement("div", {
       key: item.value,
+      id: _id + '_option_' + index,
+      tabIndex: index,
+      value: item,
       onClick: function onClick() {
         return selectClick(item);
       },
-      className: "py-1 px-3 hover:bg-gray-100 cursor-pointer ".concat(_rounded, " ").concat(_value.value === item.value ? 'bg-gray-200 border' : '', " ").concat(multiple && _value.includes(item) ? 'bg-gray-200 border' : '')
-    }, item.label);
+      className: "py-1 px-3 hover:bg-gray-100 cursor-pointer mb-1 ".concat(_rounded, " ").concat(_value.value === item.value ? 'bg-gray-200 border' : '', " ").concat(multiple && _value.includes(item) ? 'bg-gray-200 border' : '')
+    }, item.label, /*#__PURE__*/_react.default.createElement("input", {
+      type: "hidden",
+      value: item,
+      id: _id + '_option_input_' + index
+    }));
   }) : /*#__PURE__*/_react.default.createElement("div", {
     className: "py-1 px-3 ".concat(_rounded)
   }, "Veri Bulunamad\u0131"))));

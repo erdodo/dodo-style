@@ -1,15 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
-
-
+//todo: özel class list ve style örnekleri
 /**
  * Button Componenti
  *
  */
-export default function Button({classList, type,onClick,disabled,children,size,outline,plain,rounded,link,gradient }) {
+export default function Button({classList, type,onClick,disabled,children,size,outline,notOutline,plain,rounded,link,gradient,style}) {
 
     let _rounded = rounded ? `rounded-${rounded}` : 'rounded-md';
+    if(rounded==='2xl') _rounded = 'rounded-[1rem]';
+    if(rounded==='3xl') _rounded = 'rounded-[1.2rem]';
     const _size = {
         sm: `py-1 px-2  text-sm `,
         md: `py-2 px-4  text-md`,
@@ -88,6 +88,7 @@ export default function Button({classList, type,onClick,disabled,children,size,o
         light: 'bg-gradient-to-r from-gray-500 to-gray-600 text-white hover:shadow-gray-300 hover:shadow-lg hover:from-gray-400 hover:to-gray-500',
         dark: 'bg-gradient-to-r from-gray-700 to-gray-800 text-white hover:shadow-gray-300 hover:shadow-lg hover:from-gray-600 hover:to-gray-700',
     }
+    const _notOutline = notOutline&& "!border-[transparent] ";
     if(outline){
         _type = outlineTypes[type];
     }else if(gradient){
@@ -105,7 +106,7 @@ export default function Button({classList, type,onClick,disabled,children,size,o
     }
     return (
         <>
-            <button className={`${classList} ${_size[size]} ${_rounded} ${_type} `} onClick={onClick} disabled={disabled}>
+            <button className={`${classList} ${_size[size]} ${_rounded} ${_type} ${_notOutline} `} style={style} onClick={onClick} disabled={disabled}>
                 {children}
             </button>
         </>
@@ -115,45 +116,51 @@ export default function Button({classList, type,onClick,disabled,children,size,o
 Button.propTypes = {
 
 
-    /** Buton içerine yazılacak yazılar */
+    /** Child elemanı */
     children: PropTypes.node.isRequired,
 
-    /** Buton class'ı */
+    /** Uygulanmak istenen class listesi */
     classList: PropTypes.string,
 
-    /** Buton tipi */
+    /** Tip */
     type: PropTypes.oneOf(['primary', 'secondary', 'danger', 'warning', 'success', 'info', 'light', 'dark']),
 
-    /** Buton sadece borderlardan oluşsun mu */
+    /** Sadece çerçeveden oluşsun */
     outline: PropTypes.bool,
 
-    /** Buton arka planı daha açık olsun mu */
+    /** Hiçbir border olmasın */
+    notOutline: PropTypes.bool,
+
+    /** Arka planı daha açık renkte olsun */
     plain: PropTypes.bool,
 
-    /** Buton link olsun mu */
+    /** Arka planı hiç olmasın */
     link: PropTypes.bool,
 
-    /** Buton gradient olsun mu */
+    /** Gradient bir tasarım olsun */
     gradient: PropTypes.bool,
 
-    /** Buton köşe yumuşak olsun mu */
-    rounded: PropTypes.oneOf(['sm', 'md', 'lg', 'xl', 'full']),
+    /** Köşe yumuşatma seviyesi */
+    rounded: PropTypes.oneOf(['sm', 'md', 'lg', 'xl','2xl','3xl', 'full']),
 
-    /** Buton büyüklüğü */
+    /** Büyüklük */
     size: PropTypes.oneOf(['sm', 'md', 'lg', 'xl', '2xl']),
 
-    /** Buton disable olsun mu */
+    /** Disabled seçeneği */
     disabled: PropTypes.bool,
 
-    /** Gets called when the user clicks on the button */
+    /** Tıklandığında çalışacak method */
     onClick: PropTypes.func,
+
+    /** Butonun inline style'ı */
+    style: PropTypes.object,
 };
 
 Button.defaultProps = {
     children: 'Button',
     size:"md",
+    type:"",
     onClick: (event) => {
-        // eslint-disable-next-line no-console
         alert('You have clicked me!', event.target);
     },
 };
