@@ -1,0 +1,10 @@
+.idea
+.storybook
+.vercel
+.vscode
+node_modules
+public
+src
+storybook-static
+styleguide
+README.md
