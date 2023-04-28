@@ -7,7 +7,7 @@ import { BsXCircle } from "react-icons/bs";
  * Özel yazılar için kullanılabilir
  *
  */
-export default function Tag({classList, type,onClick,children,size,outline,plain,rounded,close,onClose }) {
+export default function Tag({classList, type,onClick,children,size,outline,plain,rounded,close,onClose, ...props }) {
 
     let _rounded = rounded ? `rounded-${rounded}` : 'rounded-md';
     const _size = {
@@ -107,7 +107,7 @@ export default function Tag({classList, type,onClick,children,size,outline,plain
     }
     return (
         <>
-            <div className={`${classList} ${_size[size]} ${_rounded} ${_type} flex flex-row items-center`} onClick={onClick} >
+            <div className={`${classList} ${_size[size]} ${_rounded} ${_type} flex flex-row items-center`} onClick={onClick} {...props} >
                 {children}
                 {close && <BsXCircle onClick={onClose} className={`ml-2  ${_closeButtonsize[size]} ${_closeType}`} />}
             </div>
@@ -148,6 +148,9 @@ Tag.propTypes = {
 
     /** Tag kapatma fonksiyonu */
     onClose: PropTypes.func,
+
+    /** diğer özellikler */
+    props: PropTypes.object,
 };
 
 Tag.defaultProps = {
