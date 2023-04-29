@@ -1,7 +1,7 @@
 {
   "name": "@erdodocomp/dodo-style",
   "author": "Erdoğan Yeşil",
-  "version": "0.1.34",
+  "version": "0.1.37",
   "homepage": "https://github.com/erdodo/dodo-style",
   "private": false,
   "main": "dist/index.js",
@@ -11,30 +11,25 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+
     "styleguide:serve": "npx styleguidist server",
     "styleguide:build": "npx styleguidist build && npm run tailwind:build",
     "styleguide:deploy": "npm run styleguide:build && vercel --prod",
-    "npm:build": "rm -rf dist && NODE_ENV=production babel src/components --out-dir dist --copy-files && npm run tailwind:build",
+
+    "npm:build": "rm -rf dist && NODE_ENV=production babel src --out-dir dist --copy-files && npm run tailwind:build",
+    "npm:build:windows": "del dist && NODE_ENV=production babel src --out-dir dist --copy-files && npm run tailwind:build",
     "npm:deploy": "npm run npm:build && npm publish --access public",
+    "npm:deploy:windows": "npm run npm:build:windows && npm publish --access public",
+
     "tailwind:watch": "npx tailwindcss -i ./src/index.css -o ./dist/output.css --watch",
     "tailwind:build": "npx tailwindcss -i ./src/index.css -o ./dist/output.css",
+
     "storybook:serve": "storybook dev -p 6006",
-    "storybook:build": "npm run tailwind:build && storybook build",
+    "storybook:build": " storybook build",
     "storybook:deploy": "npm run storybook:build && vercel --prod"
   },
   "dependencies": {
-    "@babel/polyfill": "^7.12.1",
-    "@babel/preset-react": "^7.18.6",
-    "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
-    "moment": "^2.29.4",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-icons": "^4.8.0",
-    "react-scripts": "5.0.1",
-    "typescript": "^5.0.4",
-    "web-vitals": "^2.1.4"
+    "moment": "^2.29.4"
   },
   "eslintConfig": {
     "extends": [
@@ -65,6 +60,17 @@
     ]
   },
   "devDependencies": {
+    "@babel/polyfill": "^7.12.1",
+    "@babel/preset-react": "^7.18.6",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-icons": "^4.8.0",
+    "react-scripts": "5.0.1",
+    "typescript": "^5.0.4",
+    "web-vitals": "^2.1.4",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
     "@babel/cli": "^7.21.0",
     "@babel/core": "^7.21.4",
     "@babel/preset-env": "^7.21.4",

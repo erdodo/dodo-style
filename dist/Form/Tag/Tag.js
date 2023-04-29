@@ -6,13 +6,9 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = Tag;
 var _react = _interopRequireDefault(require("react"));
 var _propTypes = _interopRequireDefault(require("prop-types"));
-var _bs = require("react-icons/bs");
-var _excluded = ["classList", "type", "onClick", "children", "size", "outline", "plain", "rounded", "close", "onClose"];
+var _bs = require("../../icons/bs");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-//TODO: Kapatma seçeneği ekle
+//todo: özel class list ve style örnekleri
 /**
  * Özel yazılar için kullanılabilir
  *
@@ -24,12 +20,16 @@ function Tag(_ref) {
     children = _ref.children,
     size = _ref.size,
     outline = _ref.outline,
+    notOutline = _ref.notOutline,
     plain = _ref.plain,
+    gradient = _ref.gradient,
     rounded = _ref.rounded,
     close = _ref.close,
     onClose = _ref.onClose,
-    props = _objectWithoutProperties(_ref, _excluded);
+    style = _ref.style;
   var _rounded = rounded ? "rounded-".concat(rounded) : 'rounded-md';
+  if (rounded === '2xl') _rounded = 'rounded-[1rem]';
+  if (rounded === '3xl') _rounded = 'rounded-[1.2rem]';
   var _size = {
     sm: "py-0.5 px-1 text-sm ",
     md: "py-1 px-1.5 text-sm ",
@@ -68,6 +68,16 @@ function Tag(_ref) {
     info: 'bg-blue-200 text-blue-900 border border-blue-500',
     light: 'bg-gray-200 text-gray-900 border border-gray-500',
     dark: 'bg-gray-700 text-gray-100 border border-gray-500'
+  };
+  var gradientTypes = {
+    primary: 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white',
+    secondary: 'bg-gradient-to-r from-fuchsia-500 to-purple-600 text-white',
+    danger: 'bg-gradient-to-r from-rose-500 to-pink-600 text-white',
+    warning: 'bg-gradient-to-r from-orange-500 to-amber-600 text-white',
+    success: 'bg-gradient-to-r from-emerald-500 to-green-600 text-white',
+    info: 'bg-gradient-to-r from-blue-500 to-cyan-600 text-white',
+    light: 'bg-gradient-to-r from-black/10 to-black/40 text-black',
+    dark: 'bg-gradient-to-r from-black/60 to-black/90 text-white'
   };
   var _closeButtonsize = {
     sm: "text-sm ",
@@ -108,10 +118,13 @@ function Tag(_ref) {
     light: 'text-gray-900 px-0 py-0 hover:shadow-gray-400 hover:shadow-md rounded-full cursor-pointer',
     dark: 'text-gray-900 px-0 py-0 hover:shadow-gray-400 hover:shadow-md rounded-full cursor-pointer'
   };
+  var _notOutline = notOutline && "!border-[transparent]";
   if (outline) {
     _type = outlineTypes[type];
   } else if (plain) {
     _type = plainTypes[type];
+  } else if (gradient) {
+    _type = gradientTypes[type];
   } else {
     _type = types[type];
   }
@@ -122,43 +135,41 @@ function Tag(_ref) {
   } else if (close) {
     _closeType = closeTypes[type];
   }
-  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("div", _extends({
-    className: "".concat(classList, " ").concat(_size[size], " ").concat(_rounded, " ").concat(_type, " flex flex-row items-center"),
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("div", {
+    className: "".concat(classList, " ").concat(_size[size], " ").concat(_rounded, " ").concat(_type, " ").concat(_notOutline, " w-fit flex flex-row items-center"),
+    style: style,
     onClick: onClick
-  }, props), children, close && /*#__PURE__*/_react.default.createElement(_bs.BsXCircle, {
+  }, children, close && /*#__PURE__*/_react.default.createElement(_bs.BsXCircle, {
     onClick: onClose,
     className: "ml-2  ".concat(_closeButtonsize[size], " ").concat(_closeType)
   })));
 }
 Tag.propTypes = {
-  /** Buton içerine yazılacak yazılar */
+  /** Child elemanı */
   children: _propTypes.default.node.isRequired,
-  /** Buton class'ı */
+  /** Uygulanmak istenen class listesi */
   classList: _propTypes.default.string,
-  /** Buton tipi */
+  /** Tip */
   type: _propTypes.default.oneOf(['primary', 'secondary', 'danger', 'warning', 'success', 'info', 'light', 'dark']),
-  /** Buton sadece borderlardan oluşsun mu */
+  /** Sadece çerçeveden oluşsun */
   outline: _propTypes.default.bool,
-  /** Buton arka planı daha açık olsun mu */
+  /** Hiçbir border olmasın */
+  notOutline: _propTypes.default.bool,
+  /** Arka planı daha açık renkte olsun */
   plain: _propTypes.default.bool,
-  /** Buton köşe yumuşak olsun mu */
-  rounded: _propTypes.default.oneOf(['sm', 'md', 'lg', 'xl', 'full']),
-  /** Buton büyüklüğü */
+  /** Köşe yumuşatma seviyesi */
+  rounded: _propTypes.default.oneOf(['sm', 'md', 'lg', 'xl', '2xl', '3xl', 'full']),
+  /** Büyüklük */
   size: _propTypes.default.oneOf(['sm', 'md', 'lg', 'xl', '2xl']),
   /** Kapatma seçeneği ekle */
   close: _propTypes.default.bool,
-  /** Gets called when the user clicks on the button */
-  onClick: _propTypes.default.func,
   /** Tag kapatma fonksiyonu */
   onClose: _propTypes.default.func,
-  /** diğer özellikler */
-  props: _propTypes.default.object
+  /** Inline style'ı */
+  style: _propTypes.default.object
 };
 Tag.defaultProps = {
-  children: 'Button',
-  size: "md",
-  onClick: function onClick(event) {
-    // eslint-disable-next-line no-console
-    console.log('You have clicked me!', event.target);
-  }
+  type: "primary",
+  children: "Tag",
+  size: "md"
 };

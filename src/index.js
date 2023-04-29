@@ -1,7 +1,7 @@
 
-import Button from "./components/Form/Button/Button";
-import Tag from "./components/Form/Tag";
-import AutoComplete from "./components/Form/SelectBox";
+import Button from "./Form/Button/Button";
+import Tag from "./Form/Tag";
+import AutoComplete from "./Form/SelectBox";
 
 export { Button, Tag, AutoComplete };
 

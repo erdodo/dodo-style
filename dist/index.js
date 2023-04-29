@@ -21,7 +21,7 @@ Object.defineProperty(exports, "Tag", {
     return _Tag.default;
   }
 });
-var _Button = _interopRequireDefault(require("./components/Button/Button"));
-var _Tag = _interopRequireDefault(require("./components/Tag/Tag"));
-var _SelectBox = _interopRequireDefault(require("./components/SelectBox"));
+var _Button = _interopRequireDefault(require("./Form/Button/Button"));
+var _Tag = _interopRequireDefault(require("./Form/Tag"));
+var _SelectBox = _interopRequireDefault(require("./Form/SelectBox"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }

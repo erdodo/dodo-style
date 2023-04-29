@@ -7,6 +7,7 @@ exports.default = Button;
 var _react = _interopRequireDefault(require("react"));
 var _propTypes = _interopRequireDefault(require("prop-types"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+//todo: özel class list ve style örnekleri
 /**
  * Button Componenti
  *
@@ -19,11 +20,15 @@ function Button(_ref) {
     children = _ref.children,
     size = _ref.size,
     outline = _ref.outline,
+    notOutline = _ref.notOutline,
     plain = _ref.plain,
     rounded = _ref.rounded,
     link = _ref.link,
-    gradient = _ref.gradient;
+    gradient = _ref.gradient,
+    style = _ref.style;
   var _rounded = rounded ? "rounded-".concat(rounded) : 'rounded-md';
+  if (rounded === '2xl') _rounded = 'rounded-[1rem]';
+  if (rounded === '3xl') _rounded = 'rounded-[1.2rem]';
   var _size = {
     sm: "py-1 px-2  text-sm ",
     md: "py-2 px-4  text-md",
@@ -102,6 +107,7 @@ function Button(_ref) {
     light: 'bg-gradient-to-r from-gray-500 to-gray-600 text-white hover:shadow-gray-300 hover:shadow-lg hover:from-gray-400 hover:to-gray-500',
     dark: 'bg-gradient-to-r from-gray-700 to-gray-800 text-white hover:shadow-gray-300 hover:shadow-lg hover:from-gray-600 hover:to-gray-700'
   };
+  var _notOutline = notOutline && "!border-[transparent] ";
   if (outline) {
     _type = outlineTypes[type];
   } else if (gradient) {
@@ -118,40 +124,45 @@ function Button(_ref) {
     _type = types[type];
   }
   return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("button", {
-    className: "".concat(classList, " ").concat(_size[size], " ").concat(_rounded, " ").concat(_type, " "),
+    className: "".concat(classList, " ").concat(_size[size], " ").concat(_rounded, " ").concat(_type, " ").concat(_notOutline, " "),
+    style: style,
     onClick: onClick,
     disabled: disabled
   }, children));
 }
 Button.propTypes = {
-  /** Buton içerine yazılacak yazılar */
+  /** Child elemanı */
   children: _propTypes.default.node.isRequired,
-  /** Buton class'ı */
+  /** Uygulanmak istenen class listesi */
   classList: _propTypes.default.string,
-  /** Buton tipi */
+  /** Tip */
   type: _propTypes.default.oneOf(['primary', 'secondary', 'danger', 'warning', 'success', 'info', 'light', 'dark']),
-  /** Buton sadece borderlardan oluşsun mu */
+  /** Sadece çerçeveden oluşsun */
   outline: _propTypes.default.bool,
-  /** Buton arka planı daha açık olsun mu */
+  /** Hiçbir border olmasın */
+  notOutline: _propTypes.default.bool,
+  /** Arka planı daha açık renkte olsun */
   plain: _propTypes.default.bool,
-  /** Buton link olsun mu */
+  /** Arka planı hiç olmasın */
   link: _propTypes.default.bool,
-  /** Buton gradient olsun mu */
+  /** Gradient bir tasarım olsun */
   gradient: _propTypes.default.bool,
-  /** Buton köşe yumuşak olsun mu */
-  rounded: _propTypes.default.oneOf(['sm', 'md', 'lg', 'xl', 'full']),
-  /** Buton büyüklüğü */
+  /** Köşe yumuşatma seviyesi */
+  rounded: _propTypes.default.oneOf(['sm', 'md', 'lg', 'xl', '2xl', '3xl', 'full']),
+  /** Büyüklük */
   size: _propTypes.default.oneOf(['sm', 'md', 'lg', 'xl', '2xl']),
-  /** Buton disable olsun mu */
+  /** Disabled seçeneği */
   disabled: _propTypes.default.bool,
-  /** Gets called when the user clicks on the button */
-  onClick: _propTypes.default.func
+  /** Tıklandığında çalışacak method */
+  onClick: _propTypes.default.func,
+  /** Butonun inline style'ı */
+  style: _propTypes.default.object
 };
 Button.defaultProps = {
   children: 'Button',
   size: "md",
+  type: "",
   onClick: function onClick(event) {
-    // eslint-disable-next-line no-console
     alert('You have clicked me!', event.target);
   }
 };

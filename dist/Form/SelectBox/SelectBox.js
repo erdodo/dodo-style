@@ -6,7 +6,8 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = SelectBox;
 var _react = _interopRequireDefault(require("react"));
 var _propTypes = _interopRequireDefault(require("prop-types"));
-var _bs = require("react-icons/bs");
+var _bs = require("../../icons/bs");
+var _bi = require("../../icons/bi");
 var _Tag = _interopRequireDefault(require("../Tag"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -20,7 +21,7 @@ function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o =
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
 function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i.return && (_r = _i.return(), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-//TODO: Hover olduğunda açılsın seçeneği
+//Tüm elemanlara özel css ve class isimleri tanımla
 /**
  * Select componenti, options prop'u ile gelen verileri selectbox içerisinde gösterir.
  *
@@ -35,26 +36,54 @@ function SelectBox(_ref) {
     value = _ref.value,
     multiple = _ref.multiple,
     tag = _ref.tag,
-    search = _ref.search;
-  var _id = new Date().getTime();
-  var inputRef = _react.default.useRef(null);
-  var _React$useState = _react.default.useState(false),
+    search = _ref.search,
+    max = _ref.max,
+    maxShow = _ref.maxShow,
+    placeholder = _ref.placeholder,
+    style = _ref.style,
+    clearable = _ref.clearable,
+    hover = _ref.hover;
+  var _id = new Date().getTime(); //Focus ayarları yapabilmek için selecte özel oluşturulan id
+  var _React$useState = _react.default.useState(maxShow),
     _React$useState2 = _slicedToArray(_React$useState, 2),
-    visible = _React$useState2[0],
-    setVisible = _React$useState2[1];
-  var _React$useState3 = _react.default.useState([]),
+    _maxShow = _React$useState2[0],
+    setMaxShow = _React$useState2[1]; // Gösterilecek maksimum tag sayısı içeride aç kapa yapabilmek için yapılan tanımlama
+  var inputRef = _react.default.useRef(null); // Input elementine erişmek için oluşturulan ref (arama inputu)
+  var _React$useState3 = _react.default.useState(false),
     _React$useState4 = _slicedToArray(_React$useState3, 2),
-    filteredOptions = _React$useState4[0],
-    setFilteredOptions = _React$useState4[1];
-  var _React$useState5 = _react.default.useState(multiple ? [] : ""),
+    visible = _React$useState4[0],
+    setVisible = _React$useState4[1]; // Seçeneklerin açık olup olmadığını tutan state
+  var _React$useState5 = _react.default.useState([]),
     _React$useState6 = _slicedToArray(_React$useState5, 2),
-    _value = _React$useState6[0],
-    setValue = _React$useState6[1];
-  var _React$useState7 = _react.default.useState(150),
+    filteredOptions = _React$useState6[0],
+    setFilteredOptions = _React$useState6[1]; // Arama inputuna göre filtrelenmiş seçeneklerin tutulduğu state
+  var _React$useState7 = _react.default.useState(multiple ? [] : ""),
     _React$useState8 = _slicedToArray(_React$useState7, 2),
-    inputWidth = _React$useState8[0],
-    setInputWidth = _React$useState8[1];
+    _value = _React$useState8[0],
+    setValue = _React$useState8[1]; // Seçilen değerlerin tutulduğu state
+  var _React$useState9 = _react.default.useState([]),
+    _React$useState10 = _slicedToArray(_React$useState9, 2),
+    filteredTags = _React$useState10[0],
+    setFilteredTags = _React$useState10[1]; // Gösterilecek maksimum tag sayısı içeride aç kapa yapabilmek için yapılan tanımlama
+  var _React$useState11 = _react.default.useState(150),
+    _React$useState12 = _slicedToArray(_React$useState11, 2),
+    inputWidth = _React$useState12[0],
+    setInputWidth = _React$useState12[1]; // Arama inputunun genişliğini tutan state / içine yazılan değere göre genişliği değişir
+  var _React$useState13 = _react.default.useState(""),
+    _React$useState14 = _slicedToArray(_React$useState13, 2),
+    error = _React$useState14[0],
+    setError = _React$useState14[1]; // Hata mesajı tutan state (max değer seçildi gibi)
+
+  /*
+  * Props olarak gelen rounded değerlerine göre class isimleri oluşturuluyor
+  * */
   var _rounded = rounded ? "rounded-".concat(rounded) : 'rounded-md';
+  if (rounded === '2xl') _rounded = 'rounded-[1rem]';
+  if (rounded === '3xl') _rounded = 'rounded-[1.2rem]';
+
+  /*
+  * Props olarak gelen boyut değerine göre yazı ve yükseklik class isimleri oluşturuluyor
+  * */
   var _size = {
     sm: "text-sm",
     md: "text-md",
@@ -63,16 +92,22 @@ function SelectBox(_ref) {
     "2xl": " text-2xl "
   };
   var _height = {
-    sm: "h-[32px]",
-    md: "h-[36px]",
-    lg: "h-[46px] ",
-    xl: " h-[44px] ",
-    "2xl": " h-[58px] ",
-    "3xl": " h-[66px] "
+    sm: "min-h-[32px]",
+    md: "min-h-[36px]",
+    lg: "min-h-[46px] ",
+    xl: "min-h-[44px] ",
+    "2xl": "min-h-[58px] ",
+    "3xl": "min-h-[66px] "
   };
+
+  /*
+  * Props olarak gelen disabled değerine göre class isimleri oluşturuluyor
+  * */
   var _disabled = disabled && "opacity-50 cursor-not-allowed";
   _react.default.useEffect(function () {
-    console.log(tag === null || tag === void 0 ? void 0 : tag.props);
+    /*
+    * Select dışında bir yere tıklandığında seçeneklerin kapanması için event listener ekleniyor
+    * */
     if (visible) {
       document.addEventListener("click", function (e) {
         if (e.target.closest(".autocomplete-input")) {
@@ -83,11 +118,18 @@ function SelectBox(_ref) {
     }
   }, [visible]);
   _react.default.useEffect(function () {
+    /*
+    * Props olarak gelen optionlar daha sonra içinde filter işlemi yapabilmek için state'e aktarılıyor
+    * */
     if (options) {
       setFilteredOptions(options);
     }
   }, [options]);
   _react.default.useEffect(function () {
+    /*
+    * Props olarak gelen value değeri daha sonra değiştirebilmek için state'e aktarılıyor
+     */
+    setError("");
     if (multiple) {
       if (value) {
         setValue(value.map(function (item) {
@@ -104,8 +146,32 @@ function SelectBox(_ref) {
       }
     }
   }, [value]);
+  _react.default.useEffect(function () {
+    /*
+    * Multiple değeri developlent ortamında değiştiği için her değişimde value state'i sıfırlanıyor
+     */
+    setValue(multiple ? [] : "");
+  }, [multiple]);
+  _react.default.useEffect(function () {
+    /*
+    * Props olarak gelen maxShow değerine göre gösterilecek tagler state'e aktarılıyor
+     */
+    _value && _value.length > 0 && setFilteredTags(_value.slice(0, maxShow));
+    _value.length <= 0 && setFilteredTags([]);
+  }, [_value]);
+  _react.default.useEffect(function () {
+    setMaxShow(maxShow);
+  }, [maxShow]);
   var inputChange = function inputChange(e) {
-    setInputWidth(inputRef.current.scrollWidth);
+    var _inputRef$current;
+    /*
+    * Arama inputuna yazıldığında çalışan fonksiyon
+    * İnputun genişliğini ayarlamak için inputun genişliği state'e aktarılıyor
+    * Arama inputuna yazılan değere göre filtreleme yapılıyor
+    * Seçenekler görünür hale getiriliyor
+     */
+    setInputWidth((_inputRef$current = inputRef.current) === null || _inputRef$current === void 0 ? void 0 : _inputRef$current.scrollWidth);
+    setValue("");
     var value = e.target.value;
     var filtered = options.filter(function (item) {
       return item.label.toLowerCase().includes(value.toLowerCase());
@@ -113,9 +179,23 @@ function SelectBox(_ref) {
     setFilteredOptions(filtered);
     setVisible(true);
   };
+
+  //Seçeneklerden birine tıklandığında çalışan fonksiyon
   var selectClick = function selectClick(value) {
+    setError("");
     if (value) {
-      document.getElementById(_id + '_searchInput').value = "";
+      //Seçeneklerden birine tıklandığında inputun içi boşaltılıyor
+      if (search) document.getElementById(_id + '_searchInput').value = "";
+
+      // max değer seçildiğinde hata mesajı gösteriliyor
+      if (multiple && _value.length >= max && !_value.find(function (item) {
+        return item.value === value.value;
+      })) {
+        setError("Maksimum " + max + " adet seçim yapabilirsiniz.");
+        return;
+      }
+
+      // multiple değeri true ise seçilen değerler state'e aktarılıyor eğer varsa seçim iptal ediliyor
       if (multiple) {
         var _values = _toConsumableArray(_value);
         if (_value.find(function (item) {
@@ -145,9 +225,11 @@ function SelectBox(_ref) {
       inputRef.current && inputRef.current.focus();
     }, 100);
   };
+  var clearValue = function clearValue() {
+    setValue(multiple ? [] : "");
+    onSelect(multiple ? [] : "");
+  };
   var parentKeyDown = function parentKeyDown(e) {
-    console.log('key:', e.key);
-    console.log('target id:', e.target.id);
     if (!visible) setVisible(true);
     var rules = [{
       key: ["ArrowDown", "ArrowRight", "Tab"],
@@ -234,13 +316,22 @@ function SelectBox(_ref) {
         return setVisible(false);
       }
     }, {
-      key: ['Escape'],
+      key: ['Escape', "Backspace"],
       id: "_tag_" + e.target.tabIndex,
       nextEl: '',
       action: function action() {
         setVisible(false);
         selectItem(e.target.tabIndex);
         nextFocus(e.target, document.getElementById(_id + '_searchInput'));
+      }
+    }, {
+      key: ['Backspace'],
+      id: "_searchInput",
+      nextEl: '',
+      action: function action() {
+        if (_value.length > 0 && document.getElementById(_id + '_searchInput').value === '') {
+          nextFocus(document.getElementById(_id + '_searchInput'), document.getElementById(_id + '_tag_' + (_value.length - 1)));
+        }
       }
     }];
     var isDefault = false;
@@ -249,6 +340,7 @@ function SelectBox(_ref) {
         isDefault = true;
       }
     });
+    if (e.key === "Backspace" && document.getElementById(_id + '_searchInput').value !== '') isDefault = false;
     isDefault && e.preventDefault();
     var nextFocus = function nextFocus(el, nextEl) {
       el && el.blur();
@@ -259,77 +351,132 @@ function SelectBox(_ref) {
       selectClick(option);
     };
     rules.forEach(function (rule) {
-      console.log("Tuş:", e.shiftKey ? 'Shift_' + e.key : e.key);
       if (rule.key.includes(e.shiftKey ? 'Shift_' + e.key : e.key) && _id + rule.id === e.target.id) {
-        console.log('rule:', rule);
         var nextEl = document.getElementById(rule.nextEl);
         rule.action(e.target, nextEl);
       }
     });
   };
+  var parentMouseEnter = function parentMouseEnter() {
+    hover && setVisible(true);
+  };
+  var parentMouseLeave = function parentMouseLeave() {
+    hover && setVisible(false);
+  };
   return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("div", {
     className: "".concat(classList, " ").concat(_size[size], " ").concat(_height[size], " ").concat(_disabled, " ").concat(_rounded, " relative border"),
-    onKeyDown: parentKeyDown
-  }, /*#__PURE__*/_react.default.createElement("div", {
-    className: "".concat(disabled ? 'cursor-not-allowed' : 'cursor-pointer', " flex flex-row items-center  h-full w-full autocomplete-input"),
+    onKeyDown: parentKeyDown,
+    style: style,
+    onMouseEnter: parentMouseEnter,
+    onMouseLeave: parentMouseLeave
+  }, /*#__PURE__*/_react.default.createElement("input", {
+    type: "hidden",
+    value: JSON.stringify(_value)
+  }), /*#__PURE__*/_react.default.createElement("div", {
+    className: "".concat(disabled ? 'cursor-not-allowed' : 'cursor-pointer', " flex flex-row items-center  ").concat(_height[size], " w-full autocomplete-input"),
     tabIndex: 0,
     onClick: autoCompleteInputClick
-  }, !multiple && search && /*#__PURE__*/_react.default.createElement("input", {
+  }, (!_value || _value.length <= 0) && !search && /*#__PURE__*/_react.default.createElement("span", {
+    className: "px-3 opacity-50"
+  }, placeholder), /* Normal modda arama inputu */
+  !multiple && search && /*#__PURE__*/_react.default.createElement("input", {
     type: "text",
     id: _id + '_searchInput',
+    placeholder: placeholder,
     disabled: disabled,
-    className: "px-3 focus-visible:outline-none ".concat(_disabled),
+    className: "px-3 focus-visible:outline-none w-full ".concat(_disabled),
     onChange: inputChange,
     value: _value.label
   }), multiple && /*#__PURE__*/_react.default.createElement("div", {
     className: "flex flex-row  items-center w-full  flex-wrap"
-  }, _value.map(function (item, index) {
+  }, /*Max show kısıtlaması yokken tagler*/
+  !_maxShow && _value && _value.map(function (item, index) {
     var _tag$props, _tag$props2;
     return /*#__PURE__*/_react.default.createElement("div", {
       tabIndex: index,
-      id: _id + '_tag_' + index
+      id: _id + '_tag_' + index,
+      className: "!m-[2px]"
     }, /*#__PURE__*/_react.default.createElement(_Tag.default, _extends({}, tag === null || tag === void 0 ? void 0 : tag.props, {
       size: size,
       id: _id + '_tag_' + index,
       type: tag !== null && tag !== void 0 && (_tag$props = tag.props) !== null && _tag$props !== void 0 && _tag$props.type ? tag === null || tag === void 0 ? void 0 : (_tag$props2 = tag.props) === null || _tag$props2 === void 0 ? void 0 : _tag$props2.type : "primary",
-      classList: "m-[2px]",
+      classList: "autocomplete-input",
       close: true,
       onClose: function onClose() {
         return selectClick(item);
       }
-    }), item.label))
-    /*<div key={item.value} className={`flex flex-row items-center py-1 px-3 m-1 bg-gray-200 rounded-md`}>
-        <span className={`m-1`}>{item.label}</span>
-        <span className={`cursor-pointer`} onClick={()=>selectClick(item)}>x</span>
-    </div>*/;
-  }), search && /*#__PURE__*/_react.default.createElement("input", {
+    }), item.label));
+  }), /*Max show kısıtlaması olan taglar*/
+  _maxShow && _value && filteredTags.map(function (item, index) {
+    var _tag$props3, _tag$props4;
+    return /*#__PURE__*/_react.default.createElement("div", {
+      tabIndex: index,
+      id: _id + '_tag_' + index,
+      className: "!m-[2px]"
+    }, /*#__PURE__*/_react.default.createElement(_Tag.default, _extends({}, tag === null || tag === void 0 ? void 0 : tag.props, {
+      size: size,
+      id: _id + '_tag_' + index,
+      type: tag !== null && tag !== void 0 && (_tag$props3 = tag.props) !== null && _tag$props3 !== void 0 && _tag$props3.type ? tag === null || tag === void 0 ? void 0 : (_tag$props4 = tag.props) === null || _tag$props4 === void 0 ? void 0 : _tag$props4.type : "primary",
+      classList: "autocomplete-input",
+      close: true,
+      onClose: function onClose() {
+        return selectClick(item);
+      }
+    }), item.label));
+  }), /*Max show kısıtlaması iptal butonu*/
+  maxShow && _maxShow && _value && _value.length > _maxShow && /*#__PURE__*/_react.default.createElement("span", {
+    className: "px-3 w-fit h-full",
+    onClick: function onClick() {
+      return setMaxShow(false);
+    },
+    tabIndex: _value.length - 1,
+    id: _id + "_tag_" + (_value.length - 1)
+  }, /*#__PURE__*/_react.default.createElement(_bi.BiRightArrow, null)), /*Max show kısıtlaması yap butonu*/
+  maxShow && !_maxShow && _value && _value.length > _maxShow && /*#__PURE__*/_react.default.createElement("span", {
+    className: "px-3 w-fit",
+    onClick: function onClick() {
+      return setMaxShow(true);
+    }
+  }, /*#__PURE__*/_react.default.createElement(_bi.BiLeftArrow, null)), /*Multiple modda arama inputu*/
+  search && /*#__PURE__*/_react.default.createElement("input", {
     ref: inputRef,
     type: "text",
     id: _id + '_searchInput',
     disabled: disabled,
-    className: "".concat(_disabled, " px-3 bg-transparent focus-visible:outline-none min-w-60px max-w-[160px] "),
     style: {
       width: inputWidth + 'px'
     },
-    onChange: inputChange
-  })), !search && !multiple && /*#__PURE__*/_react.default.createElement("span", {
-    className: "px-3 w-[100px] ".concat(_disabled)
-  }, _value.label), !search && multiple && _value.length < 1 && /*#__PURE__*/_react.default.createElement("span", {
-    className: "w-[100px]"
-  }), /*#__PURE__*/_react.default.createElement("div", {
-    className: "px-1 w-[30px]  "
-  }, !visible && /*#__PURE__*/_react.default.createElement(_bs.BsArrowDownShort, {
+    onChange: inputChange,
+    placeholder: placeholder,
+    className: "".concat(_disabled, " px-3 bg-transparent focus-visible:outline-none min-w-60px max-w-[160px] ")
+  })), /*Arama ve multiple kapalıyken seçilen verinin gösterildiği yazı*/
+  !search && !multiple && /*#__PURE__*/_react.default.createElement("span", {
+    className: "px-3 min-w-[100px] w-full ".concat(_disabled)
+  }, _value.label), /*Arama kapalıyken bilerek bırakılan boşluk */
+  !search && multiple && _value.length < 1 && /*#__PURE__*/_react.default.createElement("span", {
+    className: "min-w-[100px] w-full"
+  }), clearable && (multiple ? _value.length > 0 : _value) && /*#__PURE__*/_react.default.createElement("span", {
+    className: "px-1 w-[30px]  ",
+    onClick: clearValue
+  }, /*#__PURE__*/_react.default.createElement(_bs.BsX, {
     className: "".concat(_size[size], " autocomplete-input")
-  }), visible && /*#__PURE__*/_react.default.createElement(_bs.BsArrowUpShort, {
+  })), /*#__PURE__*/_react.default.createElement("div", {
+    className: "px-1 w-[30px]  "
+  }, /*Select menüsü kapalıyken gösterilen ikon*/
+  !visible && /*#__PURE__*/_react.default.createElement(_bs.BsArrowDownShort, {
+    className: "".concat(_size[size], " autocomplete-input")
+  }), /*Select menüsü açıkken gösterilen ikon*/
+  visible && /*#__PURE__*/_react.default.createElement(_bs.BsArrowUpShort, {
     className: "".concat(_size[size], " autocomplete-input")
   }))), visible && /*#__PURE__*/_react.default.createElement("div", {
-    className: " bg-white p-2 absolute border left-0 z-10 w-full rounded-md mt-1"
+    className: " absolute left-0 w-full z-10"
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: " bg-white p-2 !mt-1  border  w-full rounded-md "
   }, filteredOptions.length > 0 ? Object.values(filteredOptions).map(function (item, index) {
     return /*#__PURE__*/_react.default.createElement("div", {
       key: item.value,
       id: _id + '_option_' + index,
       tabIndex: index,
-      value: item,
       onClick: function onClick() {
         return selectClick(item);
       },
@@ -341,32 +488,55 @@ function SelectBox(_ref) {
     }));
   }) : /*#__PURE__*/_react.default.createElement("div", {
     className: "py-1 px-3 ".concat(_rounded)
-  }, "Veri Bulunamad\u0131"))));
+  }, "Veri Bulunamad\u0131")))), error && /*#__PURE__*/_react.default.createElement("span", {
+    className: "text-red-500 text-xs"
+  }, error));
 }
 SelectBox.propTypes = {
-  /** AutoComplete class'ı */
+  /** Uygulanmak istenen class listesi */
   classList: _propTypes.default.string,
-  /** AutoComplete köşe yumuşak olsun mu */
+  /** Köşe yumuşatma seviyesi */
   rounded: _propTypes.default.oneOf(['sm', 'md', 'lg', 'xl', 'full']),
-  /** AutoComplete büyüklüğü */
+  /** Büyüklük */
   size: _propTypes.default.oneOf(['sm', 'md', 'lg', 'xl', '2xl']),
-  /** AutoComplete disable olsun mu */
+  /** Disabled seçeneği */
   disabled: _propTypes.default.bool,
-  /** AutoComplete options */
+  /** Listelenecek veriler */
   options: _propTypes.default.array,
-  /** selected value */
+  /** Seçilen veri */
   onSelect: _propTypes.default.func,
-  /** selected value */
+  /** Varsayılan veri */
   value: _propTypes.default.any,
-  /** multiple */
+  /** Birden fazla seçilebilsin mi */
   multiple: _propTypes.default.bool,
-  /** tag */
+  /** Hangi tag elemanı kullanılsın */
   tag: _propTypes.default.node,
-  /** search */
-  search: _propTypes.default.bool
+  /** Arama Seçeneği olsun mu */
+  search: _propTypes.default.bool,
+  /** Inline style'ı */
+  style: _propTypes.default.object,
+  /** en fazla kaç veri seçilebilsin */
+  max: _propTypes.default.number,
+  /** en fazla kaç veri gösterilsin */
+  maxShow: _propTypes.default.number,
+  /** placeholder */
+  placeholder: _propTypes.default.string,
+  /** Temizleme butonu */
+  clearable: _propTypes.default.bool,
+  /** Hover durumunda menü açılsın mı */
+  hover: _propTypes.default.bool
 };
 SelectBox.defaultProps = {
-  options: [],
+  options: [{
+    value: "key1",
+    label: "value 1"
+  }, {
+    value: "key2",
+    label: "value 2"
+  }, {
+    value: "key3",
+    label: "value 3"
+  }],
   size: "md",
   onSelect: function onSelect(value) {
     // eslint-disable-next-line no-console

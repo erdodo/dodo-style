@@ -24,19 +24,16 @@ Aşağıdaki komutu kullanarak Dodo Style'ı kurabilirsiniz:
 ```bash
   npm install @erdodocomp/dodo-style
 ```
-Kurulum işlemi tamamlandıktan sonra, Dodo Style bileşenlerini kullanmaya başlayabilirsiniz. 
-Örneğin, Button bileşenini aşağıdaki gibi kullanabilirsiniz:
+Kurulum işlemi tamamlandıktan sonra, Dodo Style bileşenlerini kullanmaya başlamadan önce css dosyasını içe aktarmanız gerekmektedir.
+Eğer index.css dosyanız varsa, aşağıdaki satırı eklemeniz yeterlidir:
+
+```css
+    @import '@erdodocomp/dodo-style/dist/dodo-style.css';
+```
+Yada index.js dosyanıza aşağıdaki satırı eklemeniz yeterlidir:
 
 ```jsx
-    import { Button } from '@erdodocomp/dodo-style';
-    
-    function App() {
-        return (
-            <div>
-                <Button>Bir Buton</Button>
-            </div>
-        );
-    }
+    import '@erdodocomp/dodo-style/dist/dodo-style.css';
 ```
 
 ## Kullanım

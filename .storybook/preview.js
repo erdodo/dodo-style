@@ -6,6 +6,7 @@ link.rel = 'stylesheet';
 link.type = 'text/css';
 link.href = 'output.css';
 head.appendChild(link);
+
 const preview = {
   parameters: {
     actions: { argTypesRegex: "^on[A-Z].*" },
@@ -15,6 +16,12 @@ const preview = {
         date: /Date$/,
       },
     },
+    options: {
+        storySort: {
+            order: [ "Dökümanlar","Örnekler", "icons",["Döküman","Ara","İkonlar"]],
+
+        }
+    }
   },
 };
 
