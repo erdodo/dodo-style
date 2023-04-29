@@ -18,7 +18,7 @@ const preview = {
     },
     options: {
         storySort: {
-            order: [ "Dökümanlar","Örnekler", "icons",["Döküman","Ara","İkonlar"]],
+            order: [ "Dökümanlar","Örnekler", "icons",["Döküman","İkonlar"]],
 
         }
     }

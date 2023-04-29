@@ -1,35 +1,47 @@
 import React from "react";
 
 export default function Docs({name}){
-    const [allIcons,setAllIcons] = React.useState({})
-    const [filteredIcon,setFilteresIcons] = React.useState({})
+    const Icons = require('dodo-icons/'+name+'/index.js')
+    const [allIcons,setAllIcons] = React.useState(Icons)
+    const [filteredIcon,setFilteresIcons] = React.useState(Icons)
     const [selectedIcon,setSelectedIcon] = React.useState(null)
     const [dialog,setDialog] = React.useState(false)
     const [kopyalandi,setKopyalandi] = React.useState(false)
     const filterIcon = (filter) => {
-        import(`./${name}/index.js`).then((Icons) => {
-            setAllIcons(Icons)
-            let _filteredIcon = {}
-            Object.keys(Icons).map(key => {
-                if(key.toLowerCase().includes(filter.toLowerCase())){
-                    _filteredIcon[key] = Icons[key]
-                }
-            })
-            setFilteresIcons(_filteredIcon)
+        setAllIcons(Icons)
+        let _filteredIcon = {}
+        Object.keys(Icons).map(key => {
+            if(key.toLowerCase().includes(filter.toLowerCase())){
+                _filteredIcon[key] = Icons[key]
+            }
         })
-
+        setFilteresIcons(_filteredIcon)
     }
+    React.useEffect(() => {
+        /*
+        * Select dışında bir yere tıklandığında seçeneklerin kapanması için event listener ekleniyor
+        * */
+        if(dialog){
+            document.addEventListener("click", (e)=>{
+                if(e.target.closest(".dialog")){
+                    return;
+                }
+                setDialog(false);
+            });
+        }
+    }, [dialog]);
     return (
         <>
             <div className={"w-full flex flex-row"}>
-                <input type="text" placeholder="Search Icon" onChange={(e)=>{filterIcon(e.target.value)}} style={{width:"100%",padding:"10px",border:"1px solid #ddd",borderRadius:"5px",marginRight:"10px"}}/>
+
+                <input type="text" placeholder="Search Icon" onChange={(e)=>{filterIcon(e.target.value)}} className={"mr-3 w-full px-4 py-2 border border-gray-400 rounded-lg outline-0 focus-within:outline-0 "}/>
                 <button className={"bg-slate-500 rounded-lg px-3 py-1 ml-3 text-white"} onClick={()=>filterIcon('')}>Tümü</button>
             </div>
 
-            <div style={{display:"flex",flexDirection:"row",alignItems:"center",flexWrap:"wrap",width:"100%"}}>
+            <div style={{display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between", flexWrap:"wrap",width:"100%"}}>
 
                 {filteredIcon && Object.keys(filteredIcon).map(key => (
-                    <div style={{backgroundColor:"white",boxShadow:"0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.06)","width":"11%",margin:"0.7515%",padding:"10px 0",textAlign:"center"}}
+                    <div className={"w-[120px] p-3 !m-3 flex flex-col items-center justify-center border border-gray-200 rounded-lg shadow-lg hover:shadow-xl cursor-pointer dialog"}
                          onClick={()=>{setDialog(true); setSelectedIcon(key);setKopyalandi(false)}}>
                         <div className={"w-full flex flex-row items-center justify-center !text-5xl"}>
                             {createElement(key,allIcons)}
@@ -46,13 +58,13 @@ export default function Docs({name}){
             <div className={"relative"}>
                 {
                     dialog && (
-                        <div className={" w-screen h-screen top-0 left-0 bg-gray-50/60 flex flex-row items-center justify-center"} style={{position:"fixed"}}>
-                            <div className={"bg-white shadow-lg border rounded-lg shadow-gray-400 p-4"}>
+                        <div className={" w-screen h-screen top-0 left-0 bg-gray-50/60 flex flex-row items-center justify-center"} style={{position:"fixed"}} >
+                            <div className={"bg-white shadow-lg border rounded-lg shadow-gray-400 p-4 dialog"}>
                                 <h1>{selectedIcon }</h1>
                                 <div className={"w-full flex flex-row items-center justify-center !text-9xl p-4"}>
                                     {createElement(selectedIcon,allIcons)}
                                 </div>
-                                <pre style={{margin:"20px 10px"}} className={"!bg-white !p-2 !shadow !border"}>
+                                <pre style={{margin:"20px 10px"}} className={"!bg-white !p-4 rounded-lg !shadow !border"}>
                                     <code className="lang-js">
                                         <span className="text-blue-400">import </span>
                                         <span>&#123;</span>

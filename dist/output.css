@@ -615,24 +615,12 @@ video {
   grid-column: span 1 / span 1;
 }
 
+.\!m-3 {
+  margin: 0.75rem !important;
+}
+
 .\!m-\[2px\] {
   margin: 2px !important;
-}
-
-.m-40 {
-  margin: 10rem;
-}
-
-.m-44 {
-  margin: 11rem;
-}
-
-.m-52 {
-  margin: 13rem;
-}
-
-.m-56 {
-  margin: 14rem;
 }
 
 .\!mb-2 {
@@ -665,6 +653,10 @@ video {
 
 .ml-3 {
   margin-left: 0.75rem;
+}
+
+.mr-3 {
+  margin-right: 0.75rem;
 }
 
 .mt-0 {
@@ -703,18 +695,6 @@ video {
   height: 20px !important;
 }
 
-.h-0 {
-  height: 0px;
-}
-
-.h-1 {
-  height: 0.25rem;
-}
-
-.h-3 {
-  height: 0.75rem;
-}
-
 .h-full {
   height: 100%;
 }
@@ -749,6 +729,10 @@ video {
 
 .\!w-\[20px\] {
   width: 20px !important;
+}
+
+.w-\[120px\] {
+  width: 120px;
 }
 
 .w-\[290px\] {
@@ -892,6 +876,11 @@ video {
 .border-blue-700 {
   --tw-border-opacity: 1;
   border-color: rgb(29 78 216 / var(--tw-border-opacity));
+}
+
+.border-gray-200 {
+  --tw-border-opacity: 1;
+  border-color: rgb(229 231 235 / var(--tw-border-opacity));
 }
 
 .border-gray-300 {
@@ -1346,10 +1335,6 @@ video {
   --tw-gradient-to: #ca8a04 var(--tw-gradient-to-position);
 }
 
-.\!p-2 {
-  padding: 0.5rem !important;
-}
-
 .\!p-4 {
   padding: 1rem !important;
 }
@@ -1360,6 +1345,10 @@ video {
 
 .p-2 {
   padding: 0.5rem;
+}
+
+.p-3 {
+  padding: 0.75rem;
 }
 
 .p-4 {
@@ -1825,6 +1814,10 @@ video {
   outline-style: solid;
 }
 
+.outline-0 {
+  outline-width: 0px;
+}
+
 .blur {
   --tw-blur: blur(8px);
   -webkit-filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
@@ -1882,6 +1875,10 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.focus-within\:outline-0:focus-within {
+  outline-width: 0px;
 }
 
 .hover\:-translate-y-1:hover {
@@ -2255,6 +2252,12 @@ code {
 .hover\:shadow-md:hover {
   --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.hover\:shadow-xl:hover {
+  --tw-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 

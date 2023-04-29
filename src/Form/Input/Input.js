@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import{BsArrowUpSquareFill,BsArrowDownSquareFill} from '../../icons/bs'
+import{BsArrowUpSquareFill,BsArrowDownSquareFill} from 'dodo-icons/bs'
 import DateComponent from "./Date";
 //todo: min,max,buttonVisible,errorVisible,step,placeholder,maxLength,minLength,passVisible
 /**

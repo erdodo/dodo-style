@@ -1,9 +1,8 @@
 {
-  "name": "@erdodocomp/dodo-style",
+  "name": "dodo-style",
   "author": "Erdoğan Yeşil",
-  "version": "0.1.37",
+  "version": "0.1.2",
   "homepage": "https://github.com/erdodo/dodo-style",
-  "private": false,
   "main": "dist/index.js",
   "module": "dist/index.js",
   "scripts": {
@@ -11,24 +10,22 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-
     "styleguide:serve": "npx styleguidist server",
     "styleguide:build": "npx styleguidist build && npm run tailwind:build",
     "styleguide:deploy": "npm run styleguide:build && vercel --prod",
-
     "npm:build": "rm -rf dist && NODE_ENV=production babel src --out-dir dist --copy-files && npm run tailwind:build",
     "npm:build:windows": "del dist && NODE_ENV=production babel src --out-dir dist --copy-files && npm run tailwind:build",
+    "npm:publish": "npm publish --access public",
     "npm:deploy": "npm run npm:build && npm publish --access public",
     "npm:deploy:windows": "npm run npm:build:windows && npm publish --access public",
-
     "tailwind:watch": "npx tailwindcss -i ./src/index.css -o ./dist/output.css --watch",
     "tailwind:build": "npx tailwindcss -i ./src/index.css -o ./dist/output.css",
-
     "storybook:serve": "storybook dev -p 6006",
     "storybook:build": " storybook build",
     "storybook:deploy": "npm run storybook:build && vercel --prod"
   },
   "dependencies": {
+    "dodo-icons": "^0.0.3",
     "moment": "^2.29.4"
   },
   "eslintConfig": {
@@ -60,20 +57,11 @@
     ]
   },
   "devDependencies": {
-    "@babel/polyfill": "^7.12.1",
-    "@babel/preset-react": "^7.18.6",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-icons": "^4.8.0",
-    "react-scripts": "5.0.1",
-    "typescript": "^5.0.4",
-    "web-vitals": "^2.1.4",
-    "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
     "@babel/cli": "^7.21.0",
     "@babel/core": "^7.21.4",
+    "@babel/polyfill": "^7.12.1",
     "@babel/preset-env": "^7.21.4",
+    "@babel/preset-react": "^7.18.6",
     "@storybook/addon-essentials": "^7.0.7",
     "@storybook/addon-interactions": "^7.0.7",
     "@storybook/addon-links": "^7.0.7",
@@ -82,11 +70,20 @@
     "@storybook/react": "^7.0.7",
     "@storybook/react-webpack5": "^7.0.7",
     "@storybook/testing-library": "^0.0.14-next.2",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
     "babel-plugin-named-exports-order": "^0.0.2",
     "prop-types": "^15.8.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-icons": "^4.8.0",
+    "react-scripts": "5.0.1",
     "react-styleguidist": "^13.1.1",
     "storybook": "^7.0.7",
     "tailwindcss": "^3.3.2",
+    "typescript": "^5.0.4",
+    "web-vitals": "^2.1.4",
     "webpack": "^5.80.0"
   }
 }

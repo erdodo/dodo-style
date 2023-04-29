@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {BsArrowDownShort,BsArrowUpShort,BsX } from '../../icons/bs';
-import {BiLeftArrow,BiRightArrow} from '../../icons/bi';
+import {BsArrowDownShort,BsArrowUpShort,BsX } from 'dodo-icons/bs';
+import {BiLeftArrow,BiRightArrow} from 'dodo-icons/bi';
 import Tag from "../Tag";
 
 //Tüm elemanlara özel css ve class isimleri tanımla

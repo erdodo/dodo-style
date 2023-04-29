@@ -1,8 +1,8 @@
 import React from "react";
-import moment, {months} from "moment";
+import moment from "moment";
 import 'moment/locale/tr';
-import {BiFirstPage, BiLastPage,BiChevronLeft,BiChevronRight} from "../../icons/bi";
-import {BsCalendar3} from "../../icons/bs";
+import {BiFirstPage, BiLastPage,BiChevronLeft,BiChevronRight} from "dodo-icons/bi";
+import {BsCalendar3} from "dodo-icons/bs";
 
 //TODO: şu tarihten öncesi sonrası gözükmesin,
 
