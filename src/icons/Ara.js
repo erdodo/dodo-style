@@ -1,6 +1,6 @@
-import React,{Suspense} from "react";
-import * as Icons from './all.js'
-
+import React from "react";
+//import * as Icons from './all.js'
+const Icons = {};
 
 
 export default function Docs(){
@@ -32,7 +32,7 @@ export default function Docs(){
             <input type="text" placeholder="Search Icon" onChange={(e)=>{filterIcon(e.target.value)}} style={{width:"100%",padding:"10px",border:"1px solid #ddd",borderRadius:"5px",marginBottom:"10px"}}/>
 
             <div style={{display:"flex",flexDirection:"row",alignItems:"center",flexWrap:"wrap",width:"100%"}}>
-                <Suspense fallback={<div>Yükleniyor...</div>}>
+
                     {filteredIcon && Object.keys(filteredIcon).map(key => (
                         <div style={{backgroundColor:"white",boxShadow:"0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.06)","width":"11%",margin:"0.7515%",padding:"10px 0",textAlign:"center"}}
                              onClick={()=>{navigator.clipboard.writeText(key);alert("Kopyalandı");}}>
@@ -40,14 +40,14 @@ export default function Docs(){
                                 {createElement(key)}
                             </div>
                             <span style={{fontSize:"11px",fontWeight:"200"}}>
-                        {key}
+                                {key}
 
-                    </span>
+                            </span>
 
                         </div>
 
                     ))}
-                </Suspense>
+
 
             </div>
         </>
