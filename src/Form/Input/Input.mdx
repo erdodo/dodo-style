@@ -10,40 +10,47 @@ import { Meta } from "@storybook/addon-docs/blocks";
 ```js
     import {Input} from 'dodo-style'
 ```
-## Büyüklük örnekleri
+
+
+
+
+## Text örneği
 <div style={{display:"flex",flexDirection:"row",alignItems:"center",flexWrap:"wrap"}}>
     <div style={{margin:"5px"}}>
-        <Input type="primary" size="sm" />
+        <span>Normal</span>
+        <Input type={"text"} value={"Text Örneği"} />
     </div>
     <div style={{margin:"5px"}}>
-        <Input type="primary" size="md" />
+        <span>Temizlenebilir</span>
+        <Input type={"text"} clear/>
     </div>
     <div style={{margin:"5px"}}>
-        <Input type="primary" size="lg" />
+        <span>Devre Dışı</span>
+        <Input type={"text"} disabled/>
     </div>
     <div style={{margin:"5px"}}>
-        <Input type="primary" size="xl" />
-    </div>
-    <div style={{margin:"5px"}}>
-        <Input type="primary" size="2xl" />
+        <span>Limit</span>
+        <Input type={"text"} limit={20}/>
     </div>
 </div>
 
-
 ```jsx
-<Input type="primary" size="sm" />
-<Input type="primary" size="md" />
-<Input type="primary" size="lg" />
-<Input type="primary" size="xl" />
-<Input type="primary" size="2xl" />
+<Input type={"text"}/>
+<Input type={"text"} clear/>
+<Input type={"text"} disabled/>
+<Input type={"text"} limit={20}/>
 
 ```
 
-## Şifre örneği
+## Password örneği
 <div style={{display:"flex",flexDirection:"row",alignItems:"center",flexWrap:"wrap"}}>
     <div style={{margin:"5px"}}>
+        <span>Normal</span>
         <Input type={"password"} />
-
+    </div>
+    <div style={{margin:"5px"}}>
+        <span>Şifre Göster</span>
+        <Input type={"password"} showPassword />
     </div>
 </div>
 
@@ -52,7 +59,7 @@ import { Meta } from "@storybook/addon-docs/blocks";
 
 ```
 
-## Eposta örneği
+## Email örneği
 <div style={{display:"flex",flexDirection:"row",alignItems:"center",flexWrap:"wrap"}}>
     <div style={{margin:"5px"}}>
         <Input type={"email"} />
@@ -65,11 +72,15 @@ import { Meta } from "@storybook/addon-docs/blocks";
 
 ```
 
-## Sayı örneği
+## Number örneği
 <div style={{display:"flex",flexDirection:"row",alignItems:"center",flexWrap:"wrap"}}>
     <div style={{margin:"5px"}}>
         <span>Normal</span>
-        <Input type={"number"} />
+        <Input type={"number"} value={1} />
+    </div>
+    <div style={{margin:"5px"}}>
+        <span>Temizlenebilir</span>
+        <Input type={"number"} clear />
     </div>
     <div style={{margin:"5px"}}>
         <span>Min-Max değerler</span>
@@ -79,33 +90,150 @@ import { Meta } from "@storybook/addon-docs/blocks";
 
 ```jsx
 <Input type={"number"}/>
+<Input type={"number"} clear />
 <Input type={"number"} min={1} max={10} />
 ```
 
-## Tarih örneği
+## TextArea örneği
 <div style={{display:"flex",flexDirection:"row",alignItems:"center",flexWrap:"wrap"}}>
     <div style={{margin:"5px"}}>
         <span>Normal</span>
-        <Input type={"date"} />
+        <Input type={"textarea"} value={"asdoc"}/>
     </div>
     <div style={{margin:"5px"}}>
-        <span>Hover</span>
-        <Input type={"date"} hover />
+        <span>Temizlenebilir</span>
+        <Input type={"textarea"} clear />
     </div>
     <div style={{margin:"5px"}}>
-        <span>Format</span>
-        <Input type={"date"} value={"2023-04-29"}  displayFormat={"DD MM YYYY"} valueFormat={"YYYY-MM-DD"} />
+        <span>Satır sayısı</span>
+        <Input type={"textarea"} rows={5}  />
     </div>
     <div style={{margin:"5px"}}>
-        <span>Min-Max değerler</span>
-        <Input type={"date"} min={"2023-04-01"} max={"2023-05-03"} />
+        <span>Otomatik Satır</span>
+        <Input type={"textarea"} rows={1} autoRow  />
+    </div>
+    <div style={{margin:"5px"}}>
+        <span>Limit</span>
+        <Input type={"textarea"} limit={10}/>
     </div>
 </div>
 
 ```jsx
-<Input type={"date"}/>
-<Input type={"date"} hover />
-<Input type={"date"} value={"2023-04-29"}  displayFormat={"DD MM YYYY"} valueFormat={"YYYY-MM-DD"} />
+<Input type={"textarea"}/>
+<Input type={"textarea"} clear />
+<Input type={"textarea"} rows={5}  />
+<Input type={"textarea"} rows={1} autoRow  />
+<Input type={"textarea"} limit={10}/>
+```
+
+
+## Checkbox örneği
+<div style={{display:"flex",flexDirection:"row",alignItems:"center",flexWrap:"wrap"}}>
+    <div style={{margin:"5px"}}>
+        <Input type={"checkbox"} label={"Örnek yazı denemesi"}/>
+    </div>
+</div>
+
+```jsx
+<Input type={"checkbox"} label={"Örnek"}/>
+
+```
+## Switch örneği
+<div style={{display:"flex",flexDirection:"row",alignItems:"center",flexWrap:"wrap"}}>
+    <div style={{margin:"5px"}}>
+        <Input type={"switch"} label={"Örnek yazı denemesi"}/>
+    </div>
+</div>
+
+```jsx
+<Input type={"switch"} label={"Örnek"}/>
+
+```
+## radio örneği
+<div style={{display:"flex",flexDirection:"row",alignItems:"center",flexWrap:"wrap"}}>
+    <div style={{margin:"5px"}}>
+        <Input type={"radio"} />
+    </div>
+</div>
+
+```jsx
+<Input type={"radio"}/>
+
+```
+## range örneği
+<div style={{display:"flex",flexDirection:"row",alignItems:"center",flexWrap:"wrap"}}>
+    <div style={{margin:"5px"}}>
+        <Input type={"range"} />
+    </div>
+</div>
+
+```jsx
+<Input type={"range"}/>
+
+```
+
+## tel örneği
+<div style={{display:"flex",flexDirection:"row",alignItems:"center",flexWrap:"wrap"}}>
+    <div style={{margin:"5px"}}>
+        <span>Normal</span>
+        <Input type={"tel"} />
+    </div>
+
+</div>
+
+```jsx
+<Input type={"tel"}/>
+
+```
+## url örneği
+<div style={{display:"flex",flexDirection:"row",alignItems:"center",flexWrap:"wrap"}}>
+    <div style={{margin:"5px"}}>
+        <Input type={"url"} />
+    </div>
+</div>
+
+```jsx
+<Input type={"url"}/>
+
+```
+
+## Color örneği
+<div style={{display:"flex",flexDirection:"row",alignItems:"center",flexWrap:"wrap"}}>
+    <div style={{margin:"5px"}}>
+        <Input type={"color"} />
+    </div>
+</div>
+
+```jsx
+<Input type={"color"}/>
+
+```
+## Büyüklük örnekleri
+<div style={{display:"flex",flexDirection:"row",alignItems:"center",flexWrap:"wrap"}}>
+    <div style={{margin:"5px"}}>
+        <Input type="text" size="sm" />
+    </div>
+    <div style={{margin:"5px"}}>
+        <Input type="text" size="md" />
+    </div>
+    <div style={{margin:"5px"}}>
+        <Input type="text" size="lg" />
+    </div>
+    <div style={{margin:"5px"}}>
+        <Input type="text" size="xl" />
+    </div>
+    <div style={{margin:"5px"}}>
+        <Input type="text" size="2xl" />
+    </div>
+</div>
+
+
+```jsx
+<Input type="text" size="sm" />
+<Input type="text" size="md" />
+<Input type="text" size="lg" />
+<Input type="text" size="xl" />
+<Input type="text" size="2xl" />
 
 ```
 
@@ -125,11 +253,11 @@ import { Meta } from "@storybook/addon-docs/blocks";
 ## Özel style örneği
 <div style={{display:"flex",flexDirection:"row",alignItems:"center",flexWrap:"wrap"}}>
     <div style={{margin:"5px"}}>
-        <Input style={{width:"500px",backgroundColor:"#90a9d1",border:"1px solid #6189c7"}} />
+        <Input style={{width:"200px",maxWidth:"100%",backgroundColor:"#90a9d1",border:"1px solid #6189c7"}} />
     </div>
 </div>
 
 ```jsx
-<Input style={{width:"500px",backgroundColor:"#90a9d1",border:"1px solid #6189c7"}}/>
+<Input style={{width:"200px",maxWidth:"100%",backgroundColor:"#90a9d1",border:"1px solid #6189c7"}}/>
 
 ```

@@ -1,0 +1,141 @@
+import DateTimeBox from "./DateTimeBox";
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta title="Dökümanlar/DateTimeBox" />
+
+# DateTimeBox
+
+## Kullanım
+
+```js
+    import {DateTimeBox} from 'dodo-style'
+```
+
+
+
+
+## Date örneği
+<div style={{display:"flex",flexDirection:"row",alignItems:"center",flexWrap:"wrap"}}>
+    <div style={{margin:"5px"}}>
+        <span>Normal</span>
+        <DateTimeBox type={"date"} />
+    </div>
+    <div style={{margin:"5px"}}>
+        <span>Hover</span>
+        <DateTimeBox type={"date"} hover />
+    </div>
+    <div style={{margin:"5px"}}>
+        <span>Format</span>
+        <DateTimeBox type={"date"} value={"2023-04-29"}  displayFormat={"DD MM YYYY"} valueFormat={"YYYY-MM-DD"} />
+    </div>
+    <div style={{margin:"5px"}}>
+        <span>Min-Max değerler (Yakında)</span>
+        <DateTimeBox type={"date"} disabled />
+    </div>
+</div>
+
+```jsx
+<DateTimeBox type={"date"}/>
+<DateTimeBox type={"date"} hover />
+
+
+```
+
+## Date Time örneği
+<div style={{display:"flex",flexDirection:"row",alignItems:"center",flexWrap:"wrap"}}>
+    <div style={{margin:"5px"}}>
+        <DateTimeBox type={"datetime"} />
+    </div>
+</div>
+
+```jsx
+<DateTimeBox type={"datetime"}/>
+
+```
+## Time örneği
+<div style={{display:"flex",flexDirection:"row",alignItems:"center",flexWrap:"wrap"}}>
+    <div style={{margin:"5px"}}>
+        <DateTimeBox type={"time"} />
+    </div>
+</div>
+
+```jsx
+<DateTimeBox type={"time"}/>
+
+```
+## month örneği
+<div style={{display:"flex",flexDirection:"row",alignItems:"center",flexWrap:"wrap"}}>
+    <div style={{margin:"5px"}}>
+        <DateTimeBox type={"month"} />
+    </div>
+</div>
+
+```jsx
+<DateTimeBox type={"month"}/>
+
+```
+## week örneği
+<div style={{display:"flex",flexDirection:"row",alignItems:"center",flexWrap:"wrap"}}>
+    <div style={{margin:"5px"}}>
+        <DateTimeBox type={"week"} />
+    </div>
+</div>
+
+```jsx
+<DateTimeBox type={"week"}/>
+
+```
+
+## Büyüklük örnekleri
+<div style={{display:"flex",flexDirection:"row",alignItems:"center",flexWrap:"wrap"}}>
+    <div style={{margin:"5px"}}>
+        <DateTimeBox type="primary" size="sm" />
+    </div>
+    <div style={{margin:"5px"}}>
+        <DateTimeBox type="primary" size="md" />
+    </div>
+    <div style={{margin:"5px"}}>
+        <DateTimeBox type="primary" size="lg" />
+    </div>
+    <div style={{margin:"5px"}}>
+        <DateTimeBox type="primary" size="xl" />
+    </div>
+    <div style={{margin:"5px"}}>
+        <DateTimeBox type="primary" size="2xl" />
+    </div>
+</div>
+
+
+```jsx
+<DateTimeBox type="primary" size="sm" />
+<DateTimeBox type="primary" size="md" />
+<DateTimeBox type="primary" size="lg" />
+<DateTimeBox type="primary" size="xl" />
+<DateTimeBox type="primary" size="2xl" />
+
+```
+
+## Özel class örneği
+<div style={{display:"flex",flexDirection:"row",alignItems:"center",flexWrap:"wrap"}}>
+    <div style={{margin:"5px"}}>
+        <DateTimeBox classList={"bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 transition ease-in-out delay-150 duration-300 transform hover:-translate-y-1 hover:scale-110"} />
+
+    </div>
+</div>
+
+```jsx
+<DateTimeBox classList={"bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 transition ease-in-out delay-150 duration-300 transform hover:-translate-y-1 hover:scale-110"}/>
+
+```
+
+## Özel style örneği
+<div style={{display:"flex",flexDirection:"row",alignItems:"center",flexWrap:"wrap"}}>
+    <div style={{margin:"5px"}}>
+        <DateTimeBox style={{width:"200px",maxWidth:"100%",backgroundColor:"#90a9d1",border:"1px solid #6189c7"}} />
+    </div>
+</div>
+
+```jsx
+<DateTimeBox style={{width:"200px",maxWidth:"100%",backgroundColor:"#90a9d1",border:"1px solid #6189c7"}}/>
+
+```
