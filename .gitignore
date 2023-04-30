@@ -13,8 +13,8 @@
 /dist
 /storybook-static
 /styleguide
-dist/
-dist/**/*
+/public
+index.js
 
 # misc
 .DS_Store
