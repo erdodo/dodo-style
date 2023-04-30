@@ -1,7 +1,7 @@
 {
   "name": "dodo-style",
   "author": "Erdoğan Yeşil",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "homepage": "https://github.com/erdodo/dodo-style",
   "main": "dist/index.js",
   "module": "dist/index.js",
@@ -10,19 +10,17 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "styleguide:serve": "npx styleguidist server",
-    "styleguide:build": "npx styleguidist build && npm run tailwind:build",
-    "styleguide:deploy": "npm run styleguide:build && vercel --prod",
     "npm:build": "rm -rf dist && NODE_ENV=production babel src --out-dir dist --copy-files && npm run tailwind:build",
     "npm:build:windows": "del dist && NODE_ENV=production babel src --out-dir dist --copy-files && npm run tailwind:build",
-    "npm:publish": "npm publish --access public",
     "npm:deploy": "npm run npm:build && npm publish --access public",
     "npm:deploy:windows": "npm run npm:build:windows && npm publish --access public",
-    "tailwind:watch": "npx tailwindcss -i ./src/index.css -o ./dist/output.css --watch",
-    "tailwind:build": "npx tailwindcss -i ./src/index.css -o ./dist/output.css",
+    "npm:publish": "npm publish --access public",
+    "tailwind:watch": "npx tailwindcss -i ./src/index.css -o ./assets/output.css --watch",
+    "tailwind:build": "npx tailwindcss -i ./src/index.css -o ./assets/output.css && npx tailwindcss -i ./src/index.css -o ./dist/output.css",
     "storybook:serve": "storybook dev -p 6006",
     "storybook:build": " storybook build",
-    "storybook:deploy": "npm run storybook:build && vercel --prod"
+    "storybook:deploy": "npm run tailwind:build && npm run storybook:build && vercel --prod",
+    "update": "npm run tailwind:build && npm run storybook:deploy && npm run  npm:deploy"
   },
   "dependencies": {
     "dodo-icons": "^0.1.0",
@@ -81,8 +79,9 @@
     "react-scripts": "5.0.1",
     "react-styleguidist": "^13.1.1",
     "storybook": "^7.0.7",
+    "storybook-dark-mode": "^3.0.0",
+    "storybook-tailwind-dark-mode": "^1.0.22",
     "tailwindcss": "^3.3.2",
-    "typescript": "^5.0.4",
     "web-vitals": "^2.1.4",
     "webpack": "^5.80.0"
   }

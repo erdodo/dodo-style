@@ -7,6 +7,7 @@ const config = {
     "@storybook/addon-essentials",
     "@storybook/preset-create-react-app",
     "@storybook/addon-interactions",
+    'storybook-dark-mode',
   ],
   framework: {
     name: "@storybook/react-webpack5",
@@ -15,6 +16,6 @@ const config = {
   docs: {
     autodocs: "tag",
   },
-  staticDirs: ["../dist"],
+  staticDirs: ["../assets"],
 };
 export default config;
