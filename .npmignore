@@ -8,3 +8,14 @@ src
 storybook-static
 styleguide
 README.md
+src-vue
+.babelrc
+.gitignore
+.npmignore
+.vercelignore
+babel.config.js
+styleguide.config.js
+tailwind.config.js
+tsconfig.json
+vue.config.js
+webpack.config.js

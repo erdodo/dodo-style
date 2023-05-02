@@ -1,302 +1,195 @@
 import React from "react";
-import moment from "moment";
-import 'moment/locale/tr';
-import {BiFirstPage, BiLastPage,BiChevronLeft,BiChevronRight} from "dodo-icons/bi";
-import {BsCalendar3} from "dodo-icons/bs";
+import PropTypes from 'prop-types';
 
-//TODO: şu tarihten öncesi sonrası gözükmesin,
 
-export default function DateTimeBox(){
-    return(
-        <div className={"border rounded-lg p-4 shadow-gray-400 shadow-lg"}>Yakında</div>
-    )
-}
 
- function DateComp({className,value,onChange,showType,displayFormat="DD.MM.YYYY",valueFormat="YYYY-MM-DD",hover,disabled}) {
 
-    const [dateNow, setDateNow] = React.useState(new Date());
-    const [inputValue, setInputValue] = React.useState("");
-    const [weekList, setWeekList] = React.useState(["Pzt", "Sal", "Çar", "Per", "Cum", "Cmt", "Paz"]);
-    const [monthList, setMonthList] = React.useState(["Ocak","Şubat","Mart","Nisan","Mayıs","Haziran","Temmuz","Ağustos","Eylül","Ekim","Kasım","Aralık",]);
-    let ilkUcYil = ""+dateNow.getFullYear().toString().substring(0,3);
-    const [yearList, setYearList] = React.useState([ilkUcYil+"0",ilkUcYil+"1",ilkUcYil+"2",ilkUcYil+"3",ilkUcYil+"4",ilkUcYil+"5",ilkUcYil+"6",ilkUcYil+"7",ilkUcYil+"8",ilkUcYil+"9"]);
-    const [_showType, setShowType] = React.useState(showType?showType:"day");
-    const [visible, setVisible] = React.useState(false);
-    React.useEffect(() => {
-        moment.locale('tr');
-    }, []);
-    React.useEffect(() => {
-        value && isValidDate(moment(value,valueFormat).format("MM/DD/YYYY")) && setDateNow(moment(value,valueFormat).toDate());
-        value && isValidDate(moment(value,valueFormat).format("MM/DD/YYYY")) && setInputValue(moment(value,valueFormat).format(displayFormat));
-    }, [value]);
-    React.useEffect(() => {
-        if(visible){
-            document.addEventListener("click", (e)=>{
-                if(e.target.closest(".date-input")){
-                    return;
-                }
-                setVisible(false);
-            });
-        }
-    }, [visible]);
-    React.useEffect(() => {
-        onChange(moment(dateNow).format(valueFormat))
-    }, [dateNow]);
+//todo: min,max,buttonVisible,errorVisible,step,placeholder,maxLength,minLength,passVisible
 
-    const isExtraDays = (week, date) => {
-        if (week === 0 && date > 10) {
-            return true;
-        } else if (week === 5 && date < 10) {
-            return true;
-        } else if (week === 4 && date < 10) {
-            return true;
-        } else {
-            return false;
-        }
-    };
-
-    const setDate = (day,month,year) => {
-        isValidDate(moment([year,month,day]).format("MM/DD/YYYY"))&& setDateNow(moment([year,month,day]).toDate())
-        !isValidDate(moment([year,month,day]).format("MM/DD/YYYY"))&& setDateNow(moment([year,month,1]).toDate())
-
-    }
-
-    const getDate = (month) => {
-        var calendar = [];
-
-        const startDate = moment([dateNow.getFullYear(), month])
-            .clone()
-            .startOf("month")
-            .startOf("week");
-
-        const endDate = moment([dateNow.getFullYear(), month]).clone().endOf("month");
-
-        const day = startDate.clone().subtract(1, "day");
-
-        // looping a month by a week
-        while (day.isBefore(endDate, "day")) {
-            calendar.push(
-                Array(7)
-                    .fill(0)
-                    .map(() => day.add(1, "day").clone().format("DD"))
-            );
-        }
-
-        if (calendar.length > 0) {
-            return calendar.map((week, index) => (
-                <tr className={"!border-none"}>
-                    {week.map((day) => (
-                        <td className="!px-2 !py-1 text-center !w-[20px] !h-[20px] !border-none !cursor-pointer hover:bg-gray-200 hover:rounded-sm"
-                            onClick={()=>{
-
-                                 setDate(day,isExtraDays(index, day) && day>15?month-1:isExtraDays(index, day) && day<15?month+1:month,dateNow.getFullYear())
-                                 setInputValue(moment([dateNow.getFullYear(),isExtraDays(index, day) && day>15?month-1:isExtraDays(index, day) && day<15?month+1:month,day]).format(displayFormat))
-                            }}>
-                          <span className={`!text-sm font-thin `}>
-                            {/*Diğer aylardan taşan günler*/
-                                isExtraDays(index, day) ? (
-                                <span className="!text-sm text-gray-300 ">{day}</span>
-                            ) :
-                              <>
-                                    {/*Seçili Tarih*/
-                                        (dateNow.getDate() === parseInt(day) && dateNow.getMonth() === month ) ? (
-                                        <span className="!text-sm text-blue-500">{day}</span>
-                                        ):
-
-                                        <>
-                                            {/*Min max'a takılan tarihler*/
-                                                minMaxDisabled(month,day)?
-                                                    <span className="!text-sm text-red-100">{day}</span>
-                                                    :
-                                                    <span className="!text-sm text-black">{day}</span>
-                                            }
-                                        </>
-                                    }
-
-                              </>
-
-                            }
-
-                          </span>
-                        </td>
-                    ))}
-                </tr>
-            ));
-        }
-    };
-    const inputChange = (e) => {
-        setInputValue(e.target.value)
-        const inputDate = moment(e.target.value,displayFormat).format("MM/DD/YYYY")
-        const jsDate = new Date(moment(e.target.value,displayFormat).format(valueFormat))
-        if(isValidDate(inputDate)){
-            console.log(jsDate,jsDate.getDate(),jsDate.getMonth(),jsDate.getFullYear())
-            setDate(jsDate.getDate(),jsDate.getMonth(),jsDate.getFullYear())
-        }
-        //isValidDate(inputDate) && setDateNow(jsDate.getDate(),jsDate.getMonth(),jsDate.getFullYear())
-
-    }
-
-    const isValidDate=(dateString)=>
+/**
+ * id örneği
+ * name örneği
+ * class örneği
+ * styleType örneği (primary,secondary,success,warning,danger,info,light,dark)
+ * size örneği (sm,md,lg,xl,2xl,3xl)
+ * disabled örneği
+ * notOutline örneği
+ * rounded örneği (sm,md,lg,xl,2xl,3xl)
+ * styleType örneği (default)
+ * min,max,step örneği(number)
+ * showPassword örneği (password)
+ * autoRow örneği (textarea)
+ * clear örneği
+ * limit örneği
+ * placeholder örneği
+ */
+/**
+ * Input Componenti
+ *
+ */
+export default function DateTimeBox(
     {
-        // First check for the pattern
-        if(!/^\d{1,2}\/\d{1,2}\/\d{4}$/.test(dateString))
-            return false;
+        classList, type,onClick,onChange,disabled,value,size,
+        notOutline,rounded,style,styleType,min,max,clear,showPassword,
+        autoRow,rows,limit,placeholder,label,hover
+    }
+) {
 
-        // Parse the date parts to integers
-        var parts = dateString.split("/");
-        var day = parseInt(parts[1], 10);
-        var month = parseInt(parts[0], 10);
-        var year = parseInt(parts[2], 10);
+    const [_value, setValue] = React.useState(null);
+    const [error, setError] = React.useState(null);
 
-        // Check the ranges of month and year
-        if(year < 1000 || year > 3000 || month === 0 || month > 12)
-            return false;
+    const [_inputType, setInputType] = React.useState( type === "datetime"?"datetime-local":type );
 
-        var monthLength = [ 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 ];
+    //Baş: Stil İşlemleri
+    let _rounded = rounded ? `rounded-${rounded}` : 'rounded-md';
+    if(rounded==='2xl') _rounded = 'rounded-[1rem]';
+    if(rounded==='3xl') _rounded = 'rounded-[1.2rem]';
 
-        // Adjust for leap years
-        if(year % 400 === 0 || (year % 100 !== 0 && year % 4 === 0))
-            monthLength[1] = 29;
-
-        // Check the range of the day
-        return day > 0 && day <= monthLength[month - 1];
+    const _size = {
+        sm: `min-h-[32px]`,
+        md: `min-h-[36px]`,
+        lg: `min-h-[44px] `,
+        xl: `min-h-[54px]`,
+        "2xl": `min-h-[58px]`,
+        "3xl": `min-h-[66px] `,
     };
-
-    const setNewYearList = (type) => {
-        if(type === 'before'){
-            setYearList(yearList.map((item)=>item-10))
-        }else{
-            setYearList(yearList.map((item)=>item+10))
-        }
+    const _textSize = {
+        sm: `!text-sm`,
+        md: `!text-md`,
+        lg: `!text-lg`,
+        xl: `!text-xl`,
+        "2xl": `!text-2xl`,
+        "3xl": `!text-3xl`,
     }
-    const minMaxDisabled = (month,day) => {
-
-             //return (moment([dateNow.getFullYear(),month,day]).isBefore(moment([_min.getFullYear(),_min.getMonth(),_min.getDate()])) || moment([dateNow.getFullYear(),month,day]).isAfter(moment([_max.getFullYear(),_max.getMonth(),_max.getDate()])))
+    const _notOutline = notOutline&& "!border-[transparent] ";
+    const _resize = type=== 'textarea' ? 'resize' : 'resize-none';
+    let _type ="";
+    const defaultStyleTypes = {
+        default: 'bg-white text-gray-900 border border-gray-300 shadow-gray-300 shadow-lg dark:bg-gray-800 dark:text-gray-100 dark:border-gray-700 dark:shadow-gray-800 dark:shadow-lg',
     }
+    if (styleType === 'default') {
+        _type = defaultStyleTypes.default;
+    }
+    const _disabled = disabled ? 'opacity-50 cursor-not-allowed !bg-gray-100' : '';
+    //Son: Stil İşlemleri
+
+    React.useEffect(() => {
+        setValue(value);
+    }, [value]);
+
+    React.useEffect(() => {
+        setError(null);
+    }, [type]);
+    React.useEffect(() => {
+        onChange(_value)
+    }, [_value]);
+
+    const onChangeInput = (event) => {
+            setValue(event);
+            onChange(event)
+
+    }
+
     return (
-        <>
-        <div className={"relative date-input"} onClick={()=>!disabled && setVisible(true)} onMouseEnter={()=>hover && setVisible(true)} onMouseLeave={()=>hover && setVisible(false)}>
-            <div className={"relative"}>
-                <BsCalendar3 className={"absolute text-gray-400 !text-lg !ml-0 h-full"}/>
-                <input type="text" className={` pl-6 focus-within:outline-0`} disabled={disabled} value={inputValue} onChange={inputChange}/>
+        <div className={"flex flex-col "}>
+            <div className={`flex flex-row items-center h-auto px-3 ${classList} ${_resize} ${_type} ${_size[size]} ${_rounded} ${_textSize[size]} ${_disabled}`}>
+                <input type={_inputType} className={"focus-visible:outline-0 bg-transparent"}/>
+                <div className={"flex flex-row items-center"}> </div>
             </div>
-            {visible && (
 
-            <div className={"w-[290px] pt-3 absolute z-10 left-[-10px] "}>
 
-                    <div className={" w-full  z-10 bg-white border shadow-lg shadow-gray-400 rounded-lg"}>
-
-                        {_showType === 'day' &&(
-                            <>
-                                <div className={"flex flex-row justify-between w-full items-center"}>
-                                    <button className={"hover:bg-gray-100 p-2 rounded-full"} onClick={()=>{
-                                        setDate(dateNow.getDate(),0,dateNow.getFullYear())}
-                                    }>
-                                        <BiFirstPage />
-                                    </button>
-                                    <button className={"hover:bg-gray-100 p-2 rounded-full"} onClick={()=>setDate(dateNow.getDate(),dateNow.getMonth()-1,dateNow.getFullYear())}>
-                                        <BiChevronLeft/>
-                                    </button>
-                                    <div className={"flex flex-row"}>
-                                        <button  className={"hover:bg-gray-100 p-2 rounded-full"} onClick={()=>setShowType("month")}>{moment(dateNow).format(" MMMM")}</button>
-
-                                        <button  className={"hover:bg-gray-100 p-2 rounded-full"} onClick={()=>setShowType("year")}>{moment(dateNow).format(" YYYY")}</button>
-                                    </div>
-                                    <button className={"hover:bg-gray-100 p-2 rounded-full"} onClick={()=>setDate(dateNow.getDate(),dateNow.getMonth()+1,dateNow.getFullYear())}>
-                                        <BiChevronRight/>
-                                    </button>
-                                    <button className={"hover:bg-gray-100 p-2 rounded-full"} onClick={()=>setDate(dateNow.getDate(),11,dateNow.getFullYear())}>
-                                        <BiLastPage />
-                                    </button>
-                                </div>
-                                <table className={"!mb-2"}>
-                                    <thead>
-                                    <tr className={"!w-[20px] !border-none bg-gray-50"}>
-                                        {
-                                            weekList.map((item, index) => {
-                                                return (
-                                                    <th key={index} className={"text-center !text-sm !font-thin !px-2 !py-1 !border-none "}>{item}</th>
-                                                )
-                                            })
-                                        }
-                                    </tr>
-                                    </thead>
-                                    { getDate(dateNow.getMonth())}
-
-                                </table>
-                            </>
-                        )}
-                        {
-                            _showType === 'month' &&(
-                                <>
-                                    <div className={"flex flex-row justify-between w-full items-center"}>
-                                        <button className={"hover:bg-gray-100 p-2 rounded-full"} onClick={()=>setDate(dateNow.getDate(),dateNow.getMonth(),dateNow.getFullYear()-1)}>
-                                            <BiChevronLeft/>
-                                        </button>
-                                        <div className={"flex flex-row"}>
-                                            <button  className={"hover:bg-gray-100 p-2 rounded-full"} >{moment(dateNow).format(" MMMM")}</button>
-
-                                            <button  className={"hover:bg-gray-100 p-2 rounded-full"} onClick={()=>setShowType("year")}>{moment(dateNow).format(" YYYY")}</button>
-                                        </div>
-                                        <button className={"hover:bg-gray-100 p-2 rounded-full"} onClick={()=>setDate(dateNow.getDate(),dateNow.getMonth(),dateNow.getFullYear()+1)}>
-                                            <BiChevronRight/>
-                                        </button>
-                                    </div>
-                                    <div className={"grid grid-cols-4"}>
-                                        { monthList.map((item, index) => {
-                                            return (
-                                                <button key={index} className={ `${index ===dateNow.getMonth()?'bg-slate-300':''} col-span-1 mb-3 hover:bg-gray-100 p-1 rounded-md`}
-                                                        onClick={()=>{
-                                                            setDate(dateNow.getDate(),index,dateNow.getFullYear());setShowType("day")
-                                                            isValidDate(moment([dateNow.getFullYear(),index,dateNow.getDate()]).format("MM/DD/YYYY"))?
-                                                                setInputValue(moment([dateNow.getFullYear(),index,dateNow.getDate()]).format(displayFormat)):
-                                                                setInputValue(moment([dateNow.getFullYear(),index,1]).format(displayFormat))
-                                                        }}>{item}</button>
-                                            )
-                                        })}
-                                    </div>
-                                </>
-                            )
-                        }
-                        {
-                            _showType === 'year' &&(
-                                <>
-                                <div className={"flex flex-row justify-between w-full items-center"}>
-                                    <button className={"hover:bg-gray-100 p-2 rounded-full"} onClick={()=>setNewYearList('before')}>
-                                        <BiChevronLeft/>
-                                    </button>
-                                    <div className={"flex flex-row"}>
-                                        <button  className={"hover:bg-gray-100 p-2 rounded-full"}  onClick={()=>setShowType("month")}>{moment(dateNow).format(" MMMM")}</button>
-
-                                        <button  className={"hover:bg-gray-100 p-2 rounded-full"}>{moment(dateNow).format(" YYYY")}</button>
-                                    </div>
-                                    <button className={"hover:bg-gray-100 p-2 rounded-full"} onClick={()=>setNewYearList('after')}>
-                                        <BiChevronRight/>
-                                    </button>
-                                </div>
-                                <div className={"grid grid-cols-4"}>
-                                    { yearList.map((item, index) => {
-                                        return (
-                                            <button key={index} className={ `${item ===dateNow.getFullYear()?'bg-slate-300':''} col-span-1 mb-3 hover:bg-gray-100 p-1 rounded-md`}
-                                                    onClick={()=>{
-                                                        setDate(dateNow.getDate(),dateNow.getMonth(),item);setShowType("day")
-                                                        isValidDate(moment([item,dateNow.getMonth(),dateNow.getDate()]).format("MM/DD/YYYY"))?
-                                                            setInputValue(moment([item,dateNow.getMonth(),dateNow.getDate()]).format(displayFormat)):
-                                                            setInputValue(moment([item,dateNow.getMonth(),1]).format(displayFormat))
-                                                    }
-                                                    }>{item}</button>
-                                        )
-                                    })}
-                                </div>
-                                </>
-                            )
-                        }
-                    </div>
-
-            </div>
-                )}
+            {error && <span className="text-red-500 text-sm mt-1">{error}</span>}
         </div>
-</>
     );
 }
+DateTimeBox.propTypes = {
+
+
+    /** Child elemanı */
+    value: PropTypes.string,
+
+    /** Uygulanmak istenen class listesi */
+    classList: PropTypes.string,
+
+    /** Tip */
+    type: PropTypes.oneOf(["text","password","email","number","date","time","datetime","month","week","file","checkbox","switch","radio","range","tel","url","color","textarea"]),
+
+    /** Hiçbir border olmasın */
+    notOutline: PropTypes.bool,
+
+    /** Stil tipi */
+    styleType: PropTypes.oneOf(['default']),
+
+    /** Köşe yumuşatma seviyesi */
+    rounded: PropTypes.oneOf(['sm', 'md', 'lg', 'xl','2xl','3xl', 'full']),
+
+    /** Büyüklük */
+    size: PropTypes.oneOf(['sm', 'md', 'lg', 'xl', '2xl']),
+
+    /** Disabled seçeneği */
+    disabled: PropTypes.bool,
+
+    /** Tıklandığında çalışacak method */
+    onClick: PropTypes.func,
+
+    /** Değiştiğinde çalışacak method */
+    onChange: PropTypes.func,
+
+    /** Butonun inline style'ı */
+    style: PropTypes.object,
+
+    /** Görüntüleme formatı (date) */
+    displayFormat: PropTypes.string,
+
+    /** Değer formatı (date) */
+    valueFormat: PropTypes.string,
+
+    /** Hover */
+    hover: PropTypes.bool,
+
+    /** Alabileceği en az değer */
+    min: PropTypes.number,
+
+    /** Alabileceği en fazla değer */
+    max: PropTypes.number,
+
+    /** Temizleme butonu */
+    clear: PropTypes.bool,
+
+    /** Şifre gösterme butonu */
+    showPassword: PropTypes.bool,
+
+    /** Satır sayısı (textarea) */
+    rows: PropTypes.number,
+
+    /** otomatik satır sayısı (textarea) */
+    autoRow: PropTypes.bool,
+
+    /** Karakter limiti */
+    limit: PropTypes.number,
+
+    /** placeholder */
+    placeholder: PropTypes.string,
+
+    /** Checkbox label */
+    label: PropTypes.string,
+
+};
+
+DateTimeBox.defaultProps = {
+    size:"md",
+    type:"text",
+    styleType: 'default',
+    displayFormat: 'DD.MM.YYYY',
+    valueFormat: 'YYYY-MM-DD',
+    onClick: (event) => {
+        console.log('You have clicked me!', event.target);
+    },
+    onChange: (event) => {
+        console.log('You have changed me!', event);
+    }
+};
+
+
+
 

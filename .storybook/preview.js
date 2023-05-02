@@ -38,27 +38,31 @@ const preview = {
       docs: {
 
           container: props => {
-              const [darkMode, setDarkMode] = React.useState(false);
+              const [darkMode, setDarkMode] = React.useState(null);
               React.useEffect(() => {
-                  console.log(props);
+
                   setDarkMode(JSON.parse(localStorage.getItem('sb-addon-themes-3')).current === 'dark');
                     window.addEventListener('storage', function(e) {
                         setDarkMode(JSON.parse(localStorage.getItem('sb-addon-themes-3')).current === 'dark');
                     })
                   let body = document.getElementsByTagName('html')[0];
                   if(darkMode){
+                    body.setAttribute('style', 'background-color: #1B1C1D !important;')
                       body.classList.add('dark');
                       body.classList.remove('light');
                     }else{
+                        body.setAttribute('style', 'background-color: #fff !important;')
                         body.classList.add('light');
                         body.classList.remove('dark');
-                  }
+                    }
 
               })
               return (
                   <div>
+                      {themes[darkMode?'dark':'light']&& darkMode!== null &&
+                          <DocsContainer theme={themes[darkMode?'dark':'light']} children={props.children} context={props.context} />
+                      }
 
-                      <DocsContainer theme={themes[darkMode?'dark':'light']} children={props.children} context={props.context} />
                   </div>
               );
           }
@@ -72,7 +76,7 @@ const preview = {
     },
     options: {
         storySort: {
-            order: [ "Dökümanlar","Örnekler", "icons",["Döküman","İkonlar"]],
+            order: ["Hoş Geldiniz","Config", "Dökümanlar","Örnekler", "icons",["Döküman","İkonlar"]],
 
         }
     }

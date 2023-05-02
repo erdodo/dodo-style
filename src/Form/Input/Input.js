@@ -77,7 +77,7 @@ export default function Input(
     const _resize = type=== 'textarea' ? 'resize' : 'resize-none';
     let _type ="";
     const defaultStyleTypes = {
-        default: 'bg-white text-gray-900 border border-gray-300 shadow-gray-300 shadow-lg',
+        default: 'bg-white text-gray-900 border border-gray-300 shadow-gray-300 shadow-lg dark:bg-gray-800 dark:text-gray-100 dark:border-gray-700 dark:shadow-gray-800 dark:shadow-lg',
     }
     if (styleType === 'default') {
         _type = defaultStyleTypes.default;
@@ -167,17 +167,17 @@ export default function Input(
                 }
                 <div className={"flex flex-row items-center"}>
                     { clear &&
-                        <button className={"bg-gray-50 hover:bg-gray-200 rounded-full !ml-2"} onClick={()=>setValue("")}>
+                        <button className={"bg-gray-50 hover:bg-gray-200 dark:bg-gray-900 text-gray-100 dark:hover:bg-gray-700 dark:hover:text-white rounded-full !ml-2"} onClick={()=>setValue("")}>
                             <BsX className={`text-gray-500 ${_textSize}`} />
                         </button>
                     }
                     {showPassword && type==="password" && _inputType==="password"&&
-                        <button className={"bg-gray-50 hover:bg-gray-200 rounded-full !ml-2"} onClick={()=>{ setInputType('text') }}>
+                        <button className={"bg-gray-50 hover:bg-gray-200 dark:bg-gray-900 text-gray-100 dark:hover:bg-gray-700 dark:hover:text-white rounded-full !ml-2"} onClick={()=>{ setInputType('text') }}>
                             <AiOutlineEye className={`text-gray-500 ${_textSize}`} />
                         </button>
                     }
                     {showPassword && type==="password" &&_inputType==="text"&&
-                        <button className={"bg-gray-50 hover:bg-gray-200 rounded-full !ml-2"} onClick={()=>{setInputType('password') }}>
+                        <button className={"bg-gray-50 hover:bg-gray-200 dark:bg-gray-900 text-gray-100 dark:hover:bg-gray-700 dark:hover:text-white rounded-full !ml-2"} onClick={()=>{setInputType('password') }}>
                             <AiOutlineEyeInvisible className={`text-gray-500 ${_textSize}`} />
                         </button>
                     }
@@ -191,10 +191,10 @@ export default function Input(
 
                             <div className={"flex flex-col !ml-2"}>
                                 <button onClick={valueArttir}>
-                                    <BsArrowUpSquareFill className={`text-gray-300 hover:text-gray-500 ${_textSize}`} />
+                                    <BsArrowUpSquareFill className={`text-gray-300 hover:text-gray-500 dark:text-gray-700  dark:hover:text-gray-500 ${_textSize}`} />
                                 </button>
                                 <button  onClick={valueAzalt}>
-                                    <BsArrowDownSquareFill className={`text-gray-300 hover:text-gray-500 ${_textSize}`} />
+                                    <BsArrowDownSquareFill className={`text-gray-300 hover:text-gray-500 dark:text-gray-700  dark:hover:text-gray-500 ${_textSize}`} />
                                 </button>
                             </div>
 

@@ -17,19 +17,19 @@ import { Meta } from "@storybook/addon-docs/blocks";
 ## Date örneği
 <div style={{display:"flex",flexDirection:"row",alignItems:"center",flexWrap:"wrap"}}>
     <div style={{margin:"5px"}}>
-        <span>Normal</span>
+        <span className={"dark:text-white"}>Normal</span>
         <DateTimeBox type={"date"} />
     </div>
     <div style={{margin:"5px"}}>
-        <span>Hover</span>
+        <span className={"dark:text-white"}>Hover</span>
         <DateTimeBox type={"date"} hover />
     </div>
     <div style={{margin:"5px"}}>
-        <span>Format</span>
+        <span className={"dark:text-white"}>Format</span>
         <DateTimeBox type={"date"} value={"2023-04-29"}  displayFormat={"DD MM YYYY"} valueFormat={"YYYY-MM-DD"} />
     </div>
     <div style={{margin:"5px"}}>
-        <span>Min-Max değerler (Yakında)</span>
+        <span className={"dark:text-white"}>Min-Max değerler (Yakında)</span>
         <DateTimeBox type={"date"} disabled />
     </div>
 </div>
@@ -89,53 +89,53 @@ import { Meta } from "@storybook/addon-docs/blocks";
 ## Büyüklük örnekleri
 <div style={{display:"flex",flexDirection:"row",alignItems:"center",flexWrap:"wrap"}}>
     <div style={{margin:"5px"}}>
-        <DateTimeBox type="primary" size="sm" />
+        <DateTimeBox type="date" size="sm" ty />
     </div>
     <div style={{margin:"5px"}}>
-        <DateTimeBox type="primary" size="md" />
+        <DateTimeBox type="date" size="md" />
     </div>
     <div style={{margin:"5px"}}>
-        <DateTimeBox type="primary" size="lg" />
+        <DateTimeBox type="date" size="lg" />
     </div>
     <div style={{margin:"5px"}}>
-        <DateTimeBox type="primary" size="xl" />
+        <DateTimeBox type="date" size="xl" />
     </div>
     <div style={{margin:"5px"}}>
-        <DateTimeBox type="primary" size="2xl" />
+        <DateTimeBox type="date" size="2xl" />
     </div>
 </div>
 
 
 ```jsx
-<DateTimeBox type="primary" size="sm" />
-<DateTimeBox type="primary" size="md" />
-<DateTimeBox type="primary" size="lg" />
-<DateTimeBox type="primary" size="xl" />
-<DateTimeBox type="primary" size="2xl" />
+<DateTimeBox type="date" size="sm" />
+<DateTimeBox type="date" size="md" />
+<DateTimeBox type="date" size="lg" />
+<DateTimeBox type="date" size="xl" />
+<DateTimeBox type="date" size="2xl" />
 
 ```
 
 ## Özel class örneği
 <div style={{display:"flex",flexDirection:"row",alignItems:"center",flexWrap:"wrap"}}>
     <div style={{margin:"5px"}}>
-        <DateTimeBox classList={"bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 transition ease-in-out delay-150 duration-300 transform hover:-translate-y-1 hover:scale-110"} />
+        <DateTimeBox type={"date"} classList={"bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 transition ease-in-out delay-150 duration-300 transform hover:-translate-y-1 hover:scale-110"} />
 
     </div>
 </div>
 
 ```jsx
-<DateTimeBox classList={"bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 transition ease-in-out delay-150 duration-300 transform hover:-translate-y-1 hover:scale-110"}/>
+<DateTimeBox type={"date"} classList={"bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 transition ease-in-out delay-150 duration-300 transform hover:-translate-y-1 hover:scale-110"}/>
 
 ```
 
 ## Özel style örneği
 <div style={{display:"flex",flexDirection:"row",alignItems:"center",flexWrap:"wrap"}}>
     <div style={{margin:"5px"}}>
-        <DateTimeBox style={{width:"200px",maxWidth:"100%",backgroundColor:"#90a9d1",border:"1px solid #6189c7"}} />
+        <DateTimeBox type={"date"} style={{width:"200px",maxWidth:"100%",backgroundColor:"#90a9d1",border:"1px solid #6189c7"}} />
     </div>
 </div>
 
 ```jsx
-<DateTimeBox style={{width:"200px",maxWidth:"100%",backgroundColor:"#90a9d1",border:"1px solid #6189c7"}}/>
+<DateTimeBox type={"date"} style={{width:"200px",maxWidth:"100%",backgroundColor:"#90a9d1",border:"1px solid #6189c7"}}/>
 
 ```

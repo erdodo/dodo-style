@@ -14,7 +14,7 @@ export default function Email({value,onChange,disabled ,classList,placeholder,se
 
         <input
             type={"email"}
-            className={`min-w-[120px] w-full focus-visible:outline-0 ${classList}`}
+            className={`min-w-[120px] w-full focus-visible:outline-0 bg-transparent ${classList}`}
             value={value}
             onChange={(e)=>{onChange(e);validateEmail(e.target.value)}}
             disabled={disabled}

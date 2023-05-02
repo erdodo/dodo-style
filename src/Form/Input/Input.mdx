@@ -17,19 +17,19 @@ import { Meta } from "@storybook/addon-docs/blocks";
 ## Text örneği
 <div style={{display:"flex",flexDirection:"row",alignItems:"center",flexWrap:"wrap"}}>
     <div style={{margin:"5px"}}>
-        <span>Normal</span>
+        <span className={"dark:text-gray-300"}>Normal</span>
         <Input type={"text"} value={"Text Örneği"} />
     </div>
     <div style={{margin:"5px"}}>
-        <span>Temizlenebilir</span>
+        <span className={"dark:text-gray-300"}>Temizlenebilir</span>
         <Input type={"text"} clear/>
     </div>
     <div style={{margin:"5px"}}>
-        <span>Devre Dışı</span>
+        <span className={"dark:text-gray-300"}>Devre Dışı</span>
         <Input type={"text"} disabled/>
     </div>
     <div style={{margin:"5px"}}>
-        <span>Limit</span>
+        <span className={"dark:text-gray-300"}>Limit</span>
         <Input type={"text"} limit={20}/>
     </div>
 </div>
@@ -45,11 +45,11 @@ import { Meta } from "@storybook/addon-docs/blocks";
 ## Password örneği
 <div style={{display:"flex",flexDirection:"row",alignItems:"center",flexWrap:"wrap"}}>
     <div style={{margin:"5px"}}>
-        <span>Normal</span>
+        <span className={"dark:text-gray-300"}>Normal</span>
         <Input type={"password"} />
     </div>
     <div style={{margin:"5px"}}>
-        <span>Şifre Göster</span>
+        <span className={"dark:text-gray-300"}>Şifre Göster</span>
         <Input type={"password"} showPassword />
     </div>
 </div>
@@ -75,15 +75,15 @@ import { Meta } from "@storybook/addon-docs/blocks";
 ## Number örneği
 <div style={{display:"flex",flexDirection:"row",alignItems:"center",flexWrap:"wrap"}}>
     <div style={{margin:"5px"}}>
-        <span>Normal</span>
+        <span className={"dark:text-gray-300"}>Normal</span>
         <Input type={"number"} value={1} />
     </div>
     <div style={{margin:"5px"}}>
-        <span>Temizlenebilir</span>
+        <span className={"dark:text-gray-300"}>Temizlenebilir</span>
         <Input type={"number"} clear />
     </div>
     <div style={{margin:"5px"}}>
-        <span>Min-Max değerler</span>
+        <span className={"dark:text-gray-300"}>Min-Max değerler</span>
         <Input type={"number"} min={1} max={10} />
     </div>
 </div>
@@ -97,23 +97,23 @@ import { Meta } from "@storybook/addon-docs/blocks";
 ## TextArea örneği
 <div style={{display:"flex",flexDirection:"row",alignItems:"center",flexWrap:"wrap"}}>
     <div style={{margin:"5px"}}>
-        <span>Normal</span>
+        <span className={"dark:text-gray-300"}>Normal</span>
         <Input type={"textarea"} value={"asdoc"}/>
     </div>
     <div style={{margin:"5px"}}>
-        <span>Temizlenebilir</span>
+        <span className={"dark:text-gray-300"}>Temizlenebilir</span>
         <Input type={"textarea"} clear />
     </div>
     <div style={{margin:"5px"}}>
-        <span>Satır sayısı</span>
+        <span className={"dark:text-gray-300"}>Satır sayısı</span>
         <Input type={"textarea"} rows={5}  />
     </div>
     <div style={{margin:"5px"}}>
-        <span>Otomatik Satır</span>
+        <span className={"dark:text-gray-300"}>Otomatik Satır</span>
         <Input type={"textarea"} rows={1} autoRow  />
     </div>
     <div style={{margin:"5px"}}>
-        <span>Limit</span>
+        <span className={"dark:text-gray-300"}>Limit</span>
         <Input type={"textarea"} limit={10}/>
     </div>
 </div>
@@ -175,7 +175,7 @@ import { Meta } from "@storybook/addon-docs/blocks";
 ## tel örneği
 <div style={{display:"flex",flexDirection:"row",alignItems:"center",flexWrap:"wrap"}}>
     <div style={{margin:"5px"}}>
-        <span>Normal</span>
+        <span className={"dark:text-gray-300"}>Normal</span>
         <Input type={"tel"} />
     </div>
 

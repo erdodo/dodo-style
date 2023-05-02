@@ -11,7 +11,7 @@ import Tag from "../Tag";
  * Select componenti, options prop'u ile gelen verileri selectbox içerisinde gösterir.
  *
  */
-export default function SelectBox({classList,size,rounded,disabled,options,onSelect,value,multiple,tag,search,max,maxShow,placeholder,style,clearable,hover }) {
+export default function SelectBox({ classList,size,rounded,disabled,options,onSelect,value,multiple,tag,search,max,maxShow,placeholder,style,clearable,hover }) {
     const _id = new Date().getTime() //Focus ayarları yapabilmek için selecte özel oluşturulan id
     const [_maxShow, setMaxShow] = React.useState(maxShow);// Gösterilecek maksimum tag sayısı içeride aç kapa yapabilmek için yapılan tanımlama
     const inputRef = React.useRef(null);// Input elementine erişmek için oluşturulan ref (arama inputu)
@@ -299,7 +299,7 @@ export default function SelectBox({classList,size,rounded,disabled,options,onSel
     return (
         <>
 
-            <div className={`${classList} ${_size[size]} ${_height[size]} ${_disabled} ${_rounded} relative border`} onKeyDown={parentKeyDown} style={style} onMouseEnter={parentMouseEnter} onMouseLeave={parentMouseLeave}>
+            <div className={`${classList} ${_size[size]} ${_height[size]} ${_disabled} ${_rounded} relative border dark:text-white dark:bg-gray-800 dark:border-gray-900`} onKeyDown={parentKeyDown} style={style} onMouseEnter={parentMouseEnter} onMouseLeave={parentMouseLeave}>
                 <input type={"hidden"} value={JSON.stringify(_value)}/>
                 <div className={`${disabled?'cursor-not-allowed':'cursor-pointer'} flex flex-row items-center  ${_height[size]} w-full autocomplete-input` } tabIndex={0}  onClick={autoCompleteInputClick} >
                     {
@@ -368,11 +368,11 @@ export default function SelectBox({classList,size,rounded,disabled,options,onSel
                 {
                     visible &&
                     <div className={" absolute left-0 w-full z-10"}>
-                        <div className={` bg-white p-2 !mt-1  border  w-full rounded-md `}>
+                        <div className={` bg-white dark:text-white dark:bg-gray-800 dark:border-gray-900 p-2 !mt-1  border  w-full rounded-md `}>
                             {filteredOptions.length>0?
                                 Object.values(filteredOptions).map((item,index) => (
                                     <div key={item.value} id={_id+'_option_'+index} tabIndex={index} onClick={()=>selectClick(item)}
-                                         className={`py-1 px-3 hover:bg-gray-100 cursor-pointer mb-1 ${_rounded} ${_value.value === item.value ?'bg-gray-200 border':''} ${multiple && _value.includes(item)?'bg-gray-200 border':''}`} >
+                                         className={`py-1 px-3 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer mb-1 ${_rounded} ${_value.value === item.value ?'bg-gray-200 dark:bg-gray-600 dark:border-gray-700 border':''} ${multiple && _value.includes(item)?'bg-gray-200 dark:bg-gray-600 dark:border-gray-700 border':''}`} >
                                         {item.label}
                                         <input type={"hidden"} value={item} id={_id+'_option_input_'+index}/>
                                     </div>
