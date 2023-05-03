@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { BsXCircle } from "dodo-icons/bs";
+import { BsXCircle } from "dodo-icons/react/bs";
 //todo: özel class list ve style örnekleri
 /**
  * Özel yazılar için kullanılabilir

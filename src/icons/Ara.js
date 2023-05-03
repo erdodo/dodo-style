@@ -1,26 +1,32 @@
 import React from "react";
-
+import {AiOutlineSearch} from "dodo-icons/react/ai";
 export default function Docs({name}){
-    const Icons = require('dodo-icons/react/'+name+'/index.js')
-    const [allIcons,setAllIcons] = React.useState(Icons)
-    const [filteredIcon,setFilteresIcons] = React.useState(Icons)
+
+    const [allIcons,setAllIcons] = React.useState({})
+    const [filteredIcon,setFilteresIcons] = React.useState({})
     const [selectedIcon,setSelectedIcon] = React.useState(null)
     const [dialog,setDialog] = React.useState(false)
     const [kopyalandi,setKopyalandi] = React.useState(false)
     const filterIcon = (filter) => {
-        setAllIcons(Icons)
-        let _filteredIcon = {}
-        Object.keys(Icons).map(key => {
-            if(key.toLowerCase().includes(filter.toLowerCase())){
-                _filteredIcon[key] = Icons[key]
-            }
-        })
-        setFilteresIcons(_filteredIcon)
+
+        if(filter.length>=3){
+            let _filteredIcon = {}
+            Object.keys(allIcons).map(key => {
+                if(key.toLowerCase().includes(filter.toLowerCase())){
+                    _filteredIcon[key] = allIcons[key]
+                }
+            })
+            setFilteresIcons(_filteredIcon)
+        }else{
+            setFilteresIcons({})
+        }
     }
     React.useEffect(() => {
-        /*
-        * Select dışında bir yere tıklandığında seçeneklerin kapanması için event listener ekleniyor
-        * */
+        import("dodo-icons/react/all.js").then((res) => {
+            setAllIcons(res)
+        })
+    })
+    React.useEffect(() => {
         if(dialog){
             document.addEventListener("click", (e)=>{
                 if(e.target.closest(".dialog")){
@@ -32,16 +38,17 @@ export default function Docs({name}){
     }, [dialog]);
     return (
         <>
-            <div className={"w-full flex flex-row"}>
 
-                <input type="text" placeholder="İkon ara" onChange={(e)=>{filterIcon(e.target.value)}} className={"mr-3 w-full px-4 py-2 border border-gray-400 dark:bg-gray-800 dark:text-white rounded-lg outline-0 focus-within:outline-0 "}/>
-                <button className={"bg-slate-500 rounded-lg px-3 py-1 ml-3 text-white"} onClick={()=>filterIcon('')}>Tümü</button>
+            <div className={"border rounded-lg p-2 flex flex-row"}>
+                <AiOutlineSearch size={24} color="red" />
+                <input type="text" className={"focus-within:outline-0 ml-2 w-full bg-transparent dark:text-white"} onChange={(e)=>{filterIcon(e.target.value)}} placeholder={"En az 3 karakter girmelisiniz"}/>
             </div>
+
 
             <div style={{display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between", flexWrap:"wrap",width:"100%"}}>
 
                 {filteredIcon && Object.keys(filteredIcon).map(key => (
-                    <div key={key} className={"w-[120px] p-3 !m-3 flex flex-col items-center justify-center border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg hover:shadow-xl cursor-pointer dialog"}
+                    <div className={"w-[120px] p-3 !m-3 flex flex-col items-center justify-center border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg hover:shadow-xl cursor-pointer dialog"}
                          onClick={()=>{setDialog(true); setSelectedIcon(key);setKopyalandi(false)}}>
                         <div className={"w-full flex flex-row items-center justify-center !text-5xl"}>
                             {createElement(key,allIcons)}
@@ -73,7 +80,7 @@ export default function Docs({name}){
                                         <span className={"dark:text-white"}>&#125;</span>
                                         <span className={"text-blue-400"}> from </span>
                                         <span className="text-red-400">
-                                            "dodo-icons/react/{name}"
+                                            "dodo-icons/react/{name ?? selectedIcon[0].toLowerCase()+selectedIcon[1].toLowerCase()}"
                                         </span>
                                         <span className={"dark:text-white"}>;</span>
                                     </code>
@@ -87,7 +94,7 @@ export default function Docs({name}){
                                         <span className={"dark:text-white"}>&#125;</span>
                                         <span className={"text-blue-400"}> from </span>
                                         <span className="text-red-400">
-                                            "dodo-icons/vue/{name}"
+                                            "dodo-icons/vue/{name ?? selectedIcon[0].toLowerCase()+selectedIcon[1].toLowerCase()}"
                                         </span>
                                         <span className={"dark:text-white"}>;</span>
                                     </code>

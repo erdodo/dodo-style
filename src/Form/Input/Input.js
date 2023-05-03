@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import{BsArrowUpSquareFill,BsArrowDownSquareFill,BsX} from 'dodo-icons/bs'
-import {AiOutlineEye,AiOutlineEyeInvisible} from 'dodo-icons/ai'
+import{BsArrowUpSquareFill,BsArrowDownSquareFill,BsX} from 'dodo-icons/react/bs'
+import {AiOutlineEye,AiOutlineEyeInvisible} from 'dodo-icons/react/ai'
 
 import CheckBox from "./inputs/CheckBox";
 import Radio from "./inputs/Radio";

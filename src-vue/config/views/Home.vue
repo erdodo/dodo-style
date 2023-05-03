@@ -1,19 +1,19 @@
 <template>
   <div class="min-h-[100vh]">
       Home
-      <Icons module="di" icon="AiFillAlert" color="red"/>
+      <Icons icon="WiAlien" color=""/>
   </div>
 
 </template>
 <script>
 
-import {ai} from 'dodo-icons/vue'
+import Icons from 'dodo-icons/vue/wi/'
 export default {
     mounted() {
-        console.log(ai)
+        console.log(Icons)
     },
     components: {
-        Icons: ai
+      Icons: Icons
     }
 }
 </script>

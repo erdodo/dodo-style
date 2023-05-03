@@ -1,4 +1,4 @@
-import {BiChevronLeft, BiChevronRight, BiFirstPage, BiLastPage} from "dodo-icons/bi";
+import {BiChevronLeft, BiChevronRight, BiFirstPage, BiLastPage} from "dodo-icons/react/bi";
 import moment, {months} from "moment/moment";
 import React from "react";
 

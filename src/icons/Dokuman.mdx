@@ -3,19 +3,69 @@ import { Meta } from "@storybook/addon-docs/blocks";
 
 <Meta title="icons/Döküman" />
 
-# 🦤 Dodo İkonlar (React)
-
-[npm-image]: https://img.shields.io/npm/v/dodo-icons
-[npm-url]: https://www.npmjs.com/package/dodo-icons
-
-[![npm][npm-image]][npm-url]
 
 
 
-## Örnek Kullanım
+# 🦤 Dodo İkonlar
+
+<div className={"flex flex-row gap-2"}>
+    <a href="https://github.com/erdodo">
+        <img src="https://img.shields.io/github/followers/erdodo?style=social" alt="Erdoğan Yeşil github"/>
+    </a>
+    <a href="https://github.com/erdodo/dodo-icons">
+        <img src="https://img.shields.io/github/stars/erdodo/dodo-icons?style=social" alt="Dodo icons"/>
+    </a>
+</div>
+
+<div className={"flex flex-row gap-2 !mt-3"}>
+    <a href="https://www.npmjs.com/package/dodo-icons">
+        <img src="https://img.shields.io/npm/v/dodo-icons" alt="Dodo icons"/>
+    </a>
+    <a href="https://www.npmjs.com/package/dodo-icons">
+        <img src="https://img.shields.io/npm/dt/dodo-icons" alt="Dodo icons"/>
+    </a>
+    <a href="https://www.npmjs.com/package/dodo-icons">
+        <img src="https://img.shields.io/github/issues/erdodo/dodo-icons" alt="Dodo icons"/>
+    </a>
+    <a href="https://www.npmjs.com/package/dodo-icons">
+        <img src="https://img.shields.io/github/forks/erdodo/dodo-icons" alt="Dodo icons"/>
+    </a>
+    <a href="https://www.npmjs.com/package/dodo-icons">
+        <img src="https://img.shields.io/github/stars/erdodo/dodo-icons" alt="Dodo icons"/>
+    </a>
+    <a href="https://www.npmjs.com/package/dodo-icons">
+        <img src="https://img.shields.io/npm/l/dodo-icons" alt="Dodo icons"/>
+    </a>
+</div>
+
+
+dodo-icons, React ve Vue.js gibi web teknolojilerinde kullanılmak üzere geliştirilmiş bir ikon paketidir.
+Paket içinde birçok popüler ikon paketi yer almakta ve kullanıcılar istedikleri ikonu kolayca kullanabilmektedirler.
+Bu dokümantasyonda, dodo-icons paketinin nasıl kurulacağı, kullanılacağı ve özelleştirilebileceği hakkında bilgi verilecektir.
+
+## Kurulum
+dodo-icons, NPM üzerinden tüm paketi yüklenerek projeye dahil edilebilir.
+
+```bash
+npm install dodo-icons
+```
+- Eğer sadece React için kullanmak istiyorsanız
+```bash
+  npm install dodo-icons@0.2.0-react
+```
+- Eğer sadece Vue için kullanmak istiyorsanız
+```bash
+  npm install dodo-icons@0.2.0-vue
+```
+
+## Örnek Kullanım (React)
+dodo-icons, kullanılacak ikon paketi için özel olarak oluşturulmuş modüller içermektedir.
+İstenilen modül, projede kullanılacak dosyaya import edilerek kullanılabilir.
+Örneğin, Font Awesome 5 ikon paketinden bir ikon kullanmak isteniyorsa, şu şekilde bir import işlemi gerçekleştirilebilir:
+
 
 ```jsx
-import { FaBeer } from "dodo-icons/fa";
+import { FaBeer } from "dodo-icons/react/react/fa";
 
 function Ikonlar() {
   return (
@@ -25,9 +75,8 @@ function Ikonlar() {
   );
 }
 ```
-
 ```jsx
-import { FaBeer } from "dodo-icons/all";
+import { FaBeer } from "dodo-icons/react/all";
 
 function Ikonlar() {
   return (
@@ -37,8 +86,24 @@ function Ikonlar() {
   );
 }
 ```
+## Örnek Kullanım (Vue)
 
-## Ayarlar
+```html
+<template>
+    <Icons icon="WiAlien" color="" style="" class=""/>
+</template>
+<script>
+    import Icons from 'dodo-icons/vue/wi/'
+    export default {
+        components: {
+            Icons
+        }
+    }
+</script>
+
+```
+
+## Ayarlar (React)
 
 
 _Zorunluluk: **React 16.3** yada üstü._
@@ -54,7 +119,8 @@ import { IconContext } from "dodo-icons";
 ```
 
 ## İkonlar
-<div style={{display:"flex",flexFlow:"column"}}>
+
+<div className={"flex flex-col"}>
     <a href="/?path=/docs/icons-i%CC%87konlar-ant-design-icons--docs">Ant Design Icons</a>
     <a href="/?path=/docs/icons-i̇konlar-boxicons--docs">BoxIcons</a>
     <a href="/?path=/docs/icons-i̇konlar-bootstrap-icons--docs">Bootstrap Icons</a>
@@ -75,8 +141,8 @@ import { IconContext } from "dodo-icons";
     <a href="/?path=/docs/icons-i̇konlar-material-design-icons--docs">Material Design icons</a>
     <a href="/?path=/docs/icons-i̇konlar-remix-icon--docs">Remix Icon</a>
     <a href="/?path=/docs/icons-i̇konlar-radix-icons--docs">Radix Icons </a>
-    <a href="/?path=/docs/icons-i̇konlar-simple-icons--docs">Simple Icons </a>
-    <a href="/?path=/docs/icons-i̇konlar-simple-line-icons--docs">Simple Line Icons </a>
+    <a href="/?dpath=/docs/icons-i̇konlar-simple-icons--docs">Simple Icons </a>
+    <a href="/?path=/docs/icons-i̇konlar-simple-line-icons--docs">Simple Line Icons</a>
     <a href="/?path=/docs/icons-i̇konlar-tabler-icons--docs">Tabler Icons </a>
     <a href="/?path=/docs/icons-i̇konlar-themify-icons--docs">Themify Icons </a>
     <a href="/?path=/docs/icons-i̇konlar-typicons--docs">Typicons </a>
@@ -84,4 +150,4 @@ import { IconContext } from "dodo-icons";
     <a href="/?path=/docs/icons-i̇konlar-weather-icons--docs">Weather Icons </a>
 </div>
 
-İkonlar için [React Icons](https://react-icons.github.io/react-icons/) kullanılmıştır.
+

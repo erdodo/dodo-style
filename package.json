@@ -21,7 +21,7 @@
     "storybook:deploy": "npm run tailwind:build && npm run storybook:build && npm run build:vue-docs && vercel --prod"
   },
   "dependencies": {
-    "dodo-icons": "^0.1.40",
+    "dodo-icons": "^0.2.1",
     "moment": "^2.29.4"
   },
   "eslintConfig": {
