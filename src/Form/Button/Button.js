@@ -157,9 +157,7 @@ Button.propTypes = {
 };
 
 Button.defaultProps = {
-    children: 'Button',
     size:"md",
-    type:"",
     onClick: (event) => {
         alert('You have clicked me!', event.target);
     },

@@ -2,7 +2,7 @@ import DateTimeBox  from './DateTimeBox';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 export default {
-  title: 'Örnekler/DateTimeBox',
+  title: 'Form/DateTimeBox',
   component: DateTimeBox,
   tags: ['autodocs'],
   argTypes: {
@@ -13,6 +13,31 @@ export default {
 };
 
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
-export const Test = {
-};
 
+export const Date = {
+  args: {
+    type:"date"
+  }
+}
+
+export const DateTime = {
+  args: {
+    type:"datetime"
+  }
+}
+export const Time = {
+  args: {
+    type:"time"
+  }
+}
+
+export const Month = {
+  args: {
+    type:"month"
+  }
+}
+export const Year = {
+  args: {
+    type:"year"
+  }
+}

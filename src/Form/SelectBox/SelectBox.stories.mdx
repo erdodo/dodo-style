@@ -1,0 +1,232 @@
+import SelectBox from './SelectBox'
+import Tag from '../../DataDisplay/Tag';
+export const options = [{value:"key1",label:"value 1"},{value:"key2",label:"value 2"},{value:"key3",label:"value 3"}];
+import { Meta,Story } from "@storybook/addon-docs/blocks";
+
+<Meta title="Form/SelectBox" />
+
+<Story name="Test">
+    Yakında Sizlerle
+</Story>
+# SelectBox
+
+## Kullanım
+```jsx
+import {SelectBox} from 'dodo-style'
+```
+
+## Büyüklük örnekleri
+
+<div style={{display:"flex",flexDirection:"row",alignItems:"center",flexWrap:"wrap"}}>
+    <div style={{margin:"5px"}}>
+        <SelectBox  size="sm" options={options} value="key1"/>
+    </div>
+    <div style={{margin:"5px"}}>
+        <SelectBox  size="md" options={options}/>
+    </div>
+    <div style={{margin:"5px",}} >
+        <SelectBox  size="lg" options={options}/>
+    </div>
+    <div style={{margin:"5px",}}>
+        <SelectBox  size="xl" options={options}/>
+    </div>
+    <div style={{margin:"5px",}}>
+        <SelectBox  size="2xl" options={options}/>
+    </div>
+</div>
+
+
+```jsx
+<SelectBox  size="sm" options={options} value="key1"/>
+<SelectBox  size="md" options={options}/>
+<SelectBox  size="lg" options={options}/>
+<SelectBox  size="xl" options={options}/>
+<SelectBox  size="2xl" options={options}/>
+```
+
+## Köşe Yumuşatma örnekleri
+<div style={{display:"flex",flexDirection:"row",alignItems:"center",flexWrap:"wrap"}}>
+    <div style={{margin:"5px"}}>
+        <SelectBox  rounded="sm" options={options} />
+    </div>
+    <div style={{margin:"5px"}}>
+        <SelectBox  rounded="md" options={options} />
+    </div>
+    <div style={{margin:"5px",}}>
+        <SelectBox  rounded="lg" options={options} />
+    </div>
+    <div style={{margin:"5px",}}>
+        <SelectBox  rounded="xl" options={options} />
+    </div>
+    <div style={{margin:"5px",}}>
+        <SelectBox  rounded="2xl" options={options} />
+    </div>
+    <div style={{margin:"5px",}}>
+        <SelectBox  rounded="3xl" options={options} />
+    </div>
+    <div style={{margin:"5px",}}>
+        <SelectBox  rounded="full" options={options} />
+    </div>
+</div>
+
+```jsx
+<SelectBox  rounded="sm" options={options} />
+<SelectBox  rounded="md" options={options} />
+<SelectBox  rounded="lg" options={options} />
+<SelectBox  rounded="xl" options={options} />
+<SelectBox  rounded="2xl" options={options} />
+<SelectBox  rounded="3xl" options={options} />
+<SelectBox  rounded="full" options={options} />
+```
+
+## Devre Dışı Örneği
+<div style={{display:"flex",flexDirection:"row",alignItems:"center",flexWrap:"wrap"}}>
+    <div style={{margin:"5px"}}>
+        <SelectBox  disabled/>
+    </div>
+</div>
+
+```jsx
+<SelectBox  disabled/>
+```
+
+## Veri Yok Örneği
+<div style={{display:"flex",flexDirection:"row",alignItems:"center",flexWrap:"wrap"}}>
+    <div style={{margin:"5px"}}>
+        <SelectBox options={[]} />
+    </div>
+</div>
+
+```jsx
+        <SelectBox options={[]} />
+```
+
+## Birden Fazla veri Seçme Örneği
+<div style={{display:"flex",flexDirection:"row",alignItems:"center",flexWrap:"wrap"}}>
+    <div style={{margin:"5px"}}>
+        <SelectBox options={options} multiple />
+    </div>
+</div>
+
+```jsx
+<SelectBox options={options} multiple />
+```
+
+## Özel Tag Örneği
+<div style={{display:"flex",flexDirection:"row",alignItems:"center",flexWrap:"wrap"}}>
+    <div style={{margin:"5px"}}>
+        <SelectBox options={options} multiple tag={<Tag type="danger" />} value={["key1"]} />
+    </div>
+    <div style={{margin:"5px"}}>
+        <SelectBox options={options} multiple tag={<Tag type="primary" outline />}  value={["key1"]}/>
+    </div>
+    <div style={{margin:"5px"}}>
+        <SelectBox options={options} multiple tag={<Tag type="success" plain />}  value={["key1"]}/>
+    </div>
+    <div style={{margin:"5px"}}>
+        <SelectBox options={options} multiple size="lg" tag={<Tag type="light" plain  />}  value={["key1"]}/>
+    </div>
+
+</div>
+
+```jsx
+import Tag from '../../DataDisplay/Tag';
+```
+```jsx
+<SelectBox options={options} multiple tag={<Tag type="danger" />} value={["key1"]} />
+<SelectBox options={options} multiple tag={<Tag type="primary" outline />}  value={["key1"]}/>
+<SelectBox options={options} multiple tag={<Tag type="success" plain />}  value={["key1"]}/>
+<SelectBox options={options} multiple size="lg" tag={<Tag type="light" plain  />}  value={["key1"]}/>
+```
+
+## Arama örneği
+<div style={{display:"flex",flexDirection:"row",alignItems:"center",flexWrap:"wrap"}}>
+    <div style={{margin:"5px"}}>
+        <SelectBox options={options} multiple  search/>
+    </div>
+</div>
+
+```jsx
+    <SelectBox options={options} multiple  search/>
+```
+
+## Belirli sayıda seçim örneği
+<div style={{display:"flex",flexDirection:"row",alignItems:"center",flexWrap:"wrap"}}>
+    <div style={{margin:"5px"}}>
+        <SelectBox options={options} multiple max={1}/>
+    </div>
+</div>
+
+```jsx
+    <SelectBox options={options} multiple  max={1}/>
+```
+
+## Belirli sayıda seçimden sonrasını gizleme örneği
+<div style={{display:"flex",flexDirection:"row",alignItems:"center",flexWrap:"wrap"}}>
+    <div style={{margin:"5px"}}>
+        <SelectBox options={options} multiple maxShow={1}/>
+    </div>
+</div>
+
+```jsx
+    <SelectBox options={options} multiple  maxShow={1}/>
+```
+
+## Placeholder örneği
+<div style={{display:"flex",flexDirection:"row",alignItems:"center",flexWrap:"wrap"}}>
+    <div style={{margin:"5px"}}>
+        <SelectBox options={options} multiple placeholder={"Seçiniz"}/>
+    </div>
+</div>
+
+```jsx
+    <SelectBox options={options} multiple  placeholder={"Seçiniz"}/>
+```
+
+## Temizlenebilir örneği
+<div style={{display:"flex",flexDirection:"row",alignItems:"center",flexWrap:"wrap"}}>
+    <div style={{margin:"5px"}}>
+        <SelectBox options={options} multiple clearable/>
+    </div>
+    <div style={{margin:"5px"}}>
+        <SelectBox options={options} clearable/>
+    </div>
+</div>
+
+```jsx
+<SelectBox options={options} multiple  clearable/>
+<SelectBox options={options} clearable/>
+```
+
+## Mouse üzerine geldiğinde menü açılması örneği
+<div style={{display:"flex",flexDirection:"row",alignItems:"center",flexWrap:"wrap"}}>
+    <div style={{margin:"5px"}}>
+        <SelectBox options={options} hover/>
+    </div>
+</div>
+
+```jsx
+<SelectBox options={options} hover/>
+```
+
+## Özel class örneği
+<div style={{display:"flex",flexDirection:"row",alignItems:"center",flexWrap:"wrap"}}>
+    <div style={{margin:"5px"}}>
+        <SelectBox options={options} classList={"bg-gradient-to-r from-green-400 to-blue-500"}/>
+    </div>
+</div>
+
+```jsx
+<SelectBox options={options}  classList={"bg-red-200"}/>
+```
+
+## Özel style örneği
+<div style={{display:"flex",flexDirection:"row",alignItems:"center",flexWrap:"wrap"}}>
+    <div style={{margin:"5px"}}>
+        <SelectBox options={options} style={{width:"500px",backgroundColor:"#90a9d1",border:"1px solid #6189c7"}}/>
+    </div>
+</div>
+
+```jsx
+<SelectBox options={options} style={{width:"200px",backgroundColor:"#90a9d1",border:"1px solid #16376b"}}/>
+```

@@ -1,0 +1,27 @@
+import File from "./File";
+import { Meta,Story } from "@storybook/addon-docs/blocks";
+export function onChangeFile (files) {
+    console.log(files)
+}
+
+<Meta title="Form/File" />
+
+# File
+
+## Kullanım
+
+```js
+    import {File} from 'dodo-style'
+```
+## Büyüklük örnekleri
+<div style={{display:"flex",flexDirection:"row",alignItems:"center",flexWrap:"wrap"}}>
+    <div style={{margin:"5px"}}>
+        <File type="primary" size="sm" onChangeFile={ onChangeFile}>Tıkla bana</File>
+    </div>
+</div>
+
+
+```jsx
+<File  />
+
+```

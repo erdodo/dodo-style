@@ -2,7 +2,7 @@ import SelectBox  from './SelectBox';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 export default {
-  title: 'Örnekler/SelectBox',
+  title: 'Örnekler/Form/SelectBox',
   component: SelectBox,
   tags: ['autodocs'],
   argTypes: {
@@ -21,10 +21,3 @@ export default {
 };
 
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
-export const Test = {
-    args: {
-        options: [{value:"key1",label:"value 1"},{value:"key2",label:"value 2"},{value:"key3",label:"value 3"}],
-        placeholder: "Seçiniz",
-    }
-};
-

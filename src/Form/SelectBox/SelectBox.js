@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {BsArrowDownShort,BsArrowUpShort,BsX } from 'dodo-icons/react/bs';
 import {BiLeftArrow,BiRightArrow} from 'dodo-icons/react/bi';
-import Tag from "../Tag";
+import Tag from "../../DataDisplay/Tag";
 
 //Tüm elemanlara özel css ve class isimleri tanımla
 
@@ -71,7 +71,12 @@ export default function SelectBox({ classList,size,rounded,disabled,options,onSe
         * Props olarak gelen optionlar daha sonra içinde filter işlemi yapabilmek için state'e aktarılıyor
         * */
         if(options){
-            setFilteredOptions(options);
+            let _options = options.map((item)=>{
+                if( typeof item === 'string' ) {
+                    return {label:item,value:item};
+                }else return item;
+            })
+            setFilteredOptions(_options);
         }
     }, [options]);
     React.useEffect(() => {
@@ -79,13 +84,19 @@ export default function SelectBox({ classList,size,rounded,disabled,options,onSe
         * Props olarak gelen value değeri daha sonra değiştirebilmek için state'e aktarılıyor
          */
         setError("");
+        let _options = options.map((item)=>{
+            if( typeof item === 'string' ) {
+                return {label:item,value:item};
+            }else return item;
+        })
         if(multiple){
             if(value){
-                setValue(value.map((item)=>options.find((option)=>option.value===item)));
+
+                setValue(value.map((item)=>_options.find((option)=>option.value===item)));
             }
         }else{
             if(value){
-                setValue(options.find((option)=>option.value===value));
+                setValue(_options.find((option)=>option.value===value));
             }
         }
     }, [value]);
@@ -115,7 +126,13 @@ export default function SelectBox({ classList,size,rounded,disabled,options,onSe
         setInputWidth(inputRef.current?.scrollWidth)
         setValue("");
         let value = e.target.value;
-        let filtered = options.filter((item) => {
+        let _options = options.map((item)=>{
+            if( typeof item === 'string' ) {
+                return {label:item,value:item};
+            }
+            else return item;
+        })
+        let filtered = _options.filter((item) => {
             return item.label.toLowerCase().includes(value.toLowerCase());
         });
         setFilteredOptions(filtered);

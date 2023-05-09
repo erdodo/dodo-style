@@ -1,9 +1,9 @@
 import React from "react";
 import PropTypes from 'prop-types';
-
-
-
-
+// @ts-ignore
+import Datetime from "./views/DateTime.js";
+import moment from "moment";
+import "moment/locale/tr";
 //todo: min,max,buttonVisible,errorVisible,step,placeholder,maxLength,minLength,passVisible
 
 /**
@@ -27,20 +27,10 @@ import PropTypes from 'prop-types';
  * Input Componenti
  *
  */
-export default function DateTimeBox(
-    {
-        classList, type,onClick,onChange,disabled,value,size,
-        notOutline,rounded,style,styleType,min,max,clear,showPassword,
-        autoRow,rows,limit,placeholder,label,hover
-    }
-) {
-
-    const [_value, setValue] = React.useState(null);
-    const [error, setError] = React.useState(null);
-
-    const [_inputType, setInputType] = React.useState( type === "datetime"?"datetime-local":type );
-
-    //Baş: Stil İşlemleri
+export default function DateTimeBox({ value,rounded,notOutline,type,size,styleType,classList,disabled}) {
+    const datetimeRef = React.useRef(null);
+    const [visible, setVisible] = React.useState(false);
+    const [_value, setValue] = React.useState(value);
     let _rounded = rounded ? `rounded-${rounded}` : 'rounded-md';
     if(rounded==='2xl') _rounded = 'rounded-[1rem]';
     if(rounded==='3xl') _rounded = 'rounded-[1.2rem]';
@@ -71,34 +61,57 @@ export default function DateTimeBox(
         _type = defaultStyleTypes.default;
     }
     const _disabled = disabled ? 'opacity-50 cursor-not-allowed !bg-gray-100' : '';
-    //Son: Stil İşlemleri
+    const onChange = (date) => {
+        console.log("date",moment(date).toDate())
+        setValue(date);
+    }
+    document.addEventListener("click", (e) => {
 
+        if (!e.target.closest(".rdt") ) {
+            setVisible(false);
+        }
+    })
+
+    const [timeFormat, setTimeFormat] = React.useState(type !== 'date');
+    const [dateFormat, setDateFormat] = React.useState(type !== 'time');
+    const [loading, setLoading] = React.useState(false);
     React.useEffect(() => {
-        setValue(value);
-    }, [value]);
-
-    React.useEffect(() => {
-        setError(null);
-    }, [type]);
-    React.useEffect(() => {
-        onChange(_value)
-    }, [_value]);
-
-    const onChangeInput = (event) => {
-            setValue(event);
-            onChange(event)
-
+      if(type === 'date'){
+          setTimeFormat(false)
+      }
+      if(type === 'time'){
+          setDateFormat(false)
+      }
+      if (type ==='month'){
+            setDateFormat('MM/YYYY')
+          setTimeFormat(false)
+      }
+    if (type ==='year'){
+        setDateFormat('YYYY')
+        setTimeFormat(false)
     }
 
+
+        setLoading(true)
+        console.log(type,datetimeRef)
+    })
     return (
-        <div className={"flex flex-col "}>
-            <div className={`flex flex-row items-center h-auto px-3 ${classList} ${_resize} ${_type} ${_size[size]} ${_rounded} ${_textSize[size]} ${_disabled}`}>
-                <input type={_inputType} className={"focus-visible:outline-0 bg-transparent"}/>
-                <div className={"flex flex-row items-center"}> </div>
-            </div>
+        <div className={"flex flex-col date-input"} >
 
-
-            {error && <span className="text-red-500 text-sm mt-1">{error}</span>}
+            {loading && <Datetime
+                open={visible}
+                timeFormat={timeFormat}
+                dateFormat={dateFormat}
+                ref={datetimeRef}
+                inputProps={{className:`px-3 ${classList} ${_resize} ${_type} ${_size[size]} ${_rounded} ${_textSize[size]} ${_disabled}`}}
+                value={_value}
+                onChange={onChange}
+                onOpen={()=>setVisible(true)}
+                onClose={()=>setVisible(false)}
+                closeOnClickOutside
+                locale={"tr"}
+                styleType={_type}
+            />}
         </div>
     );
 }
@@ -180,13 +193,15 @@ DateTimeBox.defaultProps = {
     size:"md",
     type:"text",
     styleType: 'default',
-    displayFormat: 'DD.MM.YYYY',
-    valueFormat: 'YYYY-MM-DD',
+    displayFormat: "DD.MM.YYYY HH:mm:ss",
+    valueFormat: 'YYYY-MM-DD HH:mm:ss',
+
     onClick: (event) => {
         console.log('You have clicked me!', event.target);
     },
     onChange: (event) => {
-        console.log('You have changed me!', event);
+
+        //console.log('You have changed me!', event);
     }
 };
 

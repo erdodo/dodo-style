@@ -1,0 +1,94 @@
+import Example1 from './example/Example1'
+import Example2 from './example/Example2'
+import Example3 from './example/Example3'
+import Example4 from './example/Example4'
+import Example5 from "./example/Example5";
+import Example6 from "./example/Example6";
+import { Meta,Story } from "@storybook/addon-docs/blocks";
+
+
+<Meta title="Geri Dönüt/Dialog" />
+
+# Dialog
+## Kullanım
+```jsx
+import { Dialog } from 'dodo-style'
+```
+
+
+
+## Konum Örneği
+<Example1 location={"center"} />
+
+```jsx
+<Button type={"primary"} onClick={()=>{ setVisible(true) }}>Dialog aç</Button>
+<Dialog open={visible} location={location} onClose={()=>{ setVisible(false) }} title={"Dialog Başlığı"} >
+    <div>
+        Merhaba
+    </div>
+</Dialog>
+```
+
+## Header Örneği
+<Example2 />
+
+```jsx
+<Dialog header={
+            <div className={"flex flex-row justify-between items-center"}>
+                <div className={"text-lg font-bold"}>Özel Dialog Başlığı</div>
+                <div className={"flex flex-row"}>
+                    <Button type={"danger"} gradient onClick={()=>{ setVisible(false) }}>Kapat</Button>
+                </div>
+            </div>
+        }
+    >
+    <div>
+        Merhaba
+    </div>
+</Dialog>
+```
+
+<Example3 />
+
+```jsx
+<Dialog  header={" "} >
+    <div>
+        Merhaba
+    </div>
+</Dialog>
+```
+
+<Example4 />
+
+```jsx
+<Dialog  title={"Bu özel bir başlıktır"} >
+    <div>
+        Merhaba
+    </div>
+</Dialog>
+```
+
+### Footer Örneği
+
+<Example5 />
+```jsx
+<Dialog footer={
+            <div>
+                <Button type={"primary"} onClick={()=>{ setVisible(false) }}>Özel Kapat Butonu</Button>
+            </div>
+        }
+    >
+    <div>
+        Merhaba
+    </div>
+</Dialog>
+```
+
+<Example6 />
+```jsx
+<Dialog footer={" "} >
+    <div>
+        Merhaba
+    </div>
+</Dialog>
+```

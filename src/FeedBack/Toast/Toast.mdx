@@ -1,0 +1,176 @@
+import {Meta } from "@storybook/addon-docs/blocks";
+import Button from '../../Form/Button'
+import { ToastContainer, toast } from 'dodo-style'
+
+<Meta title="Geri Dönüt/Toast" />
+
+
+
+
+
+# Toast
+## Kullanım
+ToastContainer parent component içerisinde tek sefer tanımlamanız yeterlidir.Daha sonra toast fonksiyonu ile kullanabilirsiniz.
+```jsx
+import { ToastContainer, toast } from 'dodo-style'
+
+export default function Foo(){
+    return(
+        <>
+            <ToastContainer/>
+        </>
+    )
+}
+```
+
+## Config
+- Global ayarlama
+```jsx
+    <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+    />
+```
+- Local ayarlama
+```js
+    toast.info('Bu kadar basit', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark"
+    });
+```
+
+
+## Style type örnekleri
+<div style={{display:"flex",flexDirection:"row",alignItems:"center",flexWrap:"wrap"}}>
+    <div style={{margin:"5px"}}>
+        <Button type="primary" onClick={()=>toast("Normal Mesaj")}>Normal</Button>
+    </div>
+    <div style={{margin:"5px"}}>
+        <Button type="success" onClick={()=>toast.success("Başarılı Mesaj")}>Başarılı</Button>
+    </div>
+    <div style={{margin:"5px"}}>
+        <Button type="danger" onClick={()=>toast.error("Hatalı Mesaj")}>Hatalı</Button>
+    </div>
+    <div style={{margin:"5px"}}>
+        <Button type="info" onClick={()=>toast.info("Bilgi Mesaj")}>Bilgi</Button>
+    </div>
+    <div style={{margin:"5px"}}>
+        <Button type="warning" onClick={()=>toast.warning("Dikkat Mesaj")}>Dikkat</Button>
+    </div>
+</div>
+
+
+```jsx
+<Button type="primary" onClick={()=>toast("Normal Mesaj")}>Normal</Button>
+<Button type="success" onClick={()=>toast.success("Başarılı Mesaj")}>Başarılı</Button>
+<Button type="danger" onClick={()=>toast.error("Hatalı Mesaj")}>Hatalı</Button>
+<Button type="info" onClick={()=>toast.info("Bilgi Mesaj")}>Bilgi</Button>
+<Button type="warning" onClick={()=>toast.warning("Dikkat Mesaj")}>Dikkat</Button>
+
+```
+
+## Konum örnekleri
+<div style={{display:"flex",flexDirection:"row",alignItems:"center",flexWrap:"wrap"}}>
+    <div style={{margin:"5px"}}>
+        <Button type="primary" onClick={()=>toast("Normal Mesaj",{ position: "top-right"})}>Üst Sağ</Button>
+        <Button type="primary" onClick={()=>toast("Normal Mesaj",{ position: "top-left"})}>Üst Sol</Button>
+        <Button type="primary" onClick={()=>toast("Normal Mesaj",{ position: "top-center"})}>Üst Orta</Button>
+        <Button type="primary" onClick={()=>toast("Normal Mesaj",{ position: "bottom-right"})}>Alt Sağ</Button>
+        <Button type="primary" onClick={()=>toast("Normal Mesaj",{ position: "bottom-left"})}>Alt Sol</Button>
+        <Button type="primary" onClick={()=>toast("Normal Mesaj",{ position: "bottom-center"})}>Alt Orta</Button>
+    </div>
+
+</div>
+
+
+```jsx
+<Button type="primary" onClick={()=>toast("Normal Mesaj",{ position: "top-right"})}>Üst Sağ</Button>
+<Button type="primary" onClick={()=>toast("Normal Mesaj",{ position: "top-left"})}>Üst Sol</Button>
+<Button type="primary" onClick={()=>toast("Normal Mesaj",{ position: "top-center"})}>Üst Orta</Button>
+<Button type="primary" onClick={()=>toast("Normal Mesaj",{ position: "bottom-right"})}>Alt Sağ</Button>
+<Button type="primary" onClick={()=>toast("Normal Mesaj",{ position: "bottom-left"})}>Alt Sol</Button>
+<Button type="primary" onClick={()=>toast("Normal Mesaj",{ position: "bottom-center"})}>Alt Orta</Button>
+
+```
+
+## Tema örnekleri
+<div style={{display:"flex",flexDirection:"row",alignItems:"center",flexWrap:"wrap"}}>
+    <div style={{margin:"5px"}}>
+        <Button type="light" onClick={()=>toast.success("Normal Mesaj",{ theme: "light"})}>Beyaz Tema</Button>
+        <Button type="dark" onClick={()=>toast.success("Normal Mesaj",{ theme: "dark"})}>Siyah Tema</Button>
+        <Button type="success" gradient onClick={()=>toast.success("Normal Mesaj",{ theme: "colored"})}>Renkli Tema</Button>
+    </div>
+
+</div>
+
+
+```jsx
+<Button type="light" onClick={()=>toast.success("Normal Mesaj",{ theme: "light"})}>Beyaz Tema</Button>
+<Button type="dark" onClick={()=>toast.success("Normal Mesaj",{ theme: "dark"})}>Siyah Tema</Button>
+<Button type="primary" onClick={()=>toast.success("Normal Mesaj",{ theme: "colored"})}>Renkli Tema</Button>
+```
+
+
+
+<ToastContainer/>
+
+## Özel Tema
+```css
+
+:root {
+  --toastify-color-light: #fff;
+  --toastify-color-dark: #121212;
+  --toastify-color-info: #3498db;
+  --toastify-color-success: #07bc0c;
+  --toastify-color-warning: #f1c40f;
+  --toastify-color-error: #e74c3c;
+  --toastify-color-transparent: rgba(255, 255, 255, 0.7);
+  --toastify-icon-color-info: var(--toastify-color-info);
+  --toastify-icon-color-success: var(--toastify-color-success);
+  --toastify-icon-color-warning: var(--toastify-color-warning);
+  --toastify-icon-color-error: var(--toastify-color-error);
+  --toastify-toast-width: 320px;
+  --toastify-toast-background: #fff;
+  --toastify-toast-min-height: 64px;
+  --toastify-toast-max-height: 800px;
+  --toastify-font-family: sans-serif;
+  --toastify-z-index: 9999;
+  --toastify-text-color-light: #757575;
+  --toastify-text-color-dark: #fff;
+  --toastify-text-color-info: #fff;
+  --toastify-text-color-success: #fff;
+  --toastify-text-color-warning: #fff;
+  --toastify-text-color-error: #fff;
+  --toastify-spinner-color: #616161;
+  --toastify-spinner-color-empty-area: #e0e0e0;
+  --toastify-color-progress-light: linear-gradient(
+          to right,
+          #4cd964,
+          #5ac8fa,
+          #007aff,
+          #34aadc,
+          #5856d6,
+          #ff2d55
+  );
+  --toastify-color-progress-dark: #bb86fc;
+  --toastify-color-progress-info: var(--toastify-color-info);
+  --toastify-color-progress-success: var(--toastify-color-success);
+  --toastify-color-progress-warning: var(--toastify-color-warning);
+  --toastify-color-progress-error: var(--toastify-color-error);
+}
+
+```

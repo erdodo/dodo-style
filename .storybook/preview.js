@@ -5,16 +5,20 @@ import {DocsContainer} from "@storybook/blocks";
 import React from 'react';
 
 var head = document.getElementsByTagName('HEAD')[0];
+
 var link = document.createElement('link');
 link.rel = 'stylesheet';
 link.type = 'text/css';
 link.href = 'output.css';
 head.appendChild(link);
+var head2 = document.getElementsByTagName('HEAD')[0];
+console.log(head2)
 var link2 = document.createElement('link');
 link2.rel = 'stylesheet';
 link2.type = 'text/css';
 link2.href = 'index.css';
-head.appendChild(link);
+head2.appendChild(link2);
+
 
 var body = document.getElementsByTagName('body')[0];
 var div = document.createElement('div');
@@ -76,7 +80,7 @@ const preview = {
     },
     options: {
         storySort: {
-            order: ["Hoş Geldiniz","Config", "Dökümanlar","Örnekler", "icons",["Döküman","Ara","İkonlar"]],
+            order: ["Hoş Geldiniz","Config","Güncelleme Notları", "icons","Form","Geri Dönüt","Veri Gösterimi"],
 
         }
     }
