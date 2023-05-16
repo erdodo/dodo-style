@@ -2,7 +2,7 @@ import Calendar  from './Calendar';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 export default {
-  title: 'Örnekler/Veri Gösterimi/Calendar',
+  title: 'Veri Gösterimi/Calendar',
   component: Calendar,
   tags: ['autodocs'],
   argTypes: {

@@ -10,7 +10,7 @@ import { Meta,Story } from "@storybook/addon-docs/blocks";
 # Button
 
 <div className={"!my-6"}>
-    <a href="https://dodo-style.vercel.app/vue#/button" target={"_blank"} className={" !text-green-500"}>Eğer Vue Kullanıyorsanız.</a>
+    <a href="https://dodo-style.vercel.app/vue#/button" target={"_blank"} className={" !text-success-500"}>Eğer Vue Kullanıyorsanız.</a>
 </div>
 
 ## Kullanım
@@ -129,7 +129,7 @@ import { Meta,Story } from "@storybook/addon-docs/blocks";
         <Button type="success" plain rounded="full" size="sm" classList="!py-2 !px-2" ><FaWhatsapp/></Button>
     </div>
     <div style={{margin:"5px"}}>
-        <Button classList="bg-red-600 text-yellow-200" rounded="full" ><FaSnapchatGhost/></Button>
+        <Button classList="bg-danger-600 text-warning-200" rounded="full" ><FaSnapchatGhost/></Button>
     </div>
     <div style={{margin:"5px"}}>
         <Button type="light" disabled><FaTumblr/></Button>
@@ -153,7 +153,7 @@ import { Meta,Story } from "@storybook/addon-docs/blocks";
 <Button type="info" disabled rounded="full" classList="py-4" ><FaFacebookF/></Button>
 <Button type="danger"  outline rounded="full" size="sm" classList="!py-2 !px-2"><FaYoutube/></Button>
 <Button type="success" plain rounded="full" size="sm" classList="!py-2 !px-2" ><FaWhatsapp/></Button>
-<Button classList="bg-red-600 text-yellow-200" rounded="full" ><FaSnapchatGhost/></Button>
+<Button classList="bg-danger-600 text-warning-200" rounded="full" ><FaSnapchatGhost/></Button>
 <Button type="light" disabled><FaTumblr/></Button>
 <Button type="dark" plain><FaSteamSymbol/></Button>
 
@@ -476,12 +476,12 @@ import { Meta,Story } from "@storybook/addon-docs/blocks";
 ## Özel class örneği
 <div style={{display:"flex",flexDirection:"row",alignItems:"center",flexWrap:"wrap"}}>
     <div style={{margin:"5px"}}>
-        <Button classList={"bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 transition ease-in-out delay-150 duration-300 transform hover:-translate-y-1 hover:scale-110"} >Tıkla bana</Button>
+        <Button classList={"bg-gradient-to-r from-success-400 to-info-500 hover:from-pink-500 hover:to-warning-500 transition ease-in-out delay-150 duration-300 transform hover:-transecondary-y-1 hover:scale-110"} >Tıkla bana</Button>
     </div>
 </div>
 
 ```jsx
-<Button classList={"bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 transition ease-in-out delay-150 duration-300 transform hover:-translate-y-1 hover:scale-110"}>Tıkla bana</Button>
+<Button classList={"bg-gradient-to-r from-success-400 to-info-500 hover:from-pink-500 hover:to-warning-500 transition ease-in-out delay-150 duration-300 transform hover:-transecondary-y-1 hover:scale-110"}>Tıkla bana</Button>
 
 ```
 

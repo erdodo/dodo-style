@@ -1,5 +1,7 @@
 import Tooltip from './Tooltip'
 import { Meta,Story } from "@storybook/addon-docs/blocks";
+import Button from '../../Form/Button/Button';
+import Example1 from './examples/Example1'
 
 <Meta title="Geri Dönüt/Tooltip" />
 
@@ -9,8 +11,67 @@ import { Meta,Story } from "@storybook/addon-docs/blocks";
 import { Tooltip } from 'dodo-style'
 ```
 
-<h1 style={{color:"red"}}>Yakında sizlerle</h1>
+## Konum Örneği
+<Example1/>
 
-<Story name="Test">
-    Yakında Sizlerle
-</Story>
+```jsx
+
+<Tooltip  position={position} message={"Özel konumlandırma "+position} >
+    <Button type={"primary"}>Hover</Button>
+</Tooltip>
+
+
+```
+
+## Tema Örneği
+<div style={{display:"flex",flexDirection:"row",alignItems:"center",flexWrap:"wrap"}}>
+    <div style={{margin:"5px"}}>
+        <Tooltip message={"Mesaj"} position={"top-center"}>
+            <Button type={"primary"}>Normal</Button>
+        </Tooltip>
+    </div>
+    <div style={{margin:"5px"}}>
+        <Tooltip message={"Mesaj"} theme={"light"} position={"top-center"}>
+            <Button type={"primary"}>Light</Button>
+        </Tooltip>
+    </div>
+    <div style={{margin:"5px"}}>
+        <Tooltip message={"Mesaj"} theme={"dark"} position={"top-center"}>
+            <Button type={"primary"}>Dark</Button>
+        </Tooltip>
+    </div>
+</div>
+
+
+
+
+```jsx
+<Tooltip message={"Mesaj"} >
+    <Button type={"primary"}>Normal</Button>
+</Tooltip>
+<Tooltip message={"Mesaj"} theme={"light"} >
+    <Button type={"primary"}>Light</Button>
+</Tooltip>
+<Tooltip message={"Mesaj"} theme={"dark"} >
+    <Button type={"primary"}>Dark</Button>
+</Tooltip>
+```
+
+## Bekletme Örneği
+<div style={{display:"flex",flexDirection:"row",alignItems:"center",flexWrap:"wrap"}}>
+    <div style={{margin:"5px"}}>
+        <Tooltip message={"Mesaj"} wait={1000} position={"top-center"}>
+            <Button classList={"whitespace-nowrap"} type={"primary"}>1 saniye bekle</Button>
+        </Tooltip>
+    </div>
+</div>
+
+
+
+
+```jsx
+<Tooltip message={"Mesaj"} wait={1000} position={"top-center"}>
+    <Button  type={"primary"}>1 saniye bekle</Button>
+</Tooltip>
+```
+

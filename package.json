@@ -1,7 +1,7 @@
 {
   "name": "dodo-style",
   "author": "Erdoğan Yeşil",
-  "version": "0.1.63",
+  "version": "0.1.64",
   "homepage": "https://dodo-style.vercel.app/",
   "license": "MIT",
   "main": "react/index.js",
@@ -9,7 +9,7 @@
   "scripts": {
     "serve:vue-docs": "vue-cli-service serve",
     "build:vue-docs": "vue-cli-service build && cp -R ./vue ./storybook-static/vue",
-    "serve:react": "react-scripts start",
+    "serve:react": "react-scripts start src/main.js",
     "build:react": "rm -rf dist && NODE_ENV=production babel src --out-dir react --copy-files",
     "build:vue": "vue-cli-service build --target lib --name index src-vue/index.js && cp src-vue/config/index.js vue/index.js ",
     "npm:publish": "npm publish --access public",

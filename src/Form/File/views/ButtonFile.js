@@ -32,7 +32,7 @@ export default function ButtonFile ({button={props:{}},fileList,removeFile}){
                 {Object.values(fileList).map((file,index) => {
                     return (
                         <li key={index} className={"flex items-center !mt-2 border-b dark:border-gray-700 !pb-2"}>
-                            <span className={"mr-1 rounded-lg cursor-pointer text-red-500 hover:bg-gray-200 dark:hover:bg-gray-700 p-2"} onClick={()=>removeFile(index)}><BsXCircleFill/> </span>
+                            <span className={"mr-1 rounded-lg cursor-pointer text-danger-500 hover:bg-gray-200 dark:hover:bg-gray-700 p-2"} onClick={()=>removeFile(index)}><BsXCircleFill/> </span>
 
 
                             {file.type === 'image/png' && <img src={URL.createObjectURL(file)} alt={file.name} className={"w-[40px] h-[40px]"} />}

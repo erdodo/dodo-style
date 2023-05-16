@@ -49,12 +49,12 @@ export default function Dialog({location,children,header,footer,open,onClose,sty
            <div className={"relative"}>
 
                {open &&
-                   <div className={`fixed dialog-body flex flex-row  dark:bg-gray-700/50 bg-gray-200/50 z-20 ${locationList[location]} ` }>
+                   <div className={`fixed dialog-body flex flex-row  bg-black/50 z-20 transition duration-150 ease-out hover:ease-in ${locationList[location]} ` }>
                    <div className={`bg-white dark:bg-gray-800 shadow-lg dark:text-white shadow-gray-400 border dark:shadow-gray-800 dark:border-gray-700 p-4 min-w-[300px] max-w[100vw] ${paperList[location]}`}>
                        {header ? header :
                            <div className={"py-2 border-b dark:border-gray-700 flex flex-row justify-between"}>
                                 <span className={"text-lg font-bold"}>{title}</span>
-                                <BsXCircle onClick={onClose} className={"cursor-pointer text-red-500 hover:bg-red-500 hover:text-white rounded-full p-[1px]"} size={19}/>
+                                <BsXCircle onClick={onClose} className={"cursor-pointer text-danger-500 hover:bg-danger-500 hover:text-white rounded-full p-[1px]"} size={19}/>
                             </div>
                        }
                        <div className={"py-3"}>

@@ -19,72 +19,72 @@ export default function Button({classList, type,onClick,disabled,children,size,o
     };
     let _type ="";
     const types = {
-        primary:  'bg-sky-600 text-white hover:bg-sky-500 shadow-sky-300 shadow-lg  hover:border-sky-500 hover:shadow-sky-400 dark:bg-sky-700  dark:hover:bg-sky-600 dark:shadow-sky-900 dark:hover:shadow-sky-700',
-        secondary: 'bg-slate-600 text-white hover:bg-slate-500 shadow-slate-300 shadow-lg hover:border-slate-500 hover:shadow-slate-400 dark:bg-slate-700  dark:hover:bg-slate-600 dark:shadow-slate-900 dark:hover:shadow-slate-700',
-        danger: 'bg-red-600 text-white hover:bg-red-500 shadow-red-300 shadow-lg hover:border-red-500 hover:shadow-red-400 dark:bg-red-700  dark:hover:bg-red-600 dark:shadow-red-900 dark:hover:shadow-red-700',
-        warning: 'bg-yellow-500 text-white hover:bg-yellow-400 shadow-yellow-300 shadow-lg hover:border-yellow-400 hover:shadow-yellow-400 dark:bg-yellow-700  dark:hover:bg-yellow-600 dark:shadow-yellow-900 dark:hover:shadow-yellow-700',
-        success: 'bg-green-600 text-white hover:bg-green-500 shadow-green-300 shadow-lg hover:border-green-500 hover:shadow-green-400 dark:bg-green-700  dark:hover:bg-green-600 dark:shadow-green-900 dark:hover:shadow-green-700',
-        info: 'bg-blue-600 text-white hover:bg-blue-500 shadow-blue-300 shadow-lg hover:border-blue-500 hover:shadow-blue-400 dark:bg-blue-700  dark:hover:bg-blue-600 dark:shadow-blue-900 dark:hover:shadow-blue-700',
+        primary:  'bg-primary-500 text-white hover:bg-primary-600 shadow-primary-400 shadow-md  hover:border-primary-700 hover:shadow-primary-400 dark:bg-primary-700  dark:hover:bg-primary-700 dark:shadow-primary-900 dark:hover:shadow-primary-700 dark:hover:border-primary-500',
+        secondary: 'bg-secondary-500 text-white hover:bg-secondary-600 shadow-secondary-400 shadow-md  hover:border-secondary-700 hover:shadow-secondary-400 dark:bg-secondary-700  dark:hover:bg-secondary-700 dark:shadow-secondary-900 dark:hover:shadow-secondary-700 dark:hover:border-secondary-500',
+        danger: 'bg-danger-500 text-white hover:bg-danger-600 shadow-danger-400 shadow-md  hover:border-danger-700 hover:shadow-danger-400 dark:bg-danger-700  dark:hover:bg-danger-700 dark:shadow-danger-900 dark:hover:shadow-danger-700 dark:hover:border-danger-500',
+        warning: 'bg-warning-500 text-white hover:bg-warning-600 shadow-warning-400 shadow-md  hover:border-warning-700 hover:shadow-warning-400 dark:bg-warning-700  dark:hover:bg-warning-700 dark:shadow-warning-900 dark:hover:shadow-warning-700 dark:hover:border-warning-500',
+        info: 'bg-info-500 text-white hover:bg-info-600 shadow-info-400 shadow-md  hover:border-info-700 hover:shadow-info-400 dark:bg-info-700  dark:hover:bg-info-700 dark:shadow-info-900 dark:hover:shadow-info-700 dark:hover:border-info-500',
+        success: 'bg-success-500 text-white hover:bg-success-600 shadow-success-400 shadow-md  hover:border-success-700 hover:shadow-success-400 dark:bg-success-700  dark:hover:bg-success-700 dark:shadow-success-900 dark:hover:shadow-success-700 dark:hover:border-success-500',
         light: 'bg-gray-200 text-gray-600 hover:bg-gray-300 shadow-gray-300 shadow-lg hover:border-gray-300 hover:shadow-gray-400 dark:bg-gray-800  dark:hover:bg-gray-700 dark:shadow-gray-900 dark:hover:shadow-gray-700 dark:text-gray-200',
         dark: 'bg-gray-800 text-white hover:bg-gray-600 shadow-gray-300 shadow-lg hover:border-gray-600 hover:shadow-gray-400 dark:bg-gray-900  dark:hover:bg-gray-700 dark:shadow-gray-900 dark:hover:shadow-gray-700',
     }
     const outlineTypes = {
-        primary:  'bg-transparent text-sky-600 border border-sky-600 hover:bg-sky-600 hover:text-white hover:shadow-sky-300 hover:border-sky-600 hover:shadow-lg dark:text-sky-700 dark:border-sky-700 dark:hover:bg-sky-600 dark:hover:text-white dark:hover:shadow-sky-800 dark:hover:border-sky-600 dark:hover:shadow-lg',
-        secondary: 'bg-transparent text-slate-600 border border-slate-600 hover:bg-slate-600 hover:text-white hover:shadow-slate-300 hover:border-slate-600 hover:shadow-lg dark:text-slate-700 dark:border-slate-700 dark:hover:bg-slate-600 dark:hover:text-white dark:hover:shadow-slate-800 dark:hover:border-slate-600 dark:hover:shadow-lg',
-        danger: 'bg-transparent text-red-600 border border-red-600 hover:bg-red-600 hover:text-white hover:shadow-red-300 hover:border-red-600 hover:shadow-lg dark:text-red-700 dark:border-red-700 dark:hover:bg-red-600 dark:hover:text-white dark:hover:shadow-red-800 dark:hover:border-red-600 dark:hover:shadow-lg',
-        warning: 'bg-transparent text-yellow-600 border border-yellow-600 hover:bg-yellow-500 hover:text-white hover:shadow-yellow-300 hover:border-yellow-600 hover:shadow-lg dark:text-yellow-700 dark:border-yellow-700 dark:hover:bg-yellow-600 dark:hover:text-white dark:hover:shadow-yellow-800 dark:hover:border-yellow-600 dark:hover:shadow-lg',
-        success: 'bg-transparent text-green-600 border border-green-600 hover:bg-green-600 hover:text-white hover:shadow-green-300 hover:border-green-600 hover:shadow-lg dark:text-green-700 dark:border-green-700 dark:hover:bg-green-600 dark:hover:text-white dark:hover:shadow-green-800 dark:hover:border-green-600 dark:hover:shadow-lg',
-        info: 'bg-transparent text-blue-600 border border-blue-600 hover:bg-blue-600 hover:text-white hover:shadow-blue-300 hover:border-blue-600 hover:shadow-lg dark:text-blue-700 dark:border-blue-700 dark:hover:bg-blue-600 dark:hover:text-white dark:hover:shadow-blue-800 dark:hover:border-blue-600 dark:hover:shadow-lg',
+        primary:  'bg-transparent text-primary-600 border border-primary-600 hover:bg-primary-600 hover:text-white hover:shadow-primary-300 hover:border-primary-600 hover:shadow-lg dark:text-primary-700 dark:border-primary-700 dark:hover:bg-primary-600 dark:hover:text-white dark:hover:shadow-primary-800 dark:hover:border-primary-600 dark:hover:shadow-lg',
+        secondary: 'bg-transparent text-secondary-600 border border-secondary-600 hover:bg-secondary-600 hover:text-white hover:shadow-secondary-300 hover:border-secondary-600 hover:shadow-lg dark:text-secondary-700 dark:border-secondary-700 dark:hover:bg-secondary-600 dark:hover:text-white dark:hover:shadow-secondary-800 dark:hover:border-secondary-600 dark:hover:shadow-lg',
+        danger: 'bg-transparent text-danger-600 border border-danger-600 hover:bg-danger-600 hover:text-white hover:shadow-danger-300 hover:border-danger-600 hover:shadow-lg dark:text-danger-700 dark:border-danger-700 dark:hover:bg-danger-600 dark:hover:text-white dark:hover:shadow-danger-800 dark:hover:border-danger-600 dark:hover:shadow-lg',
+        warning: 'bg-transparent text-warning-600 border border-warning-600 hover:bg-warning-500 hover:text-white hover:shadow-warning-300 hover:border-warning-600 hover:shadow-lg dark:text-warning-700 dark:border-warning-700 dark:hover:bg-warning-600 dark:hover:text-white dark:hover:shadow-warning-800 dark:hover:border-warning-600 dark:hover:shadow-lg',
+        success: 'bg-transparent text-success-600 border border-success-600 hover:bg-success-600 hover:text-white hover:shadow-success-300 hover:border-success-600 hover:shadow-lg dark:text-success-700 dark:border-success-700 dark:hover:bg-success-600 dark:hover:text-white dark:hover:shadow-success-800 dark:hover:border-success-600 dark:hover:shadow-lg',
+        info: 'bg-transparent text-info-600 border border-info-600 hover:bg-info-600 hover:text-white hover:shadow-info-300 hover:border-info-600 hover:shadow-lg dark:text-info-700 dark:border-info-700 dark:hover:bg-info-600 dark:hover:text-white dark:hover:shadow-info-800 dark:hover:border-info-600 dark:hover:shadow-lg',
         light: 'bg-transparent text-gray-600 border border-gray-600 hover:bg-gray-600 hover:text-white hover:shadow-gray-300 hover:border-gray-600 hover:shadow-lg dark:text-gray-700 dark:border-gray-700 dark:hover:bg-gray-600 dark:hover:text-white dark:hover:shadow-gray-800 dark:hover:border-gray-600 dark:hover:shadow-lg',
         dark: 'bg-transparent text-gray-600 border border-gray-600 hover:bg-gray-600 hover:text-white hover:shadow-gray-300 hover:border-gray-600 hover:shadow-lg dark:text-gray-700 dark:border-gray-700 dark:hover:bg-gray-600 dark:hover:text-white dark:hover:shadow-gray-800 dark:hover:border-gray-600 dark:hover:shadow-lg',
     }
     const plainTypes = {
-        primary:  'bg-sky-100 hover:bg-sky-300 text-sky-900 border border-sky-400 hover:shadow-sky-300 hover:border-sky-500 hover:shadow-lg hover:border-sky-400/50 hover:text-white dark:bg-sky-700 dark:hover:bg-sky-600 dark:shadow-sky-900 dark:hover:shadow-sky-700 dark:text-sky-200',
-        secondary: 'bg-slate-100 hover:bg-slate-300 text-slate-900 border border-slate-400 hover:shadow-slate-300 hover:border-slate-500 hover:shadow-lg hover:border-slate-400/50 hover:text-white dark:bg-slate-700 dark:hover:bg-slate-600 dark:shadow-slate-900 dark:hover:shadow-slate-700 dark:text-slate-200',
-        danger: 'bg-red-100 hover:bg-red-300 text-red-900 border border-red-400 hover:shadow-red-300 hover:border-red-500 hover:shadow-lg hover:border-red-400/50 hover:text-white dark:bg-red-700 dark:hover:bg-red-600 dark:shadow-red-900 dark:hover:shadow-red-700 dark:text-red-200',
-        warning: 'bg-yellow-100 hover:bg-yellow-300 text-yellow-900 border border-yellow-400 hover:shadow-yellow-300 hover:border-yellow-500 hover:shadow-lg hover:border-yellow-400/50 hover:text-white dark:bg-yellow-700 dark:hover:bg-yellow-600 dark:shadow-yellow-900 dark:hover:shadow-yellow-700 dark:text-yellow-200',
-        success: 'bg-green-100 hover:bg-green-300 text-green-900 border border-green-400 hover:shadow-green-300 hover:border-green-500 hover:shadow-lg hover:border-green-400/50 hover:text-white dark:bg-green-700 dark:hover:bg-green-600 dark:shadow-green-900 dark:hover:shadow-green-700 dark:text-green-200',
-        info: 'bg-blue-100 hover:bg-blue-300 text-blue-900 border border-blue-400 hover:shadow-blue-300 hover:border-blue-500 hover:shadow-lg hover:border-blue-400/50 hover:text-white dark:bg-blue-700 dark:hover:bg-blue-600 dark:shadow-blue-900 dark:hover:shadow-blue-700 dark:text-blue-200',
+        primary:  'bg-primary-100 hover:bg-primary-300 text-primary-900 border border-primary-400 hover:shadow-primary-300 hover:border-primary-500 hover:shadow-lg hover:border-primary-400/50 hover:text-white dark:bg-primary-700 dark:hover:bg-primary-600 dark:shadow-primary-900 dark:hover:shadow-primary-700 dark:text-primary-200',
+        secondary: 'bg-secondary-100 hover:bg-secondary-300 text-secondary-900 border border-secondary-400 hover:shadow-secondary-300 hover:border-secondary-500 hover:shadow-lg hover:border-secondary-400/50 hover:text-white dark:bg-secondary-700 dark:hover:bg-secondary-600 dark:shadow-secondary-900 dark:hover:shadow-secondary-700 dark:text-secondary-200',
+        danger: 'bg-danger-100 hover:bg-danger-300 text-danger-900 border border-danger-400 hover:shadow-danger-300 hover:border-danger-500 hover:shadow-lg hover:border-danger-400/50 hover:text-white dark:bg-danger-700 dark:hover:bg-danger-600 dark:shadow-danger-900 dark:hover:shadow-danger-700 dark:text-danger-200',
+        warning: 'bg-warning-100 hover:bg-warning-300 text-warning-900 border border-warning-400 hover:shadow-warning-300 hover:border-warning-500 hover:shadow-lg hover:border-warning-400/50 hover:text-white dark:bg-warning-700 dark:hover:bg-warning-600 dark:shadow-warning-900 dark:hover:shadow-warning-700 dark:text-warning-200',
+        success: 'bg-success-100 hover:bg-success-300 text-success-900 border border-success-400 hover:shadow-success-300 hover:border-success-500 hover:shadow-lg hover:border-success-400/50 hover:text-white dark:bg-success-700 dark:hover:bg-success-600 dark:shadow-success-900 dark:hover:shadow-success-700 dark:text-success-200',
+        info: 'bg-info-100 hover:bg-info-300 text-info-900 border border-info-400 hover:shadow-info-300 hover:border-info-500 hover:shadow-lg hover:border-info-400/50 hover:text-white dark:bg-info-700 dark:hover:bg-info-600 dark:shadow-info-900 dark:hover:shadow-info-700 dark:text-info-200',
         light: 'bg-gray-100 hover:bg-gray-300 text-gray-900 border border-gray-400 hover:shadow-gray-300 hover:border-gray-500 hover:shadow-lg hover:border-gray-400/50 hover:text-white dark:bg-gray-700 dark:hover:bg-gray-600 dark:shadow-gray-900 dark:hover:shadow-gray-700 dark:text-gray-200',
         dark: 'bg-gray-300 hover:bg-gray-600 text-gray-900 border border-gray-400 hover:shadow-gray-300 hover:border-gray-500 hover:shadow-lg hover:border-gray-400/50 hover:text-white dark:bg-gray-700 dark:hover:bg-gray-600 dark:shadow-gray-900 dark:hover:shadow-gray-700 dark:text-gray-200',
     }
     const disabledTypes = {
-        primary:  'bg-sky-500 text-white cursor-not-allowed opacity-60 dark:bg-sky-700 dark:text-sky-200',
-        secondary: 'bg-slate-500 text-white cursor-not-allowed opacity-60 dark:bg-slate-700 dark:text-slate-200',
-        danger: 'bg-red-500 text-white cursor-not-allowed opacity-60 dark:bg-red-700 dark:text-red-200',
-        warning: 'bg-yellow-500 text-white cursor-not-allowed opacity-60 dark:bg-yellow-700 dark:text-yellow-200',
-        success: 'bg-green-500 text-white cursor-not-allowed opacity-60 dark:bg-green-700 dark:text-green-200',
-        info: 'bg-blue-500 text-white cursor-not-allowed opacity-60 dark:bg-blue-700 dark:text-blue-200',
+        primary:  'bg-primary-500 text-white cursor-not-allowed opacity-60 dark:bg-primary-700 dark:text-primary-200',
+        secondary: 'bg-secondary-500 text-white cursor-not-allowed opacity-60 dark:bg-secondary-700 dark:text-secondary-200',
+        danger: 'bg-danger-500 text-white cursor-not-allowed opacity-60 dark:bg-danger-700 dark:text-danger-200',
+        warning: 'bg-warning-500 text-white cursor-not-allowed opacity-60 dark:bg-warning-700 dark:text-warning-200',
+        success: 'bg-success-500 text-white cursor-not-allowed opacity-60 dark:bg-success-700 dark:text-success-200',
+        info: 'bg-info-500 text-white cursor-not-allowed opacity-60 dark:bg-info-700 dark:text-info-200',
         light: 'bg-gray-200 text-gray-600 cursor-not-allowed opacity-60 dark:bg-gray-700 dark:text-gray-200',
         dark: 'bg-gray-800 text-white cursor-not-allowed opacity-60 dark:bg-gray-700 dark:text-gray-200',
     }
     const linkTypes = {
-        primary:  'text-sky-600 hover:text-sky-500 text-shadow-sky-300 hover:text-shadow-sky-400  text-shadow-lg dark:text-sky-200 dark:hover:text-sky-300 dark:text-shadow-sky-900 dark:hover:text-shadow-sky-800',
-        secondary: 'text-slate-600 hover:text-slate-500 text-shadow-slate-300 hover:text-shadow-slate-400  text-shadow-lg dark:text-slate-200 dark:hover:text-slate-300 dark:text-shadow-slate-900 dark:hover:text-shadow-slate-800',
-        danger: 'text-red-600 hover:text-red-500 text-shadow-red-300 hover:text-shadow-red-400  text-shadow-lg dark:text-red-200 dark:hover:text-red-300 dark:text-shadow-red-900 dark:hover:text-shadow-red-800',
-        warning: 'text-yellow-600 hover:text-yellow-500 text-shadow-yellow-300 hover:text-shadow-yellow-400  text-shadow-lg dark:text-yellow-200 dark:hover:text-yellow-300 dark:text-shadow-yellow-900 dark:hover:text-shadow-yellow-800',
-        success: 'text-green-600 hover:text-green-500 text-shadow-green-300 hover:text-shadow-green-400  text-shadow-lg dark:text-green-200 dark:hover:text-green-300 dark:text-shadow-green-900 dark:hover:text-shadow-green-800',
-        info: 'text-blue-600 hover:text-blue-500 text-shadow-blue-300 hover:text-shadow-blue-400  text-shadow-lg dark:text-blue-200 dark:hover:text-blue-300 dark:text-shadow-blue-900 dark:hover:text-shadow-blue-800',
+        primary:  'text-primary-600 hover:text-primary-500 text-shadow-primary-300 hover:text-shadow-primary-400  text-shadow-lg dark:text-primary-200 dark:hover:text-primary-300 dark:text-shadow-primary-900 dark:hover:text-shadow-primary-800',
+        secondary: 'text-secondary-600 hover:text-secondary-500 text-shadow-secondary-300 hover:text-shadow-secondary-400  text-shadow-lg dark:text-secondary-200 dark:hover:text-secondary-300 dark:text-shadow-secondary-900 dark:hover:text-shadow-secondary-800',
+        danger: 'text-danger-600 hover:text-danger-500 text-shadow-danger-300 hover:text-shadow-danger-400  text-shadow-lg dark:text-danger-200 dark:hover:text-danger-300 dark:text-shadow-danger-900 dark:hover:text-shadow-danger-800',
+        warning: 'text-warning-600 hover:text-warning-500 text-shadow-warning-300 hover:text-shadow-warning-400  text-shadow-lg dark:text-warning-200 dark:hover:text-warning-300 dark:text-shadow-warning-900 dark:hover:text-shadow-warning-800',
+        success: 'text-success-600 hover:text-success-500 text-shadow-success-300 hover:text-shadow-success-400  text-shadow-lg dark:text-success-200 dark:hover:text-success-300 dark:text-shadow-success-900 dark:hover:text-shadow-success-800',
+        info: 'text-info-600 hover:text-info-500 text-shadow-info-300 hover:text-shadow-info-400  text-shadow-lg dark:text-info-200 dark:hover:text-info-300 dark:text-shadow-info-900 dark:hover:text-shadow-info-800',
         light: 'text-gray-600 hover:text-gray-500 text-shadow-gray-300 hover:text-shadow-gray-400  text-shadow-lg dark:text-gray-200 dark:hover:text-gray-300 dark:text-shadow-gray-900 dark:hover:text-shadow-gray-800',
         dark: 'text-gray-600 hover:text-gray-500 text-shadow-gray-300 hover:text-shadow-gray-400  text-shadow-lg dark:text-gray-200 dark:hover:text-gray-300 dark:text-shadow-gray-900 dark:hover:text-shadow-gray-800',
     }
     const disabledLinkTypes = {
-        primary:  'text-sky-500 cursor-not-allowed opacity-60 dark:text-sky-200',
-        secondary: 'text-slate-500 cursor-not-allowed opacity-60 dark:text-slate-200',
-        danger: 'text-red-500 cursor-not-allowed opacity-60 dark:text-red-200',
-        warning: 'text-yellow-500 cursor-not-allowed opacity-60 dark:text-yellow-200',
-        success: 'text-green-500 cursor-not-allowed opacity-60 dark:text-green-200',
-        info: 'text-blue-500 cursor-not-allowed opacity-60 dark:text-blue-200',
+        primary:  'text-primary-500 cursor-not-allowed opacity-60 dark:text-primary-200',
+        secondary: 'text-secondary-500 cursor-not-allowed opacity-60 dark:text-secondary-200',
+        danger: 'text-danger-500 cursor-not-allowed opacity-60 dark:text-danger-200',
+        warning: 'text-warning-500 cursor-not-allowed opacity-60 dark:text-warning-200',
+        success: 'text-success-500 cursor-not-allowed opacity-60 dark:text-success-200',
+        info: 'text-info-500 cursor-not-allowed opacity-60 dark:text-info-200',
         light: 'text-gray-600 cursor-not-allowed opacity-60 dark:text-gray-200',
         dark: 'text-gray-600 cursor-not-allowed opacity-60 dark:text-gray-200',
     }
     const gradientTypes = {
-        primary:  'bg-gradient-to-r from-cyan-500 to-blue-600 text-white hover:shadow-blue-300 hover:shadow-lg hover:from-cyan-400 hover:to-blue-500 dark:from-cyan-700 dark:to-blue-800 dark:text-cyan-200 dark:hover:shadow-cyan-900 dark:hover:shadow-lg dark:hover:from-cyan-600 dark:hover:to-blue-700',
+        primary:  'bg-gradient-to-r from-cyan-500 to-info-600 text-white hover:shadow-info-300 hover:shadow-lg hover:from-cyan-400 hover:to-info-500 dark:from-cyan-700 dark:to-info-800 dark:text-cyan-200 dark:hover:shadow-cyan-900 dark:hover:shadow-lg dark:hover:from-cyan-600 dark:hover:to-info-700',
         secondary: 'bg-gradient-to-r from-fuchsia-500 to-purple-700 text-white hover:shadow-purple-300 hover:shadow-lg hover:from-fuchsia-400 hover:to-purple-500 dark:from-fuchsia-700 dark:to-purple-800 dark:text-fuchsia-200 dark:hover:shadow-fuchsia-900 dark:hover:shadow-lg dark:hover:from-fuchsia-600 dark:hover:to-purple-700',
-        danger: 'bg-gradient-to-r from-red-500 to-pink-600 text-white hover:shadow-pink-300 hover:shadow-lg hover:from-red-400 hover:to-pink-500 dark:from-red-700 dark:to-pink-800 dark:text-red-200 dark:hover:shadow-red-900 dark:hover:shadow-lg dark:hover:from-red-600 dark:hover:to-pink-700',
-        warning: 'bg-gradient-to-r from-orange-500 to-yellow-600 text-white hover:shadow-yellow-300 hover:shadow-lg hover:from-orange-400 hover:to-yellow-500 dark:from-orange-700 dark:to-yellow-800 dark:text-orange-200 dark:hover:shadow-orange-900 dark:hover:shadow-lg dark:hover:from-orange-600 dark:hover:to-yellow-700',
-        success: 'bg-gradient-to-r from-green-500 to-teal-600 text-white hover:shadow-teal-300 hover:shadow-lg hover:from-green-400 hover:to-teal-500 dark:from-green-700 dark:to-teal-800 dark:text-green-200 dark:hover:shadow-green-900 dark:hover:shadow-lg dark:hover:from-green-600 dark:hover:to-teal-700',
-        info: 'bg-gradient-to-r from-sky-500 to-blue-600 text-white hover:shadow-blue-300 hover:shadow-lg hover:from-sky-400 hover:to-blue-500  dark:from-sky-700 dark:to-blue-800 dark:text-sky-200 dark:hover:shadow-sky-900 dark:hover:shadow-lg dark:hover:from-sky-600 dark:hover:to-blue-700',
+        danger: 'bg-gradient-to-r from-danger-500 to-pink-600 text-white hover:shadow-pink-300 hover:shadow-lg hover:from-danger-400 hover:to-pink-500 dark:from-danger-700 dark:to-pink-800 dark:text-danger-200 dark:hover:shadow-danger-900 dark:hover:shadow-lg dark:hover:from-danger-600 dark:hover:to-pink-700',
+        warning: 'bg-gradient-to-r from-orange-500 to-warning-600 text-white hover:shadow-warning-300 hover:shadow-lg hover:from-orange-400 hover:to-warning-500 dark:from-orange-700 dark:to-warning-800 dark:text-orange-200 dark:hover:shadow-orange-900 dark:hover:shadow-lg dark:hover:from-orange-600 dark:hover:to-warning-700',
+        success: 'bg-gradient-to-r from-success-500 to-teal-600 text-white hover:shadow-teal-300 hover:shadow-lg hover:from-success-400 hover:to-teal-500 dark:from-success-700 dark:to-teal-800 dark:text-success-200 dark:hover:shadow-success-900 dark:hover:shadow-lg dark:hover:from-success-600 dark:hover:to-teal-700',
+        info: 'bg-gradient-to-r from-primary-500 to-info-600 text-white hover:shadow-info-300 hover:shadow-lg hover:from-primary-400 hover:to-info-500  dark:from-primary-700 dark:to-info-800 dark:text-primary-200 dark:hover:shadow-primary-900 dark:hover:shadow-lg dark:hover:from-primary-600 dark:hover:to-info-700',
         light: 'bg-gradient-to-r from-gray-500 to-gray-600 text-white hover:shadow-gray-300 hover:shadow-lg hover:from-gray-400 hover:to-gray-500   dark:from-gray-700 dark:to-gray-800 dark:text-gray-200 dark:hover:shadow-gray-900 dark:hover:shadow-lg dark:hover:from-gray-600 dark:hover:to-gray-700',
         dark: 'bg-gradient-to-r from-gray-700 to-gray-800 text-white hover:shadow-gray-300 hover:shadow-lg hover:from-gray-600 hover:to-gray-700 dark:from-gray-900 dark:to-gray-900 dark:text-gray-200 dark:hover:shadow-gray-900 dark:hover:shadow-lg dark:hover:from-gray-800 dark:hover:to-gray-900',
     }
@@ -112,6 +112,7 @@ export default function Button({classList, type,onClick,disabled,children,size,o
         </>
     );
 }
+
 
 Button.propTypes = {
 

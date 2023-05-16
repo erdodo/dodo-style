@@ -7,6 +7,8 @@ import DateTimeBox from "./Form/DateTimeBox/";
 import SelectBox from "./Form/SelectBox";
 import {ToastContainer, toast} from './FeedBack/Toast';
 import Dialog from "./FeedBack/Dialog/Dialog";
+import Badge from "./DataDisplay/Badge/Badge";
+import Tooltip from "./FeedBack/Tooltip/Tooltip";
 
 /*import React from 'react';
 import ReactDOM from 'react-dom/client';
@@ -23,6 +25,9 @@ const onclick = () => {
 root.render(
 
     <div className={"flex flex-row  justify-center pt-32 dark:bg-gray-900 w-screen h-screen"}>
+        <Badge text={"deneme"} color={"danger"} className={"m-2"}>
+            <Button type={"primary"} classList={"m-2 primary"}>Button</Button>
+        </Badge>
 
         <button onClick={onclick}>Tema</button>
 <ToastContainer/>
@@ -30,4 +35,4 @@ root.render(
 );*/
 
 
-export { Button, Tag, AutoComplete, Input, DateTimeBox,SelectBox,ToastContainer, toast,Dialog };
+export { Button, Tag, AutoComplete, Input, DateTimeBox,SelectBox,ToastContainer, toast,Dialog,Tooltip };

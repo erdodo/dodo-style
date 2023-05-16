@@ -16,9 +16,9 @@ export default function SelectBox({ classList,size,rounded,disabled,options,onSe
     const [_maxShow, setMaxShow] = React.useState(maxShow);// Gösterilecek maksimum tag sayısı içeride aç kapa yapabilmek için yapılan tanımlama
     const inputRef = React.useRef(null);// Input elementine erişmek için oluşturulan ref (arama inputu)
     const [visible, setVisible] = React.useState(false);// Seçeneklerin açık olup olmadığını tutan state
-    const [filteredOptions, setFilteredOptions] = React.useState([]);// Arama inputuna göre filtrelenmiş seçeneklerin tutulduğu state
+    const [filtedangerOptions, setFiltedangerOptions] = React.useState([]);// Arama inputuna göre filtrelenmiş seçeneklerin tutulduğu state
     const [_value, setValue] = React.useState(multiple?[]:"");// Seçilen değerlerin tutulduğu state
-    const [filteredTags, setFilteredTags] = React.useState([]);// Gösterilecek maksimum tag sayısı içeride aç kapa yapabilmek için yapılan tanımlama
+    const [filtedangerTags, setFiltedangerTags] = React.useState([]);// Gösterilecek maksimum tag sayısı içeride aç kapa yapabilmek için yapılan tanımlama
     const [inputWidth, setInputWidth] = React.useState(150);// Arama inputunun genişliğini tutan state / içine yazılan değere göre genişliği değişir
     const [error, setError] = React.useState("");// Hata mesajı tutan state (max değer seçildi gibi)
 
@@ -76,7 +76,7 @@ export default function SelectBox({ classList,size,rounded,disabled,options,onSe
                     return {label:item,value:item};
                 }else return item;
             })
-            setFilteredOptions(_options);
+            setFiltedangerOptions(_options);
         }
     }, [options]);
     React.useEffect(() => {
@@ -110,8 +110,8 @@ export default function SelectBox({ classList,size,rounded,disabled,options,onSe
         /*
         * Props olarak gelen maxShow değerine göre gösterilecek tagler state'e aktarılıyor
          */
-        _value && _value.length>0 && setFilteredTags(_value.slice(0,maxShow));
-        _value.length<=0 && setFilteredTags([]);
+        _value && _value.length>0 && setFiltedangerTags(_value.slice(0,maxShow));
+        _value.length<=0 && setFiltedangerTags([]);
     },[_value]);
     React.useEffect(() => {
         setMaxShow(maxShow);
@@ -132,10 +132,10 @@ export default function SelectBox({ classList,size,rounded,disabled,options,onSe
             }
             else return item;
         })
-        let filtered = _options.filter((item) => {
+        let filtedanger = _options.filter((item) => {
             return item.label.toLowerCase().includes(value.toLowerCase());
         });
-        setFilteredOptions(filtered);
+        setFiltedangerOptions(filtedanger);
         setVisible(true)
 
     }
@@ -293,7 +293,7 @@ export default function SelectBox({ classList,size,rounded,disabled,options,onSe
             nextEl && nextEl.focus();
         }
         const selectItem = (index) => {
-            let option = filteredOptions[index];
+            let option = filtedangerOptions[index];
             selectClick(option);
         }
 
@@ -337,7 +337,7 @@ export default function SelectBox({ classList,size,rounded,disabled,options,onSe
                                 </div>
                             ))}
                             {/*Max show kısıtlaması olan taglar*/
-                                _maxShow && _value && filteredTags.map((item,index)=>(
+                                _maxShow && _value && filtedangerTags.map((item,index)=>(
                                  <div tabIndex={index} id={_id+'_tag_'+index} className={"!m-[2px]"}>
                                      <Tag {...tag?.props} size={size} id={_id+'_tag_'+index} type={tag?.props?.type?tag?.props?.type:"primary"} classList={"autocomplete-input"} close onClose={()=>selectClick(item)}>{item.label}</Tag>
                                  </div>
@@ -386,8 +386,8 @@ export default function SelectBox({ classList,size,rounded,disabled,options,onSe
                     visible &&
                     <div className={" absolute left-0 w-full z-10"}>
                         <div className={` bg-white dark:text-white dark:bg-gray-800 dark:border-gray-900 p-2 !mt-1  border  w-full rounded-md `}>
-                            {filteredOptions.length>0?
-                                Object.values(filteredOptions).map((item,index) => (
+                            {filtedangerOptions.length>0?
+                                Object.values(filtedangerOptions).map((item,index) => (
                                     <div key={item.value} id={_id+'_option_'+index} tabIndex={index} onClick={()=>selectClick(item)}
                                          className={`py-1 px-3 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer mb-1 ${_rounded} ${_value.value === item.value ?'bg-gray-200 dark:bg-gray-600 dark:border-gray-700 border':''} ${multiple && _value.includes(item)?'bg-gray-200 dark:bg-gray-600 dark:border-gray-700 border':''}`} >
                                         {item.label}
@@ -403,7 +403,7 @@ export default function SelectBox({ classList,size,rounded,disabled,options,onSe
                     </div>
                 }
             </div>
-            {error && <span className={"text-red-500 text-xs"}>{error}</span>}
+            {error && <span className={"text-danger-500 text-xs"}>{error}</span>}
         </>
     );
 }
