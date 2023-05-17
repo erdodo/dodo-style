@@ -9,6 +9,7 @@ import {ToastContainer, toast} from './FeedBack/Toast';
 import Dialog from "./FeedBack/Dialog/Dialog";
 import Badge from "./DataDisplay/Badge/Badge";
 import Tooltip from "./FeedBack/Tooltip/Tooltip";
+import MessageBox  from "./FeedBack/MessageBox";
 
 /*import React from 'react';
 import ReactDOM from 'react-dom/client';
@@ -25,14 +26,16 @@ const onclick = () => {
 root.render(
 
     <div className={"flex flex-row  justify-center pt-32 dark:bg-gray-900 w-screen h-screen"}>
-        <Badge text={"deneme"} color={"danger"} className={"m-2"}>
-            <Button type={"primary"} classList={"m-2 primary"}>Button</Button>
-        </Badge>
+
+
+
 
         <button onClick={onclick}>Tema</button>
-<ToastContainer/>
+        <MessageBox message={"Bu message box mesajıdır"} title={"Bu da başlığı"}>
+            <div><Button type={"primary"} classList={"m-2 primary"}>Button</Button></div>
+        </MessageBox>
     </div>
 );*/
 
 
-export { Button, Tag, AutoComplete, Input, DateTimeBox,SelectBox,ToastContainer, toast,Dialog,Tooltip };
+export { Button, Tag, AutoComplete, Input, DateTimeBox,SelectBox,ToastContainer, toast,Dialog,Tooltip,MessageBox,Badge };

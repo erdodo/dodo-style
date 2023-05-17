@@ -19,3 +19,5 @@ tailwind.config.js
 tsconfig.json
 vue.config.js
 webpack.config.js
+*.md
+*.mdx

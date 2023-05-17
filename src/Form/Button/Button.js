@@ -159,7 +159,4 @@ Button.propTypes = {
 
 Button.defaultProps = {
     size:"md",
-    onClick: (event) => {
-        alert('You have clicked me!', event.target);
-    },
 };

@@ -1,7 +1,8 @@
 import MessageBox from './MessageBox'
+import Button from "../../Form/Button";
 import { Meta,Story } from "@storybook/addon-docs/blocks";
 
-<Meta title="Geri Dönüt/MessageBox" />
+<Meta title="Geri Dönüt/MessageBox/Örnekler" />
 
 # MessageBox
 ## Kullanım
@@ -9,8 +10,188 @@ import { Meta,Story } from "@storybook/addon-docs/blocks";
 import { MessageBox } from 'dodo-style'
 ```
 
-<h1 style={{color:"danger"}}>Yakında sizlerle</h1>
+## Basit Örnek
 
-<Story name="Test">
-    Yakında Sizlerle
-</Story>
+<MessageBox
+    title={"Başlık"}
+    message={"lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet"}
+    >
+    <Button type={"primary"}>Message Box</Button>
+</MessageBox>
+
+```jsx
+<MessageBox
+    title={"Başlık"}
+    message={"lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet"}
+    >
+    <Button type={"primary"}>Message Box</Button>
+</MessageBox>
+```
+
+## onConfirm - onCancel Örnek
+
+<div style={{display:"flex",flexDirection:"row",alignItems:"center",flexWrap:"wrap"}}>
+    <div style={{margin:"5px"}}>
+        <MessageBox
+            title={"Başlık"}
+            message={"lorem ipsum dolor sit amet"}
+            onConfirm={()=> alert("Onaylandı")}
+            onCancel={()=> alert("Vazgeçildi")}
+        >
+            <Button type={"primary"}>Message Box</Button>
+        </MessageBox>
+    </div>
+</div>
+
+
+```jsx
+<MessageBox
+    title={"Başlık"}
+    message={"lorem ipsum dolor sit amet "}
+    onConfirm={()=> alert("Onaylandı")}
+    onCancel={()=> alert("Vazgeçildi")}
+    >
+    <Button type={"primary"}>Message Box</Button>
+</MessageBox>
+```
+## Buton Metinleri Örnek
+
+<div style={{display:"flex",flexDirection:"row",alignItems:"center",flexWrap:"wrap"}}>
+    <div style={{margin:"5px"}}>
+        <MessageBox
+            title={"Başlık"}
+            message={"lorem ipsum dolor sit amet"}
+            confirmButtonText={"Evet"}
+            cancelButtonText={"Hayır"}
+        >
+            <Button type={"primary"}>Message Box</Button>
+        </MessageBox>
+    </div>
+</div>
+
+
+```jsx
+<MessageBox
+    title={"Başlık"}
+    message={"lorem ipsum dolor sit amet "}
+    confirmButtonText={"Evet"}
+    cancelButtonText={"Hayır"}
+    >
+    <Button type={"primary"}>Message Box</Button>
+</MessageBox>
+```
+## Özel Footer Örnek
+
+<div style={{display:"flex",flexDirection:"row",alignItems:"center",flexWrap:"wrap"}}>
+    <div style={{margin:"5px"}}>
+        <MessageBox
+            title={"Başlık"}
+            message={"lorem ipsum dolor sit amet"}
+            footer={
+                <div style={{display:"flex",flexDirection:"row",justifyContent:"flex-end"}}>
+                    <Button type={"primary"} size={"sm"} plain classList={"mr-2"}>Evet</Button>
+                    <Button type={"danger"} size={"sm"} plain >Hayır</Button>
+                </div>
+            }
+        >
+            <Button type={"primary"}>Message Box</Button>
+        </MessageBox>
+    </div>
+</div>
+
+
+```jsx
+<MessageBox
+    title={"Başlık"}
+    message={"lorem ipsum dolor sit amet"}
+    footer={
+        <div style={{display:"flex",flexDirection:"row",justifyContent:"flex-end"}}>
+            <Button type={"primary"} size={"sm"} plain classList={"mr-2"}>Evet</Button>
+            <Button type={"danger"} size={"sm"} plain >Hayır</Button>
+        </div>
+    }
+>
+    <Button type={"primary"}>Message Box</Button>
+</MessageBox>
+```
+
+## Özel Header Örnek
+
+<div style={{display:"flex",flexDirection:"row",alignItems:"center",flexWrap:"wrap"}}>
+    <div style={{margin:"5px"}}>
+        <MessageBox
+            message={"lorem ipsum dolor sit amet"}
+            header={
+                <div style={{display:"flex",flexDirection:"row",justifyContent:"space-between"}}>
+                    <span>Özel header örneği</span>
+                    <Button type={"danger"} size={"sm"} plain >Kapat</Button>
+                </div>
+            }
+        >
+            <Button type={"primary"}>Message Box</Button>
+        </MessageBox>
+    </div>
+</div>
+
+
+```jsx
+<MessageBox
+    message={"lorem ipsum dolor sit amet"}
+    header={
+        <div style={{display:"flex",flexDirection:"row",justifyContent:"flex-end"}}>
+            <Button type={"primary"} size={"sm"} plain classList={"mr-2"}>Evet</Button>
+            <Button type={"danger"} size={"sm"} plain >Hayır</Button>
+        </div>
+    }
+>
+    <Button type={"primary"}>Message Box</Button>
+</MessageBox>
+```
+## Vazgeç Butonu Yok Örneği
+
+<div style={{display:"flex",flexDirection:"row",alignItems:"center",flexWrap:"wrap"}}>
+    <div style={{margin:"5px"}}>
+        <MessageBox
+            title={"Başlık"}
+            message={"lorem ipsum dolor sit amet"}
+            cancelButtonText={""}
+        >
+            <Button type={"primary"}>Message Box</Button>
+        </MessageBox>
+    </div>
+</div>
+
+
+```jsx
+<MessageBox
+    title={"Başlık"}
+    message={"lorem ipsum dolor sit amet"}
+   cancelButtonText={""}
+>
+    <Button type={"primary"}>Message Box</Button>
+</MessageBox>
+```
+## Onayla Butonu Yok Örneği
+
+<div style={{display:"flex",flexDirection:"row",alignItems:"center",flexWrap:"wrap"}}>
+    <div style={{margin:"5px"}}>
+        <MessageBox
+            title={"Başlık"}
+            message={"lorem ipsum dolor sit amet"}
+            confirmButtonText={""}
+        >
+            <Button type={"primary"}>Message Box</Button>
+        </MessageBox>
+    </div>
+</div>
+
+
+```jsx
+<MessageBox
+    title={"Başlık"}
+    message={"lorem ipsum dolor sit amet"}
+   confirmButtonText={""}
+>
+    <Button type={"primary"}>Message Box</Button>
+</MessageBox>
+```
