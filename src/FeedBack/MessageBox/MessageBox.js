@@ -78,7 +78,7 @@ export default function MessageBox({location,children,header,footer,open,onClose
     }
     return (
         <>
-            <div className={"relative"}>
+            <div className={"relative w-fit"}>
 
                 {isOpen &&
                     <div className={`fixed dialog-body flex flex-row  bg-black/50 z-20 transition duration-150 ease-out hover:ease-in ${locationList[location]} ` }>
@@ -100,7 +100,7 @@ export default function MessageBox({location,children,header,footer,open,onClose
                             }
                         </div>
                     </div>}
-                <div onClick={()=>setIsOpen(!isOpen)}>
+                <div className={"w-fit"} onClick={()=>setIsOpen(!isOpen)}>
                     {children}
                 </div>
             </div>
