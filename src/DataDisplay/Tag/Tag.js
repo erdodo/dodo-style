@@ -22,7 +22,7 @@ export default function Tag({classList, type,onClick,children,size,outline,notOu
 
     let _type ="";
     const types = {
-        primary:  'bg-primary-600 text-white  border border-primary-700 shadow-primary-300 shadow-lg dark:bg-primary-700 dark:border-primary-800 dark:shadow-primary-900 ',
+        primary:  'bg-primary-600 text-white  border border-primary-700 shadow-primary-300/70 shadow-lg dark:bg-primary-700 dark:border-primary-800 dark:shadow-primary-900/70 ',
         secondary: 'bg-secondary-600 text-white border border-secondary-700 shadow-secondary-300 shadow-lg dark:bg-secondary-700 dark:border-secondary-800 dark:shadow-secondary-900 ',
         danger: 'bg-danger-600 text-white border border-danger-700 shadow-danger-300 shadow-lg dark:bg-danger-700 dark:border-danger-800 dark:shadow-danger-900 ',
         warning: 'bg-warning-600 text-white border border-warning-700 shadow-warning-300 shadow-lg dark:bg-warning-700 dark:border-warning-800 dark:shadow-warning-900 ',
@@ -56,7 +56,7 @@ export default function Tag({classList, type,onClick,children,size,outline,notOu
         secondary: 'bg-gradient-to-r from-fuchsia-500 to-purple-600 text-white',
         danger: 'bg-gradient-to-r from-rose-500 to-pink-600 text-white',
         warning: 'bg-gradient-to-r from-orange-500 to-amber-600 text-white',
-        success: 'bg-gradient-to-r from-emerald-500 to-success-600 text-white',
+        success: 'bg-gradient-to-r from-primary-500 to-success-600 text-white',
         info: 'bg-gradient-to-r from-info-500 to-cyan-600 text-white',
         light: 'bg-gradient-to-r from-black/10 to-black/40 text-black',
         dark: 'bg-gradient-to-r from-black/60 to-black/90 text-white',
@@ -72,34 +72,34 @@ export default function Tag({classList, type,onClick,children,size,outline,notOu
     };
     let _closeType = "";
     const closeTypes = {
-        primary:  'text-white px-0 py-0 hover:shadow-primary-400 hover:shadow-md rounded-full cursor-pointer',
-        secondary: 'text-white px-0 py-0 hover:shadow-secondary-400 hover:shadow-md rounded-full cursor-pointer',
-        danger: 'text-white px-0 py-0 hover:shadow-danger-400 hover:shadow-md rounded-full cursor-pointer',
-        warning: 'text-white px-0 py-0 hover:shadow-warning-400 hover:shadow-md rounded-full cursor-pointer',
-        success: 'text-white px-0 py-0 hover:shadow-success-400 hover:shadow-md rounded-full cursor-pointer',
-        info: 'text-white px-0 py-0 hover:shadow-info-400 hover:shadow-md rounded-full cursor-pointer',
-        light: 'text-black px-0 py-0 hover:shadow-gray-400 hover:shadow-md rounded-full cursor-pointer',
-        dark: 'text-white px-0 py-0 hover:shadow-gray-400 hover:shadow-md rounded-full cursor-pointer',
+        primary:  'text-white px-0 py-0 hover:shadow-primary-400/70 hover:shadow-lg rounded-full cursor-pointer',
+        secondary: 'text-white px-0 py-0 hover:shadow-secondary-400 hover:shadow-lg rounded-full cursor-pointer',
+        danger: 'text-white px-0 py-0 hover:shadow-danger-400 hover:shadow-lg rounded-full cursor-pointer',
+        warning: 'text-white px-0 py-0 hover:shadow-warning-400 hover:shadow-lg rounded-full cursor-pointer',
+        success: 'text-white px-0 py-0 hover:shadow-success-400 hover:shadow-lg rounded-full cursor-pointer',
+        info: 'text-white px-0 py-0 hover:shadow-info-400 hover:shadow-lg rounded-full cursor-pointer',
+        light: 'text-black px-0 py-0 hover:shadow-gray-400 hover:shadow-lg rounded-full cursor-pointer',
+        dark: 'text-white px-0 py-0 hover:shadow-gray-400 hover:shadow-lg rounded-full cursor-pointer',
     }
     const closeOutlineTypes = {
-        primary:  'text-primary-900 px-0 py-0 hover:shadow-primary-400 hover:shadow-md rounded-full cursor-pointer',
-        secondary: 'text-secondary-900 px-0 py-0 hover:shadow-secondary-400 hover:shadow-md rounded-full cursor-pointer',
-        danger: 'text-danger-900 px-0 py-0 hover:shadow-danger-400 hover:shadow-md rounded-full cursor-pointer',
-        warning: 'text-warning-900 px-0 py-0 hover:shadow-warning-400 hover:shadow-md rounded-full cursor-pointer',
-        success: 'text-success-900 px-0 py-0 hover:shadow-success-400 hover:shadow-md rounded-full cursor-pointer',
-        info: 'text-info-900 px-0 py-0 hover:shadow-info-400 hover:shadow-md rounded-full cursor-pointer',
-        light: 'text-gray-900 px-0 py-0 hover:shadow-gray-400 hover:shadow-md rounded-full cursor-pointer',
-        dark: 'text-gray-900 px-0 py-0 hover:shadow-gray-400 hover:shadow-md rounded-full cursor-pointer',
+        primary:  'text-primary-900 px-0 py-0 hover:shadow-primary-400/70 hover:shadow-lg rounded-full cursor-pointer',
+        secondary: 'text-secondary-900 px-0 py-0 hover:shadow-secondary-400 hover:shadow-lg rounded-full cursor-pointer',
+        danger: 'text-danger-900 px-0 py-0 hover:shadow-danger-400 hover:shadow-lg rounded-full cursor-pointer',
+        warning: 'text-warning-900 px-0 py-0 hover:shadow-warning-400 hover:shadow-lg rounded-full cursor-pointer',
+        success: 'text-success-900 px-0 py-0 hover:shadow-success-400 hover:shadow-lg rounded-full cursor-pointer',
+        info: 'text-info-900 px-0 py-0 hover:shadow-info-400 hover:shadow-lg rounded-full cursor-pointer',
+        light: 'text-gray-900 px-0 py-0 hover:shadow-gray-400 hover:shadow-lg rounded-full cursor-pointer',
+        dark: 'text-gray-900 px-0 py-0 hover:shadow-gray-400 hover:shadow-lg rounded-full cursor-pointer',
     }
     const closePlainTypes = {
-        primary:  'text-primary-900 px-0 py-0 hover:shadow-primary-400 hover:shadow-md rounded-full cursor-pointer',
-        secondary: 'text-secondary-900 px-0 py-0 hover:shadow-secondary-400 hover:shadow-md rounded-full cursor-pointer',
-        danger: 'text-danger-900 px-0 py-0 hover:shadow-danger-400 hover:shadow-md rounded-full cursor-pointer',
-        warning: 'text-warning-900 px-0 py-0 hover:shadow-warning-400 hover:shadow-md rounded-full cursor-pointer',
-        success: 'text-success-900 px-0 py-0 hover:shadow-success-400 hover:shadow-md rounded-full cursor-pointer',
-        info: 'text-info-900 px-0 py-0 hover:shadow-info-400 hover:shadow-md rounded-full cursor-pointer',
-        light: 'text-gray-900 px-0 py-0 hover:shadow-gray-400 hover:shadow-md rounded-full cursor-pointer',
-        dark: 'text-gray-900 px-0 py-0 hover:shadow-gray-400 hover:shadow-md rounded-full cursor-pointer',
+        primary:  'text-primary-900 px-0 py-0 hover:shadow-primary-400/70 hover:shadow-lg rounded-full cursor-pointer',
+        secondary: 'text-secondary-900 px-0 py-0 hover:shadow-secondary-400 hover:shadow-lg rounded-full cursor-pointer',
+        danger: 'text-danger-900 px-0 py-0 hover:shadow-danger-400 hover:shadow-lg rounded-full cursor-pointer',
+        warning: 'text-warning-900 px-0 py-0 hover:shadow-warning-400 hover:shadow-lg rounded-full cursor-pointer',
+        success: 'text-success-900 px-0 py-0 hover:shadow-success-400 hover:shadow-lg rounded-full cursor-pointer',
+        info: 'text-info-900 px-0 py-0 hover:shadow-info-400 hover:shadow-lg rounded-full cursor-pointer',
+        light: 'text-gray-900 px-0 py-0 hover:shadow-gray-400 hover:shadow-lg rounded-full cursor-pointer',
+        dark: 'text-gray-900 px-0 py-0 hover:shadow-gray-400 hover:shadow-lg rounded-full cursor-pointer',
     }
     const _notOutline = notOutline && "!border-[transparent]"
     if(outline){

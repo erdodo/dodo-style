@@ -1,25 +1,33 @@
 import React from "react";
-export default function CheckBox({value,onChange,disabled ,classList,label,type}){
-    const [checked,setChecked] = React.useState(false);
+import '../assets/Switch.css'
+import config from "../config.json";
+export default function CheckBox(props){
+
+
     return(
         <>
-            {type === "checkbox" &&
+            {props.type === "checkbox" &&
                 <label className={"flex flex-row items-baseline"}>
                     <div>
                         <input
-                            type="checkbox"
-                            className={`w-full focus-visible:outline-0 outline-0 border-none ${classList} `}
-                            value={value}
-                            onChange={onChange}
-                            disabled={disabled}
+                            {...props}
+                            value={props.value}
+                            onChange={props.onChange}
                         />
                     </div>
-                    <span className={"!ml-2"}>{label} </span>
+                    <span className={"!ml-2"}>{props.label} </span>
 
                 </label>
             }
-            {type === "switch" &&
-                <label htmlFor="">Yakında</label>
+            {props.type === "switch" &&
+                <div className={"dodo-switch"}>
+                    <input
+                        type="checkbox"
+                        className={`  ${config.switchSizeList[props.size]} ${config.switchTypeList[props.styleType]} ${props.className} `}
+                        value={props.value}
+                        onChange={props.onChange}
+                    />
+                </div>
             }
         </>
     )

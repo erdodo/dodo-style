@@ -25,10 +25,6 @@ module.exports = {
                     },
                 },
             },
-            {
-                test: /\.(js|jsx)$/i,
-                exclude: /Alert/,
-            },
         ],
     }
 };

@@ -1,5 +1,5 @@
 import Config from '../config.json'
-export default function Text(props){
+export default function Else(props){
     let classList=`
         min-w-[120px] w-full px-3 
         ${Config.styleTypes[props.styleType]}
@@ -8,15 +8,17 @@ export default function Text(props){
         ${Config.textSizes[props.size]} 
         ${props.disabled? Config.styleTypes.disabled:""}
         ${props.notOutline? Config.styleTypes.noOutline:""}
-  `;
+     `;
     return(
-        <input
-            {...props}
-            type="text"
-            className={classList}
-            value={props.value}
-            onChange={props.onChange}
-            maxLength={props.limit}
-        />
+        <>
+            <input
+                {...props}
+                type={props.type}
+                className={classList}
+                value={props.value}
+                onChange={props.onChange}
+                maxLength={props.limit}
+            />
+        </>
     )
 }

@@ -1,16 +1,28 @@
 import React,{useState} from "react";
-export default function TextArea({value,onChange,disabled ,classList,placeholder,limit,rows,autoRow}){
-    const [_rows,setRows] = useState(rows)
-    return(
-        <textarea
-            className={`min-w-[120px] w-full  focus-visible:outline-0 outline-0 border-none py-2 bg-transparent ${classList}`}
-            onChange={(e)=>{onChange(e); if(autoRow){setRows(e.target.value.split("\n").length)}}}
-            disabled={disabled}
-            placeholder={placeholder}
-            maxLength={limit}
-            rows={_rows}
-        >
-            {value}
-        </textarea>
-    )
+import Config from '../config.json'
+export default function TextArea(props){
+    const [_rows,setRows] = useState(props.rows)
+
+        let classList=`
+        min-w-[120px] w-full px-3 py-1
+        ${Config.styleTypes[props.styleType]}
+        ${Config.rounded[props.rounded]} ${props.resize}
+        ${props.className} ${Config.sizes[props.size]}
+        ${Config.textSizes[props.size]} 
+        ${props.disabled? Config.styleTypes.disabled:""}
+    `;
+        if(props.notOutline) classList+= "!border-[transparent] !shadow-none";
+        return(
+            <>
+                <textarea
+                    {...props}
+                    className={classList}
+                    onChange={(e)=>{props.onChange(e); if(props.autoRow){setRows(e.target.value.split("\n").length)}}}
+                    maxLength={props.limit}
+                    rows={_rows}
+                >{props.value}</textarea>
+            </>
+        )
+
+
 }

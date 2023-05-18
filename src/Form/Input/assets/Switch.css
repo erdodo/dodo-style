@@ -1,0 +1,29 @@
+.dodo-switch {
+}
+
+.dodo-switch input[type="checkbox"] {
+    position: relative;
+    appearance: none;
+    background: #ccc;
+    border-radius: 10005px;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+
+.dodo-switch input[type="checkbox"]::after {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    transform: scale(1.1);
+    transition: 0.4s;
+}
+
+.dodo-switch input:checked[type="checkbox"]::after {
+    left: 50%;
+}

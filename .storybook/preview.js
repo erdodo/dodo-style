@@ -3,6 +3,9 @@
 import { themes } from '@storybook/theming';
 import {DocsContainer} from "@storybook/blocks";
 import React from 'react';
+import { withThemeByDataAttribute } from '@storybook/addon-styling'
+
+
 
 var head = document.getElementsByTagName('HEAD')[0];
 
@@ -89,4 +92,14 @@ const preview = {
 export const globalTypes = {
     darkMode: true,
 };
+export const decorators = [
+    withThemeByDataAttribute({
+        themes: {
+            light: 'light',
+            dark: 'dark',
+        },
+        defaultTheme: 'light',
+        attributeName: 'data-mode',
+    }),
+];
 export default preview;

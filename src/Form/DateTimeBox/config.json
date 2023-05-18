@@ -1,0 +1,32 @@
+{
+  "rounded": {
+    "none": "",
+    "sm": "rounded-sm",
+    "md": "rounded-md",
+    "lg": "rounded-lg",
+    "xl": "rounded-xl",
+    "2xl": "rounded-[1rem]",
+    "3xl": "rounded-[1.5rem]",
+    "full": "rounded-full"
+  },
+  "sizes" : {
+    "sm": "min-h-[32px]",
+    "md": "min-h-[36px]",
+    "lg": "min-h-[44px] ",
+    "xl": "min-h-[54px]",
+    "2xl": "min-h-[58px]",
+    "3xl": "min-h-[66px] "
+  },
+  "textSizes" : {
+    "sm": "!text-sm",
+    "md": "!text-md",
+    "lg": "!text-lg",
+    "xl": "!text-xl",
+    "2xl": "!text-2xl",
+    "3xl": "!text-3xl"
+  },
+  "styleTypes" : {
+    "default": "bg-white text-gray-900 border border-gray-300 shadow-gray-300 shadow-lg dark:bg-gray-800 dark:text-gray-100 dark:border-gray-700 dark:shadow-gray-800 dark:shadow-lg",
+    "primary": "bg-primary-500 text-white border border-primary-500 shadow-primary-500/70 shadow-lg dark:bg-primary-600 dark:text-white dark:border-primary-600 dark:shadow-primary-600/70 dark:shadow-lg"
+  }
+}

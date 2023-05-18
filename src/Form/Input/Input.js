@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import{BsArrowUpSquareFill,BsArrowDownSquareFill,BsX} from 'dodo-icons/react/bs'
+import{BsX} from 'dodo-icons/react/bs'
 import {AiOutlineEye,AiOutlineEyeInvisible} from 'dodo-icons/react/ai'
+import {FiMinus,FiPlus} from 'dodo-icons/react/fi'
 
 import CheckBox from "./inputs/CheckBox";
 import Radio from "./inputs/Radio";
@@ -14,114 +15,65 @@ import TextArea from "./inputs/TextArea";
 import Range from "./inputs/Range";
 import Tel from "./inputs/Tel";
 import Url from "./inputs/Url";
+import Else from "./inputs/Else";
 
-
-//todo: min,max,buttonVisible,errorVisible,step,placeholder,maxLength,minLength,passVisible
-// todo: sağdaki butonlar yazı üzerine geliyo
-/**
- * id örneği
- * name örneği
- * class örneği
- * styleType örneği (primary,secondary,success,warning,danger,info,light,dark)
- * size örneği (sm,md,lg,xl,2xl,3xl)
- * disabled örneği
- * notOutline örneği
- * rounded örneği (sm,md,lg,xl,2xl,3xl)
- * styleType örneği (default)
- * min,max,step örneği(number)
- * showPassword örneği (password)
- * autoRow örneği (textarea)
- * clear örneği
- * limit örneği
- * placeholder örneği
- */
-/**
- * Input Componenti
- *
- */
+import Config from "./config.json";
 export default function Input(
     {
-        classList, type,onClick,onChange,disabled,value,size,
-        notOutline,rounded,style,styleType,min,max,clear,showPassword,
-        autoRow,rows,limit,placeholder,label
+        type,onChange,value,size,
+        notOutline,rounded,styleType,clear,showPassword,
+        autoRow,limit,label,...props
     }
 ) {
 
-    const [_value, setValue] = React.useState(null);
+    let [_value, setValue] = React.useState(value);
+    const [textLength, setTextLength] = React.useState(0);
     const [error, setError] = React.useState(null);
-
     const [_inputType, setInputType] = React.useState(type);
 
-    //Baş: Stil İşlemleri
-    let _rounded = rounded ? `rounded-${rounded}` : 'rounded-md';
-    if(rounded==='2xl') _rounded = 'rounded-[1rem]';
-    if(rounded==='3xl') _rounded = 'rounded-[1.2rem]';
-
-    const _size = {
-        sm: `min-h-[32px]`,
-        md: `min-h-[36px]`,
-        lg: `min-h-[44px] `,
-        xl: `min-h-[54px]`,
-        "2xl": `min-h-[58px]`,
-        "3xl": `min-h-[66px] `,
-    };
-    const _textSize = {
-        sm: `!text-sm`,
-        md: `!text-md`,
-        lg: `!text-lg`,
-        xl: `!text-xl`,
-        "2xl": `!text-2xl`,
-        "3xl": `!text-3xl`,
-    }
-    const _notOutline = notOutline&& "!border-[transparent] ";
-    const _resize = type=== 'textarea' ? 'resize' : 'resize-none';
-    let _type ="";
-    const defaultStyleTypes = {
-        default: 'bg-white text-gray-900 border border-gray-300 shadow-gray-300 shadow-lg dark:bg-gray-800 dark:text-gray-100 dark:border-gray-700 dark:shadow-gray-800 dark:shadow-lg',
-    }
-    if (styleType === 'default') {
-        _type = defaultStyleTypes.default;
-    }
-    const _disabled = disabled ? 'opacity-50 cursor-not-allowed !bg-gray-100' : '';
-    //Son: Stil İşlemleri
 
     React.useEffect(() => {
         setValue(value);
     }, [value]);
 
     React.useEffect(() => {
+        setInputType(type);
         setError(null);
     }, [type]);
-    React.useEffect(() => {
-        onChange(_value)
-    }, [_value]);
 
     const onChangeInput = (event) => {
         if(type === 'checkbox') {
-            setValue(event.target.checked);
-            onChange(event.target.checked)
+            setValue(event.target.checked)
+            onChange(event)
+
         }else{
 
-            setValue(event.target.value);
-            onChange(event.target.value)
+            setValue(event.target.value)
+            onChange(event)
+            setTextLength(event.target.value.length)
         }
     }
     const valueArttir = () => {
-        if(max && _value>=max) return;
-        setValue(_value?_value+1: (max > 1? 1:max));
+        if(props.max && _value>=props.max) return;
+        if(typeof _value !== "number") setValue(1);
+        else setValue(_value?_value+1: (props.max > 1? 1:props.max));
     }
     const valueAzalt = () => {
-        if(min && _value<=min) return;
-        setValue(_value?_value-1: (min < -1? -1:min ));
+        if(props.min && _value<=props.min) return;
+        if (typeof _value !== "number") setValue(-1);
+        else setValue(_value?_value-1: (props.min < -1? -1:props.min ));
     }
 
 
     return (
         <div className={"flex flex-col "}>
-            <div className={`flex flex-row items-center h-auto px-3 ${classList} ${_resize} ${_type} ${_size[size]} ${_rounded} ${_textSize[size]} ${_disabled}`}>
+            <div className={`flex flex-row items-center `}>
                 {
                     ['switch',"checkbox"].includes(type)  &&
-                    <CheckBox label={label} type={type} value={_value} onChange={onChangeInput} disabled={disabled} classList={`${classList} ${_disabled}`}  />
+                    <CheckBox label={label} {...props}  value={_value} onChange={onChangeInput}
+                              size={size}   limit={limit}
+                              type={type} styleType={styleType}
+                              notOutline={notOutline} rounded={rounded}  />
                 }
                 {
                     type === "color" &&
@@ -129,15 +81,25 @@ export default function Input(
                 }
                 {
                     type === "email" &&
-                    <Email value={_value} onChange={onChangeInput} disabled={disabled} classList={` ${_disabled}`} placeholder={placeholder} setError={setError} />
+                    <Email {...props}  value={_value} onChange={onChangeInput} setError={setError}
+                           size={size}   limit={limit}
+                           type={type} styleType={styleType}
+                           notOutline={notOutline} rounded={rounded}    />
                 }
                 {
                     type === "number" &&
-                    <Number value={_value} onChange={onChangeInput} min={min} max={max} />
+                    <Number {...props}  value={_value} onChange={onChangeInput}
+                            size={size}   limit={limit}
+                            type={type} styleType={styleType}
+                            notOutline={notOutline} rounded={rounded} />
                 }
                 {
                     type === "password" &&
-                    <Password inputType={_inputType} />
+                    <Password inputType={_inputType} {...props}  value={_value} onChange={onChangeInput}
+                              size={size}   limit={limit}
+                              type={type} styleType={styleType}
+                              notOutline={notOutline} rounded={rounded}
+                    />
                 }
                 {
                     type === "radio" &&
@@ -149,52 +111,74 @@ export default function Input(
                 }
                 {
                     type === "tel" &&
-                    <Tel />
+                    <Tel {...props}  value={_value} onChange={onChangeInput}
+                         size={size}   limit={limit}
+                         type={type} styleType={styleType}
+                         notOutline={notOutline} rounded={rounded} />
                 }
                 {
                     type === "text" &&
-                    <Text value={_value} onChange={onChangeInput} disabled={disabled} classList={`${classList} ${_disabled}`} placeholder={placeholder} limit={limit} />
+                    <Text {...props}  value={_value} onChange={onChangeInput}
+                          size={size}   limit={limit}
+                          type={type} styleType={styleType}
+                          notOutline={notOutline} rounded={rounded}
+                    />
                 }
                 {
                     type === "textarea" &&
-                    <TextArea  value={_value} onChange={onChangeInput}
-                               disabled={disabled} classList={`${classList} ${_disabled}`}
-                               placeholder={placeholder} limit={limit} rows={rows} autoRow={autoRow} />
+                    <TextArea  {...props}  value={_value} onChange={onChangeInput}
+                               size={size}   limit={limit}
+                               type={type} styleType={styleType}
+                               notOutline={notOutline} rounded={rounded}  autoRow={autoRow} />
                 }
                 {
                     type === "url" &&
-                    <Url />
+                    <Url {...props}  value={_value} onChange={onChangeInput}
+                         size={size}   limit={limit}
+                         type={type} styleType={styleType}
+                         notOutline={notOutline} rounded={rounded} />
                 }
-                <div className={"flex flex-row items-center"}>
+                {
+                    ["date","time","datetime-local","month","week","file"].includes(type) &&
+
+                    <Else
+                        {...props}  value={_value} onChange={onChangeInput}
+                        size={size}   limit={limit}
+                        type={type} styleType={styleType}
+                        notOutline={notOutline} rounded={rounded}
+                    />
+                }
+                <div className={"flex flex-row items-center border-r pr-2"}>
                     { clear &&
-                        <button className={"bg-gray-50 hover:bg-gray-200 dark:bg-gray-900 text-gray-100 dark:hover:bg-gray-700 dark:hover:text-white rounded-full !ml-2"} onClick={()=>setValue("")}>
-                            <BsX className={`text-gray-500 ${_textSize}`} />
+                        <button className={"dodo-clear bg-gray-50 hover:bg-gray-200 dark:bg-gray-900 text-gray-100 dark:hover:bg-gray-700 dark:hover:text-white rounded-full !ml-2"} onClick={()=>{setValue("");setTextLength(0)}}>
+                            <BsX className={`text-gray-500 ${Config.textSizes[size]}`} />
                         </button>
                     }
                     {showPassword && type==="password" && _inputType==="password"&&
-                        <button className={"bg-gray-50 hover:bg-gray-200 dark:bg-gray-900 text-gray-100 dark:hover:bg-gray-700 dark:hover:text-white rounded-full !ml-2"} onClick={()=>{ setInputType('text') }}>
-                            <AiOutlineEye className={`text-gray-500 ${_textSize}`} />
+                        <button className={"dodo-show-password bg-gray-50 hover:bg-gray-200 dark:bg-gray-900 text-gray-100 dark:hover:bg-gray-700 dark:hover:text-white rounded-full !ml-2"} onClick={()=>{ setInputType('text') }}>
+                            <AiOutlineEye className={`text-gray-500 ${Config.textSizes[size]}`} />
                         </button>
                     }
                     {showPassword && type==="password" &&_inputType==="text"&&
-                        <button className={"bg-gray-50 hover:bg-gray-200 dark:bg-gray-900 text-gray-100 dark:hover:bg-gray-700 dark:hover:text-white rounded-full !ml-2"} onClick={()=>{setInputType('password') }}>
-                            <AiOutlineEyeInvisible className={`text-gray-500 ${_textSize}`} />
+                        <button className={"dodo-visible-password bg-gray-50 hover:bg-gray-200 dark:bg-gray-900 text-gray-100 dark:hover:bg-gray-700 dark:hover:text-white rounded-full !ml-2"} onClick={()=>{setInputType('password') }}>
+                            <AiOutlineEyeInvisible className={`text-gray-500 ${Config.textSizes[size]}`} />
                         </button>
                     }
                     {limit &&
-                        <span className={`text-gray-400 !text-sm rounded-full !ml-2` }>
-                            {_value?.length ?? 0}/{limit}
+                        <span className={`dodo-limit text-gray-400 !text-sm rounded-full !ml-2` }>
+                            {textLength ?? 0}/{limit}
                         </span>
                     }
                     {
                         _inputType==="number"&&
 
-                            <div className={"flex flex-col !ml-2"}>
-                                <button onClick={valueArttir}>
-                                    <BsArrowUpSquareFill className={`text-gray-300 hover:text-gray-500 dark:text-gray-700  dark:hover:text-gray-500 ${_textSize}`} />
+                            <div className={"flex flex-row !ml-2"}>
+
+                                <button  onClick={valueAzalt} className={"p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700"}>
+                                    <FiMinus className={`text-gray-400 hover:text-gray-600 dark:text-gray-700  dark:hover:text-gray-500 ${Config.textSizes[size]}`} />
                                 </button>
-                                <button  onClick={valueAzalt}>
-                                    <BsArrowDownSquareFill className={`text-gray-300 hover:text-gray-500 dark:text-gray-700  dark:hover:text-gray-500 ${_textSize}`} />
+                                <button onClick={valueArttir} className={"p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700"}>
+                                    <FiPlus className={`text-gray-400 hover:text-gray-600 dark:text-gray-700  dark:hover:text-gray-500 ${Config.textSizes[size]}`} />
                                 </button>
                             </div>
 
@@ -215,22 +199,22 @@ Input.propTypes = {
     value: PropTypes.string,
 
     /** Uygulanmak istenen class listesi */
-    classList: PropTypes.string,
+    className: PropTypes.string,
 
     /** Tip */
-    type: PropTypes.oneOf(["text","password","email","number","date","time","datetime","month","week","file","checkbox","switch","radio","range","tel","url","color","textarea"]),
+    type: PropTypes.oneOf(["text","password","email","number","date","time","datetime-local","month","week","file","checkbox","switch","radio","range","tel","url","color","textarea"]),
 
     /** Hiçbir border olmasın */
     notOutline: PropTypes.bool,
 
     /** Stil tipi */
-    styleType: PropTypes.oneOf(['default']),
+    styleType: PropTypes.oneOf(['primary', 'secondary', 'success', 'danger', 'warning', 'info', 'light', 'dark']),
 
     /** Köşe yumuşatma seviyesi */
     rounded: PropTypes.oneOf(['sm', 'md', 'lg', 'xl','2xl','3xl', 'full']),
 
     /** Büyüklük */
-    size: PropTypes.oneOf(['sm', 'md', 'lg', 'xl', '2xl']),
+    size: PropTypes.oneOf(["xs",'sm', 'md', 'lg', 'xl', '2xl',"3xl"]),
 
     /** Disabled seçeneği */
     disabled: PropTypes.bool,
@@ -244,14 +228,6 @@ Input.propTypes = {
     /** Butonun inline style'ı */
     style: PropTypes.object,
 
-    /** Görüntüleme formatı (date) */
-    displayFormat: PropTypes.string,
-
-    /** Değer formatı (date) */
-    valueFormat: PropTypes.string,
-
-    /** Hover */
-    hover: PropTypes.bool,
 
     /** Alabileceği en az değer */
     min: PropTypes.number,
@@ -277,21 +253,16 @@ Input.propTypes = {
     /** placeholder */
     placeholder: PropTypes.string,
 
-    /** Checkbox label */
+    /** "Checkbox" label */
     label: PropTypes.string,
 
 };
 
 Input.defaultProps = {
     size:"md",
+    rounded:"md",
     type:"text",
-    styleType: 'default',
-    displayFormat: 'DD.MM.YYYY',
-    valueFormat: 'YYYY-MM-DD',
-    onClick: (event) => {
-        console.log('You have clicked me!', event.target);
-    },
-    onChange: (event) => {
-        console.log('You have changed me!', event);
-    }
+    styleType: 'primary',
+    onClick: () => {},
+    onChange: () => {}
 };

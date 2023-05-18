@@ -1,13 +1,23 @@
-export default function Url({value,onChange,disabled ,classList,placeholder,limit}){
+import Config from '../config.json'
+export default function Url(props){
+    let classList=`
+        min-w-[120px] w-full px-3 
+        ${Config.styleTypes[props.styleType]}
+        ${Config.rounded[props.rounded]} ${props.resize}
+        ${props.className} ${Config.sizes[props.size]}
+        ${Config.textSizes[props.size]} 
+        ${props.disabled? Config.styleTypes.disabled:""}${props.notOutline? Config.styleTypes.noOutline:""}
+  `;
     return(
-        <input
-            type="url"
-            className={`min-w-[120px] w-full focus-visible:outline-0 outline-0 border-none bg-transparent ${classList}`}
-            value={value}
-            onChange={onChange}
-            disabled={disabled}
-            placeholder={placeholder}
-            maxLength={limit}
-        />
+        <>
+            <input
+                {...props}
+                type={props.type}
+                className={classList}
+                value={props.value}
+                onChange={props.onChange}
+                maxLength={props.limit}
+            />
+        </>
     )
 }
