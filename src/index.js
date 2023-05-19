@@ -10,6 +10,7 @@ import Dialog from "./FeedBack/Dialog/Dialog";
 import Badge from "./DataDisplay/Badge/Badge";
 import Tooltip from "./FeedBack/Tooltip/Tooltip";
 import MessageBox  from "./FeedBack/MessageBox";
+import Carousel from "./DataDisplay/Carousel";
 
 /*import React from 'react';
 import ReactDOM from 'react-dom/client';
@@ -38,4 +39,4 @@ root.render(
 );*/
 
 
-export { Button, Tag, AutoComplete, Input, DateTimeBox,SelectBox,ToastContainer, toast,Dialog,Tooltip,MessageBox,Badge };
+export { Button, Tag, AutoComplete, Input, DateTimeBox,SelectBox,ToastContainer, toast,Dialog,Tooltip,MessageBox,Badge,Carousel };

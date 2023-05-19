@@ -1,7 +1,7 @@
 {
   "name": "dodo-style",
   "author": "Erdoğan Yeşil",
-  "version": "0.1.66-beta-1",
+  "version": "0.1.66",
   "homepage": "https://dodo-style.vercel.app/",
   "license": "MIT",
   "main": "react/index.js",

@@ -85,7 +85,7 @@ Carousel.propTypes = {
     onChange: PropTypes.func,
 
     /** SlidesToShow ve slidesToScroll'u ekran boyutuna göre ayarlayın. */
-    responsive: PropTypes.object,
+    responsive: PropTypes.string,
 
     /** Her sayfada gösterilecek slayt sayısı*/
     slidesToShow: PropTypes.number,
