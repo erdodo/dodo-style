@@ -1,0 +1,70 @@
+import Carousel from '../Carousel'
+import { Meta,Story } from "@storybook/addon-docs/blocks";
+import "./example1.css"
+export const images = [
+    "https://images.unsplash.com/photo-1509721434272-b79147e0e708?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80",
+    "https://images.unsplash.com/photo-1506710507565-203b9f24669b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1536&q=80",
+    "https://images.unsplash.com/photo-1536987333706-fc9adfb10d91?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80",
+];
+
+<Meta title="Veri Gösterimi/Carousel/Efektler/Zoom Out" />
+
+# Carousel
+## Kullanım
+```jsx
+import { Carousel } from 'dodo-style'
+```
+
+<Carousel effect={"zoom-out"} >
+    {
+        images.map((image, index) => (
+            <div className="example1" key={index}>
+                <div style={{ 'backgroundImage': `url(${image})` }}>
+                    <span>Slide {index + 1}</span>
+                </div>
+            </div>
+        ))
+    }
+</Carousel>
+
+Örnek resimler
+```js
+const images = [
+    "https://images.unsplash.com/photo-1509721434272-b79147e0e708?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80",
+    "https://images.unsplash.com/photo-1506710507565-203b9f24669b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1536&q=80",
+    "https://images.unsplash.com/photo-1536987333706-fc9adfb10d91?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80",
+];
+```
+Basit kullanım
+```jsx
+
+<Carousel effect={"zoom-out"}>
+    {
+        images.map((image, index) => (
+            <div className="example1" key={index}>
+                <div style={{ 'backgroundImage': `url(${image})` }}>
+                    <span>Slide {index + 1}</span>
+                </div>
+            </div>
+        ))
+    }
+</Carousel>
+```
+CSS
+
+```css
+.example1 > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  height: 350px;
+}
+
+.example1 span {
+  padding: 20px;
+  font-size: 20px;
+  background: #efefef;
+  text-align: center;
+}
+```

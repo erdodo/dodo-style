@@ -1,4 +1,5 @@
-import PopConfirm from './PopConfirm'
+import Tooltip from "../Tooltip";
+import Button from "../../Form/Button";
 import { Meta,Story } from "@storybook/addon-docs/blocks";
 
 <Meta title="Geri Dönüt/PopConfirm" />
@@ -6,11 +7,42 @@ import { Meta,Story } from "@storybook/addon-docs/blocks";
 # PopConfirm
 ## Kullanım
 ```jsx
-import { PopConfirm } from 'dodo-style'
+import { Tooltip } from 'dodo-style'
 ```
 
-<h1 style={{color:"danger"}}>Yakında sizlerle</h1>
+## Tooltip kullanarak PopConfirm oluşturma
 
-<Story name="Test">
-    Yakında Sizlerle
-</Story>
+<div style={{display:"flex",flexDirection:"row",alignItems:"center",flexWrap:"wrap"}}>
+    <div style={{margin:"5px"}}>
+        <Tooltip position={"bottom-left"} triggerType={"click"}
+            message={
+                <div className={"flex flex-col "}>
+                    <span>Silmek istediğinize emin misiniz?</span>
+                    <div className={"flex flex-row justify-end gap-2"}>
+                        <Button type={"danger"} outline size={"xs"}>Evet</Button>
+                        <Button type={"primary"} outline size={"xs"}>Hayır</Button>
+                    </div>
+                </div>
+            }
+        >
+            <Button type={"danger"} className={"whitespace-nowrap"}>Silme Butonu</Button>
+        </Tooltip>
+    </div>
+</div>
+
+
+```jsx
+<Tooltip position={"bottom-left"} triggerType={"click"}
+    message={
+        <div className={"flex flex-col "}>
+            <span>Silmek istediğinize emin misiniz?</span>
+            <div className={"flex flex-row justify-end gap-2"}>
+                <Button type={"danger"} outline size={"xs"}>Evet</Button>
+                <Button type={"primary"} outline size={"xs"}>Hayır</Button>
+            </div>
+        </div>
+    }
+>
+    <Button type={"danger"} className={"whitespace-nowrap"}>Silme Butonu</Button>
+</Tooltip>
+```

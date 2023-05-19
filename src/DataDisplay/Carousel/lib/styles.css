@@ -1,0 +1,25 @@
+.dodo-carousel-container{
+    display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;position:relative
+}
+.dodo-carousel-container .nav{
+    z-index:10;position:absolute;cursor:pointer
+}
+.dodo-carousel-container .nav:first-of-type{left:10px}
+.dodo-carousel-container .nav:last-of-type{right:10px}
+.dodo-carousel-container .default-nav{height:30px;background:rgba(255,255,255,0.6);width:30px;border:0;text-align:center;color:#fff;border-radius:50%;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center}
+.dodo-carousel-container .default-nav:hover,.dodo-carousel-container .default-nav:focus{background:#fff;color:#666;outline:0}
+.dodo-carousel-container .default-nav.disabled:hover{cursor:not-allowed}
+.dodo-carousel-container .default-nav:first-of-type{margin-right:-30px;border-right:0;border-top:0}
+.dodo-carousel-container .default-nav:last-of-type{margin-left:-30px}
+.dodo-carousel-container+ul.indicators{display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;margin-top:20px}
+.dodo-carousel-container+ul.indicators li{display:inline-block;position:relative;width:7px;height:7px;padding:5px;margin:0}
+.dodo-carousel-container+ul.indicators .each-slideshow-indicator{border:0;opacity:.25;cursor:pointer;background:transparent;color:transparent}
+.dodo-carousel-container+ul.indicators .each-slideshow-indicator:before{position:absolute;top:0;left:0;width:7px;height:7px;border-radius:50%;content:'';background:#000;text-align:center}
+.dodo-carousel-container+ul.indicators .each-slideshow-indicator:hover,.dodo-carousel-container+ul.indicators .each-slideshow-indicator.active{opacity:.75;outline:0}
+.dodo-carousel-fadezoom-wrapper{width:100%;overflow:hidden}
+.dodo-carousel-fadezoom-wrapper .dodo-carousel-fadezoom-images-wrap{display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap}
+.dodo-carousel-fadezoom-wrapper .dodo-carousel-fadezoom-images-wrap>div{position:relative;opacity:0}
+.dodo-carousel-wrapper .dodo-carousel-fade-images-wrap>div[aria-hidden='true']{display:none}
+.dodo-carousel-wrapper.slide{width:100%;overflow:hidden}
+.dodo-carousel-wrapper .images-wrap{display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap}
+.dodo-carousel-wrapper .images-wrap>div[aria-hidden='true']{display:none}
