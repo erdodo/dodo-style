@@ -39,21 +39,6 @@
     "disabled": "!bg-gray-200 !text-gray-300 !cursor-no-drop dark:!bg-gray-900 dark:!text-gray-700",
     "noOutline": "!border-[transparent] !shadow-none"
   },
-  "switchTypeList": {
-    "primary": "checked:!bg-primary-500/50",
-    "secondary": "checked:!bg-secondary-500/50",
-    "success": "checked:!bg-success-500/50",
-    "danger": "checked:!bg-danger-500/50",
-    "warning": "checked:!bg-warning-500/50",
-    "info": "checked:!bg-info-500/50",
-    "light": "checked:!bg-gray-200/50",
-    "dark": "checked:!bg-gray-700/50",
-    "disabled": "!bg-gray-200 !text-gray-300 !cursor-no-drop dark:!bg-gray-900 dark:!text-gray-700",
-    "noOutline": "!border-[transparent] !shadow-none"
-  },
-  "checkboxStyleTypes": {
-    "primary": "bg-primary-500/50 "
-  },
   "switchSizeList" : {
     "xs":"w-[32px]  h-[16px] after:w-[16px]  after:h-[16px]",
     "sm":"w-[36px]  h-[18px] after:w-[18px]  after:h-[18px]",
@@ -62,5 +47,37 @@
     "xl":"w-[72px]  h-[36px] after:w-[36px]  after:h-[36px]",
     "2xl":"w-[96px]  h-[48px] after:w-[48px]  after:h-[48px]",
     "3xl":"w-[120px] h-[60px] after:w-[60px]  after:h-[60px]"
+  },
+  "switchTypeList": {
+    "primary": "bg-gray-100 dark:bg-gray-500 checked:!bg-primary-500/50  checked:after:bg-white after:bg-white dark:checked:after:bg-gray-200",
+    "secondary": "bg-gray-100 dark:bg-gray-500 checked:!bg-secondary-500/50  checked:after:bg-white after:bg-white dark:checked:after:bg-gray-200",
+    "success": "bg-gray-100 dark:bg-gray-500 checked:!bg-success-500/50  checked:after:bg-white after:bg-white dark:checked:after:bg-gray-200",
+    "danger": "bg-gray-100 dark:bg-gray-500 checked:!bg-danger-500/50  checked:after:bg-white after:bg-white dark:checked:after:bg-gray-200",
+    "warning": "bg-gray-100 dark:bg-gray-500 checked:!bg-warning-500/50  checked:after:bg-white after:bg-white dark:checked:after:bg-gray-200",
+    "info": "bg-gray-100 dark:bg-gray-500 checked:!bg-info-500/50  checked:after:bg-white after:bg-white dark:checked:after:bg-gray-200",
+    "light": "bg-gray-100 dark:bg-gray-500 checked:!bg-gray-100/50  checked:after:bg-white after:bg-white dark:checked:after:bg-gray-200",
+    "dark": "bg-gray-100 dark:bg-gray-500 checked:!bg-gray-900/50  checked:after:bg-white after:bg-white dark:checked:after:bg-gray-200",
+    "disabled": "!bg-gray-200 !text-gray-300 !cursor-no-drop dark:!bg-gray-900 dark:!text-gray-700 after:bg-gray-300 dark:after:bg-gray-700",
+    "noOutline": "!border-[transparent] !shadow-none"
+  },
+  "checkboxSizes" : {
+    "xs": "min-h-[14px] w-[14px]",
+    "sm": "min-h-[18px] w-[18px]",
+    "md": "min-h-[22px] w-[22px]",
+    "lg": "min-h-[26px]  w-[26px]",
+    "xl": "min-h-[32px] w-[32px]",
+    "2xl": "min-h-[36px] w-[36px]",
+    "3xl": "min-h-[42px]  w-[42px]"
+  },
+  "checkboxStyleTypes": {
+    "primary": "accent-primary-600 text-white dark:accent-primary-400 dark:text-gray-900",
+    "secondary": "accent-secondary-600 text-white dark:accent-secondary-400 dark:text-gray-900",
+    "success": "accent-success-600 text-white dark:accent-success-400 dark:text-gray-900",
+    "danger": "accent-danger-600 text-white dark:accent-danger-400 dark:text-gray-900",
+    "warning": "accent-warning-600 text-white dark:accent-warning-400 dark:text-gray-900",
+    "info": "accent-info-600 text-white dark:accent-info-400 dark:text-gray-900",
+    "light": "accent-light-200 text-white dark:accent-light-400 dark:text-gray-900",
+    "dark": "accent-dark-900 text-dark dark:accent-dark-500 "
   }
+
 }

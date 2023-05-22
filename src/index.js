@@ -11,6 +11,8 @@ import Badge from "./DataDisplay/Badge/Badge";
 import Tooltip from "./FeedBack/Tooltip/Tooltip";
 import MessageBox  from "./FeedBack/MessageBox";
 import Carousel from "./DataDisplay/Carousel";
+import Image from "./DataDisplay/Image";
+import {Collapse,CollapseItem} from "DataDisplay/Collapse";
 
 /*import React from 'react';
 import ReactDOM from 'react-dom/client';
@@ -39,4 +41,4 @@ root.render(
 );*/
 
 
-export { Button, Tag, AutoComplete, Input, DateTimeBox,SelectBox,ToastContainer, toast,Dialog,Tooltip,MessageBox,Badge,Carousel };
+export { Button, Tag, AutoComplete, Input, DateTimeBox,SelectBox,ToastContainer, toast,Dialog,Tooltip,MessageBox,Badge,Carousel,Collapse,CollapseItem,Image };

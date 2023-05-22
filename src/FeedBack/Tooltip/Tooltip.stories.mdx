@@ -75,3 +75,34 @@ import { Tooltip } from 'dodo-style'
 </Tooltip>
 ```
 
+## Tetikleme örnekleri
+
+<div style={{display:"flex",flexDirection:"row",alignItems:"center",flexWrap:"wrap"}}>
+    <div style={{margin:"5px"}}>
+        <Tooltip message={"Mesaj"} position={"top-center"} triggerType={"hover"}>
+            <Button type={"primary"}>hover</Button>
+        </Tooltip>
+    </div>
+    <div style={{margin:"5px"}}>
+        <Tooltip message={"Mesaj"}  position={"top-center"} triggerType={"click"}>
+            <Button type={"primary"}>click</Button>
+        </Tooltip>
+    </div>
+    <div style={{margin:"5px"}}>
+        <Tooltip message={"Mesaj"} position={"top-center"} triggerType={"focus"}>
+            <Button type={"primary"}>focus</Button>
+        </Tooltip>
+    </div>
+</div>
+
+```jsx
+<Tooltip message={"Mesaj"} position={"top-center"} triggerType={"hover"}>
+    <Button type={"primary"}>hover</Button>
+</Tooltip>
+<Tooltip message={"Mesaj"}  position={"top-center"} triggerType={"click"}>
+    <Button type={"primary"}>click</Button>
+</Tooltip>
+<Tooltip message={"Mesaj"} position={"top-center"} triggerType={"focus"}>
+    <Button type={"primary"}>focus</Button>
+</Tooltip>
+```

@@ -1,16 +1,70 @@
-import Collapse from './Collapse'
+import {Collapse,CollapseItem} from './index'
+import Button from '../../Form/Button'
 import { Meta,Story } from "@storybook/addon-docs/blocks";
 
-<Meta title="Veri Gösterimi/Collapse" />
+
+<Meta title="Veri Gösterimi/Collapse/Örnekler" />
 
 # Collapse
 ## Kullanım
 ```jsx
-import { Collapse } from 'dodo-style'
+import { Collapse,CollapseItem } from 'dodo-style'
 ```
 
-<h1 style={{color:"danger"}}>Yakında sizlerle</h1>
+## Basit Kullanım
 
-<Story name="Test">
-    Yakında sizlerle
-</Story>
+
+<Collapse>
+    <CollapseItem title="Başlık 1"  content="İçerik 1" />
+    <CollapseItem title="Başlık 2" content="İçerik 2" />
+</Collapse>
+
+```jsx
+<Collapse>
+    <CollapseItem title="Başlık 1"  content="İçerik 1" />
+    <CollapseItem title="Başlık 2" content="İçerik 2" />
+</Collapse>
+```
+
+## Accordion Kullanım
+<Collapse accordion>
+    <CollapseItem title="Başlık 1"  content="İçerik 1" />
+    <CollapseItem title="Başlık 2" content="İçerik 2" />
+</Collapse>
+
+```jsx
+<Collapse accordion>
+    <CollapseItem title="Başlık 1"  content="İçerik 1" />
+    <CollapseItem title="Başlık 2" content="İçerik 2" />
+</Collapse>
+```
+
+## Özel Başlık
+<Collapse >
+    <CollapseItem title={<Button type={"primary"}>Özel Başlık</Button>}  content="İçerik 1"  />
+    <CollapseItem title="Başlık 2" content="İçerik 2" />
+</Collapse>
+
+```jsx
+<Collapse>
+    <CollapseItem title={<Button type={"primary"}>Özel Başlık</Button>}  content="İçerik 1"  />
+    <CollapseItem title="Başlık 2" content="İçerik 2" />
+</Collapse>
+```
+
+## Özel İçerik
+<Collapse >
+    <CollapseItem title="Başlık 1">
+        <Button type={"primary"}>Özel İçerik</Button>
+    </CollapseItem>
+    <CollapseItem title="Başlık 2" content="İçerik 2" />
+</Collapse>
+
+```jsx
+<Collapse>
+    <CollapseItem title="Başlık 1">
+        <Button type={"primary"}>Özel İçerik</Button>
+    </CollapseItem>
+    <CollapseItem title="Başlık 2" content="İçerik 2" />
+</Collapse>
+```

@@ -1,2 +1,8 @@
 import Collapse from "./Collapse";
-export default Collapse;
+import CollapseItem from "./CollapseItem";
+
+
+export {
+    Collapse,
+    CollapseItem
+};

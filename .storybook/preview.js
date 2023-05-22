@@ -23,6 +23,7 @@ link2.href = 'index.css';
 head2.appendChild(link2);
 
 
+
 var body = document.getElementsByTagName('body')[0];
 var div = document.createElement('div');
 div.id = 'root';

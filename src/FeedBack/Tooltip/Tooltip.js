@@ -114,4 +114,5 @@ Tooltip.propTypes = {
 Tooltip.defaultProps = {
     position: "right-top",
     wait: 100,
+    triggerType:"hover",
 };

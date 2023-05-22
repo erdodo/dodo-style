@@ -1,0 +1,190 @@
+import Input from "../../Input";
+import { Meta,Story } from "@storybook/addon-docs/blocks";
+
+<Meta title="Form/Input/CheckBox - Switch/Örnekler" />
+
+# Checkbox
+
+## Büyüklük örneği
+<div style={{display:"flex",flexDirection:"row",alignItems:"center",flexWrap:"wrap"}}>
+    <div style={{margin:"5px"}}>
+        <Input type={"checkbox"}  size={"xs"}/>
+    </div>
+    <div style={{margin:"5px"}}>
+        <Input type={"checkbox"}  size={"sm"}/>
+    </div>
+    <div style={{margin:"5px"}}>
+        <Input type={"checkbox"}  size={"md"}/>
+    </div>
+    <div style={{margin:"5px"}}>
+        <Input type={"checkbox"}  size={"lg"}/>
+    </div>
+    <div style={{margin:"5px"}}>
+        <Input type={"checkbox"}  size={"xl"}/>
+    </div>
+    <div style={{margin:"5px"}}>
+        <Input type={"checkbox"}  size={"2xl"}/>
+    </div>
+    <div style={{margin:"5px"}}>
+        <Input type={"checkbox"}  size={"3xl"}/>
+    </div>
+</div>
+
+```jsx
+<Input type={"checkbox"}  size={"xs"}/>
+<Input type={"checkbox"}  size={"sm"}/>
+<Input type={"checkbox"}  size={"md"}/>
+<Input type={"checkbox"}  size={"lg"}/>
+<Input type={"checkbox"}  size={"xl"}/>
+<Input type={"checkbox"}  size={"2xl"}/>
+<Input type={"checkbox"}  size={"3xl"}/>
+```
+## Stil tipleri
+<div style={{display:"flex",flexDirection:"row",alignItems:"center",flexWrap:"wrap"}} className={"h-min"}>
+    <div className={"!mr-4"}>
+        <Input type={"checkbox"} styleType={"primary"} value={true} />
+    </div>
+    <div className={"!mr-4"}>
+        <Input type={"checkbox"} styleType={"secondary"} value={"true"} />
+    </div>
+    <div className={"!mr-4"}>
+        <Input type={"checkbox"} styleType={"info"} value={1} />
+    </div>
+    <div className={"!mr-4"}>
+        <Input type={"checkbox"} styleType={"danger"} value={"1"} />
+    </div>
+    <div className={"!mr-4"}>
+        <Input type={"checkbox"} styleType={"success"} value={"on"} />
+    </div>
+    <div className={"!mr-4"}>
+        <Input type={"checkbox"} styleType={"warning"} value={true}/>
+    </div>
+    <div className={"!mr-4"}>
+        <Input type={"checkbox"} styleType={"light"} value={true} />
+    </div>
+    <div className={"!mr-4"}>
+        <Input type={"checkbox"} styleType={"dark"} value={true}/>
+    </div>
+
+</div>
+
+```jsx
+<Input type={"checkbox"}  size={"xs"}/>
+<Input type={"checkbox"}  size={"sm"}/>
+<Input type={"checkbox"}  size={"md"}/>
+<Input type={"checkbox"}  size={"lg"}/>
+<Input type={"checkbox"}  size={"xl"}/>
+<Input type={"checkbox"}  size={"2xl"}/>
+<Input type={"checkbox"}  size={"3xl"}/>
+```
+
+## Disabled
+<div className={"flex flex-row gap-3"}>
+    <Input type={"checkbox"}  />
+    <Input type={"checkbox"} disabled/>
+</div>
+
+```jsx
+<Input type={"checkbox"} />
+<Input type={"checkbox"}  disabled/>
+```
+
+
+## Kullanaılabilir değer tipleri
+Switch ve Checkbox için kullanılabilir değer tipleri aşağıdaki gibidir.
+
+```jsx
+<Input type={"checkbox"}  value={true} />
+<Input type={"checkbox"}  value={"true"} />
+<Input type={"checkbox"}  value={1} />
+<Input type={"checkbox"}  value={"1"} />
+<Input type={"checkbox"}  value={"on"} />
+```
+
+# Switch
+
+## Büyüklük Örnekleri
+<div style={{display:"flex",flexDirection:"row",alignItems:"center",flexWrap:"wrap"}} className={"h-min"}>
+    <div className={"!mr-4"}>
+        <Input type={"switch"} size={"xs"}/>
+    </div>
+    <div className={"!mr-5"}>
+        <Input type={"switch"} size={"sm"}/>
+    </div>
+    <div className={"!mr-6"}>
+        <Input type={"switch"} size={"md"}/>
+    </div>
+    <div className={"!mr-7"}>
+        <Input type={"switch"} size={"lg"}/>
+    </div>
+    <div className={"!mr-10"}>
+        <Input type={"switch"} size={"xl"}/>
+    </div>
+    <div className={"!mr-14"}>
+        <Input type={"switch"} size={"2xl"}/>
+    </div>
+    <div className={"!mr-16"}>
+        <Input type={"switch"} size={"3xl"}/>
+    </div>
+</div>
+
+```jsx
+<Input type={"switch"} size={"xs"}/>
+<Input type={"switch"} size={"sm"}/>
+<Input type={"switch"} size={"md"}/>
+<Input type={"switch"} size={"lg"}/>
+<Input type={"switch"} size={"xl"}/>
+<Input type={"switch"} size={"2xl"}/>
+
+```
+## Stil tipleri
+<div style={{display:"flex",flexDirection:"row",alignItems:"center",flexWrap:"wrap"}} className={"h-min"}>
+    <div className={"!mr-4"}>
+        <Input type={"switch"} styleType={"primary"} value={true} />
+    </div>
+    <div className={"!mr-4"}>
+        <Input type={"switch"} styleType={"secondary"} value={"true"} />
+    </div>
+    <div className={"!mr-4"}>
+        <Input type={"switch"} styleType={"info"} value={1} />
+    </div>
+    <div className={"!mr-4"}>
+        <Input type={"switch"} styleType={"danger"} value={"1"} />
+    </div>
+    <div className={"!mr-4"}>
+        <Input type={"switch"} styleType={"success"} value={"on"} />
+    </div>
+    <div className={"!mr-4"}>
+        <Input type={"switch"} styleType={"warning"} value={true}/>
+    </div>
+    <div className={"!mr-4"}>
+        <Input type={"switch"} styleType={"light"} value={true} />
+    </div>
+    <div className={"!mr-4"}>
+        <Input type={"switch"} styleType={"dark"} value={true}/>
+    </div>
+
+</div>
+
+```jsx
+<Input type={"switch"} styleType={"primary"} value={true}/>
+<Input type={"switch"} styleType={"secondary"} value={true}/>
+<Input type={"switch"} styleType={"info"} value={true}/>
+<Input type={"switch"} styleType={"danger"} value={true}/>
+<Input type={"switch"} styleType={"success"} value={true}/>
+<Input type={"switch"} styleType={"warning"} value={true}/>
+ <Input type={"switch"} styleType={"light"} value={true}/>
+<Input type={"switch"} styleType={"dark"} value={true}/>
+
+```
+
+## Disabled
+<div className={"flex flex-row gap-3"}>
+    <Input type={"switch"}  />
+    <Input type={"switch"} disabled/>
+</div>
+
+```jsx
+<Input type={"switch"} />
+<Input type={"switch"}  disabled/>
+```

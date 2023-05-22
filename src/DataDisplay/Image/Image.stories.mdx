@@ -1,6 +1,7 @@
 import Image from './Image'
+import Gallery from "./Gallery";
 import { Meta,Story } from "@storybook/addon-docs/blocks";
-
+import {BsFillHouseDoorFill,BsPeople,BsFacebook,BsWhatsapp,BsInstagram} from 'dodo-icons/react/bs'
 
 <Meta title="Veri Gösterimi/Image" />
 
@@ -10,8 +11,269 @@ import { Meta,Story } from "@storybook/addon-docs/blocks";
 import {Image} from 'dodo-style'
 ```
 
-<h1 style={{color:"danger"}}>Yakında sizlerle</h1>
 
-<Story name="Test">
-    Yakında sizlerle
-</Story>
+### Object fit örnekleri
+
+<div className={"flex flex-row"}>
+    <div className={"flex flex-col items-center  !m-3"}>
+        <div className={"h-32 w-32 border"}>
+            <Image src="https://picsum.photos/200/300" fit="fill"  alt=""/>
+        </div>
+        <span className={"dark:text-white"}>fill</span>
+    </div>
+    <div className={"flex flex-col items-center  !m-3"}>
+        <div className={"h-32 w-32 border"}>
+            <Image src="https://picsum.photos/200/300" fit="contain"  alt=""/>
+        </div>
+        <span className={"dark:text-white"}>contain</span>
+    </div>
+    <div className={"flex flex-col items-center  !m-3"}>
+        <div className={"h-32 w-32 border"}>
+            <Image src="https://picsum.photos/200/300" fit="cover"  alt=""/>
+        </div>
+        <span className={"dark:text-white"}>cover</span>
+    </div>
+    <div className={"flex flex-col items-center  !m-3"}>
+        <div className={"h-32 w-32 border"}>
+            <Image src="https://picsum.photos/200/300" fit="none"  alt=""/>
+        </div>
+        <span className={"dark:text-white"}>none</span>
+    </div>
+    <div className={"flex flex-col items-center  !m-3"}>
+        <div className={"h-32 w-32 border"}>
+            <Image src="https://picsum.photos/200/300" fit="scale-down"  alt=""/>
+        </div>
+        <span className={"dark:text-white"}>scale-down</span>
+    </div>
+</div>
+
+```jsx
+<Image src="https://picsum.photos/2000/3000" fit="fill"  alt=""/>
+<Image src="https://picsum.photos/200/300" fit="contain"  alt=""/>
+<Image src="https://picsum.photos/200/300" fit="cover"  alt=""/>
+<Image src="https://picsum.photos/200/300" fit="none"  alt=""/>
+<Image src="https://picsum.photos/200/300" fit="scale-down"  alt=""/>
+```
+
+### Placeholder örnekleri
+
+<div className={"flex flex-row"}>
+    <div className={"flex flex-col items-center  !m-4"}>
+        <div className={"h-32 w-32 "}>
+            <Image  placeholder alt=""/>
+        </div>
+        <span className={"dark:text-white"}>default placeholder</span>
+    </div>
+    <div className={"flex flex-col items-center  !m-4"}>
+        <div className={"h-32 w-32 "}>
+            <Image placeholder="https://placehold.co/300x300" />
+        </div>
+        <span className={"dark:text-white"}>custom placeholder</span>
+    </div>
+</div>
+
+```jsx
+<Image placeholder />
+<Image placeholder="https://placehold.co/300x300" />
+```
+
+### Loading örnekleri
+<div className={"flex flex-row"}>
+    <div className={"flex flex-col items-center  !m-3"}>
+        <div className={"h-32 w-32 "}>
+            <Image src="https://picsum.photos/4000/4000" loading  lazy/>
+        </div>
+        <span className={"dark:text-white"}>default loading</span>
+    </div>
+    <div className={"flex flex-col items-center  !m-3"}>
+        <div className={"h-32 w-32 "}>
+            <Image src="https://picsum.photos/4000/4000" loading={"Yükleniyor"} lazy/>
+        </div>
+        <span className={"dark:text-white"}>custom loading</span>
+    </div>
+</div>
+
+```jsx
+<Image src="https://picsum.photos/4000/4000" loading  alt=""/>
+<Image src="https://picsum.photos/4000/4000" loading={"Yükleniyor"}  alt=""/>
+```
+
+### Lazy örnekleri
+<div className={"flex flex-row"}>
+    <div className={"flex flex-col items-center  !m-3"}>
+        <div className={"h-32 w-32 "}>
+            <Image src="https://picsum.photos/5000/5000" loading  lazy/>
+        </div>
+        <span className={"dark:text-white"}>default loading(lazy)</span>
+    </div>
+    <div className={"flex flex-col items-center  !m-3"}>
+        <div className={"h-32 w-32 "}>
+            <Image src="https://picsum.photos/5000/5000" loading={"Yükleniyor"} lazy/>
+        </div>
+        <span className={"dark:text-white"}>custom loading(lazy)</span>
+    </div>
+</div>
+
+```jsx
+<Image src="https://picsum.photos/5000/5000" loading  lazy/>
+<Image src="https://picsum.photos/5000/5000" loading={"Yükleniyor"}  lazy/>
+```
+
+### Rounded örnekleri
+
+<div className={"flex flex-row overflow-auto"}>
+    <div className={"flex flex-col items-center  !m-3"}>
+        <div className={"h-20 w-20 "}>
+            <Image src="https://picsum.photos/300/300" rounded={"sm"}  alt=""/>
+        </div>
+        <span className={"dark:text-white"}>none</span>
+    </div>
+    <div className={"flex flex-col items-center  !m-3"}>
+        <div className={"h-20 w-20 "}>
+            <Image src="https://picsum.photos/300/300" rounded={"sm"}  alt=""/>
+        </div>
+        <span className={"dark:text-white"}>sm</span>
+    </div>
+    <div className={"flex flex-col items-center  !m-3"}>
+        <div className={"h-20 w-20 "}>
+            <Image src="https://picsum.photos/300/300" rounded={"md"}  alt=""/>
+        </div>
+        <span className={"dark:text-white"}>md</span>
+    </div>
+
+    <div className={"flex flex-col items-center  !m-3"}>
+        <div className={"h-20 w-20 "}>
+            <Image src="https://picsum.photos/300/300" rounded={"lg"}  alt=""/>
+        </div>
+        <span className={"dark:text-white"}>lg</span>
+    </div>
+    <div className={"flex flex-col items-center  !m-3"}>
+        <div className={"h-20 w-20 "}>
+            <Image src="https://picsum.photos/300/300" rounded={"xl"}  alt=""/>
+        </div>
+        <span className={"dark:text-white"}>xl</span>
+    </div>
+    <div className={"flex flex-col items-center  !m-3"}>
+        <div className={"h-20 w-20 "}>
+            <Image src="https://picsum.photos/300/300" rounded={"2xl"}  alt=""/>
+        </div>
+        <span className={"dark:text-white"}>2xl</span>
+    </div>
+    <div className={"flex flex-col items-center  !m-3"}>
+        <div className={"h-20 w-20 "}>
+            <Image src="https://picsum.photos/300/300" rounded={"3xl"}  alt=""/>
+        </div>
+        <span className={"dark:text-white"}>3xl</span>
+    </div>
+    <div className={"flex flex-col items-center  !m-3"}>
+        <div className={"h-20 w-20 "}>
+            <Image src="https://picsum.photos/300/300" rounded={"full"}  alt=""/>
+        </div>
+        <span className={"dark:text-white"}>full</span>
+    </div>
+</div>
+
+```jsx
+<Image src="https://picsum.photos/300/300" rounded={"sm"}  alt=""/>
+<Image src="https://picsum.photos/300/300" rounded={"md"}  alt=""/>
+<Image src="https://picsum.photos/300/300" rounded={"lg"}  alt=""/>
+<Image src="https://picsum.photos/300/300" rounded={"xl"}  alt=""/>
+<Image src="https://picsum.photos/300/300" rounded={"2xl"}  alt=""/>
+<Image src="https://picsum.photos/300/300" rounded={"3xl"}  alt=""/>
+<Image src="https://picsum.photos/300/300" rounded={"full"}  alt=""/>
+```
+
+### Ön izleme ve Galeri örnekleri
+<div className={"w-32 h-32"}>
+    <Gallery>
+        <Image src="https://picsum.photos/3000/3000" width={"128px"} height={"128px"}/>
+        <Image src="https://picsum.photos/3000/3500" width={"128px"} height={"128px"}/>
+        <Image src="https://picsum.photos/3500/3000" width={"128px"} height={"128px"}/>
+        <Image src="https://picsum.photos/3000/4000" width={"128px"} height={"128px"}/>
+        <Image src="https://picsum.photos/4000/3000" width={"128px"} height={"128px"}/>
+        <Image src="https://picsum.photos/4000/4000" width={"128px"} height={"128px"}/>
+    </Gallery>
+</div>
+
+```jsx
+<div className={"w-32 h-32"}>
+    <Gallery>
+        <Image src="https://picsum.photos/3000/3000" width={"128px"} height={"128px"}/>
+        <Image src="https://picsum.photos/3000/3500" width={"128px"} height={"128px"}/>
+        <Image src="https://picsum.photos/3500/3000" width={"128px"} height={"128px"}/>
+        <Image src="https://picsum.photos/3000/4000" width={"128px"} height={"128px"}/>
+        <Image src="https://picsum.photos/4000/3000" width={"128px"} height={"128px"}/>
+        <Image src="https://picsum.photos/4000/4000" width={"128px"} height={"128px"}/>
+    </Gallery>
+</div>
+```
+
+### Avatar örnekleri
+<div className={"flex flex-row"}>
+    <div className={" !m-3"}>
+        <Image avatar={"XS"} size={"xs"} rounded={"full"} styleType={"primary"}/>
+    </div>
+    <div className={" !m-3"}>
+        <Image avatar={"SM"} size={"sm"} rounded={"full"} styleType={"primary-border"}/>
+    </div>
+    <div className={" !m-3"}>
+            <Image avatar={"MD"} size={"md"} rounded={"full"} styleType={"primary-plain"}/>
+    </div>
+    <div className={" !m-3"}>
+        <Image avatar={"LG"} size={"lg"} rounded={"full"} styleType={"secondary"}/>
+    </div>
+    <div className={" !m-3"}>
+        <Image avatar={"XL"} size={"xl"} rounded={"full"} styleType={"danger"}/>
+    </div>
+    <div className={" !m-3"}>
+        <Image avatar={"2XL"} size={"2xl"} rounded={"full"} styleType={"success"}/>
+    </div>
+    <div className={" !m-3"}>
+        <Image avatar={"3XL"} size={"3xl"} rounded={"full"} styleType={"dark"}/>
+    </div>
+
+
+</div>
+
+```jsx
+<Image avatar={"XS"} size={"xs"} rounded={"full"} styleType={"primary"}/>
+<Image avatar={"SM"} size={"sm"} rounded={"full"} styleType={"primary-border"}/>
+<Image avatar={"MD"} size={"md"} rounded={"full"} styleType={"primary-plain"}/>
+<Image avatar={"LG"} size={"lg"} rounded={"full"} styleType={"secondary"}/>
+<Image avatar={"XL"} size={"xl"} rounded={"full"} styleType={"danger"}/>
+<Image avatar={"2XL"} size={"2xl"} rounded={"full"} styleType={"success"}/>
+<Image avatar={"3XL"} size={"3xl"} rounded={"full"} styleType={"dark"}/>
+```
+
+### Icon Avatar örnekleri
+
+<div className={"flex flex-row"}>
+    <div className={" !m-3"}>
+        <Image avatar={<BsInstagram/>} size={"sm"} rounded={"full"} styleType={"danger-border"}/>
+    </div>
+    <div className={" !m-3"}>
+        <Image avatar={<BsFillHouseDoorFill/>} size={"md"} rounded={"md"} styleType={"dark-border"}/>
+    </div>
+    <div className={" !m-3"}>
+        <Image avatar={<BsPeople/>} size={"md"} rounded={"xl"} styleType={"dark-plain"}/>
+    </div>
+    <div className={" !m-3"}>
+        <Image avatar={<BsFacebook/>} size={"lg"} rounded={"full"} styleType={"info"}/>
+    </div>
+    <div className={" !m-3"}>
+        <Image avatar={<BsWhatsapp/>} size={"3xl"} rounded={"full"} styleType={"success-plain"}/>
+    </div>
+
+</div>
+
+```js
+import {BsFillHouseDoorFill, BsPeople, BsFacebook,BsInstagram,BsWhatsapp} from "react-icons/bs";
+```
+
+```jsx
+<Image avatar={<BsInstagram/>} size={"sm"} rounded={"full"} styleType={"danger-border"}/>
+<Image avatar={<BsFillHouseDoorFill/>} size={"md"} rounded={"md"} styleType={"dark-border"}/>
+<Image avatar={<BsPeople/>} size={"md"} rounded={"xl"} styleType={"dark-plain"}/>
+<Image avatar={<BsFacebook/>} size={"lg"} rounded={"full"} styleType={"info"}/>
+<Image avatar={<BsWhatsapp/>} size={"3xl"} rounded={"full"} styleType={"success-plain"}/>
+```

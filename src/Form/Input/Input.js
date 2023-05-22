@@ -22,7 +22,7 @@ export default function Input(
     {
         type,onChange,value,size,
         notOutline,rounded,styleType,clear,showPassword,
-        autoRow,limit,label,...props
+        autoRow,limit,...props
     }
 ) {
 
@@ -70,7 +70,7 @@ export default function Input(
             <div className={`flex flex-row items-center `}>
                 {
                     ['switch',"checkbox"].includes(type)  &&
-                    <CheckBox label={label} {...props}  value={_value} onChange={onChangeInput}
+                    <CheckBox {...props}  value={_value} onChange={onChangeInput}
                               size={size}   limit={limit}
                               type={type} styleType={styleType}
                               notOutline={notOutline} rounded={rounded}  />
@@ -196,7 +196,7 @@ Input.propTypes = {
 
 
     /** Child elemanı */
-    value: PropTypes.string,
+    value: PropTypes.any,
 
     /** Uygulanmak istenen class listesi */
     className: PropTypes.string,
@@ -254,7 +254,10 @@ Input.propTypes = {
     placeholder: PropTypes.string,
 
     /** "Checkbox" label */
-    label: PropTypes.string,
+    beforeLabel: PropTypes.any,
+
+    /** "Checkbox" label */
+    afterLabel: PropTypes.any,
 
 };
 

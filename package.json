@@ -1,7 +1,7 @@
 {
   "name": "dodo-style",
   "author": "Erdoğan Yeşil",
-  "version": "0.1.66",
+  "version": "0.1.67-beta-1",
   "homepage": "https://dodo-style.vercel.app/",
   "license": "MIT",
   "main": "react/index.js",
@@ -23,14 +23,15 @@
     "tailwind:build": "npx tailwindcss -i ./src/index.css -o ./assets/output.css",
     "storybook:serve": "storybook dev -p 6006",
     "storybook:build": " storybook build ",
-    "storybook:deploy": "npm run tailwind:build && npm run storybook:build && npm run build:vue-docs && vercel --prod"
+    "storybook:deploy": "npm run tailwind:build && npm run storybook:build && npm run build:vue-docs && vercel --prod",
+    "win:storybook:deploy": "npm run tailwind:build && npm run storybook:build && vue-cli-service build && xcopy C:\\Users\\erdog\\WebstormProjects\\dodo-style\\vue C:\\Users\\erdog\\WebstormProjects\\dodo-style\\storybook-static\\vue  /E /H /C /I && vercel --prod"
   },
   "dependencies": {
     "clsx": "^1.2.1",
     "dodo-icons": "^0.2.1",
     "imask": "^6.6.1",
-    "moment": "^2.29.4",
-    "react-slideshow-image": "^4.2.1"
+    "moment": "^2.29.4"
+
   },
   "eslintConfig": {
     "extends": [
@@ -61,6 +62,7 @@
     ]
   },
   "devDependencies": {
+    "react-slideshow-image": "^4.2.1",
     "@babel/cli": "^7.21.0",
     "@babel/core": "^7.21.4",
     "@babel/polyfill": "^7.12.1",
