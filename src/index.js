@@ -12,7 +12,8 @@ import Tooltip from "./FeedBack/Tooltip/Tooltip";
 import MessageBox  from "./FeedBack/MessageBox";
 import Carousel from "./DataDisplay/Carousel";
 import Image from "./DataDisplay/Image";
-import {Collapse,CollapseItem} from "DataDisplay/Collapse";
+import Collapse from "./DataDisplay/Collapse/Collapse";
+import CollapseItem from "./DataDisplay/Collapse/CollapseItem";
 
 /*import React from 'react';
 import ReactDOM from 'react-dom/client';
