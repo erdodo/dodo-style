@@ -2,7 +2,7 @@ import Loading  from './Loading';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 export default {
-  title: 'Örnekler/Veri Gösterimi/Loading',
+  title: 'Veri Gösterimi/Loading',
   component: Loading,
   tags: ['autodocs'],
   argTypes: {

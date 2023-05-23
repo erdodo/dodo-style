@@ -1,4 +1,4 @@
-import Tabs  from './Tabs';
+import {Tabs}  from './Tabs';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 export default {

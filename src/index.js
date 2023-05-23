@@ -14,6 +14,9 @@ import Carousel from "./DataDisplay/Carousel";
 import Image from "./DataDisplay/Image";
 import Collapse from "./DataDisplay/Collapse/Collapse";
 import CollapseItem from "./DataDisplay/Collapse/CollapseItem";
+import Gallery from "./DataDisplay/Image/Gallery";
+import {Tabs,TabList,Tab,TabPanel} from "./DataDisplay/Tabs";
+import ElementsGroup from "./DataDisplay/ElementsGroup";
 
 /*import React from 'react';
 import ReactDOM from 'react-dom/client';
@@ -42,4 +45,8 @@ root.render(
 );*/
 
 
-export { Button, Tag, AutoComplete, Input, DateTimeBox,SelectBox,ToastContainer, toast,Dialog,Tooltip,MessageBox,Badge,Carousel,Collapse,CollapseItem,Image };
+export { Button, Tag, AutoComplete, Input,
+    DateTimeBox,SelectBox,ToastContainer, toast,
+    Dialog,Tooltip,MessageBox,Badge,Carousel,
+    Collapse,CollapseItem,Image,Gallery,
+    Tabs,TabList,Tab,TabPanel,ElementsGroup};

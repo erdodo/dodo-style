@@ -2,9 +2,8 @@
     // Get HTML head element
 import { themes } from '@storybook/theming';
 import {DocsContainer} from "@storybook/blocks";
-import React from 'react';
+import React, { Suspense } from 'react';
 import { withThemeByDataAttribute } from '@storybook/addon-styling'
-
 
 
 var head = document.getElementsByTagName('HEAD')[0];
@@ -37,7 +36,21 @@ body.appendChild(div);
 
 
 const preview = {
-
+    globalTypes: {
+        lang: {
+            description: 'Language locale to use',
+            defaultValue: 'tr',
+            toolbar: {
+                // The label to show for this toolbar item
+                title: 'Lang',
+                icon: 'circlehollow',
+                // Array of plain string values or MenuItem shape (see below)
+                items: ['tr', 'en'],
+                // Change title based on selected value
+                dynamicTitle: false,
+            },
+        },
+    },
   parameters: {
       darkMode: {
           darkClass: 'dark',
@@ -92,7 +105,9 @@ const preview = {
 };
 export const globalTypes = {
     darkMode: true,
+
 };
+
 export const decorators = [
     withThemeByDataAttribute({
         themes: {
@@ -103,4 +118,8 @@ export const decorators = [
         attributeName: 'data-mode',
     }),
 ];
+
+
+
+
 export default preview;

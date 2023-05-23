@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {BsArrowRightShort} from "react-icons/bs";
+import {BsArrowRightShort} from "dodo-icons/react/bs";
 
 export default function CollapseItem({title,content,children,active,activeList,duration,delay,effect,index,downIcon,...props}) {
     const contentRef = React.useRef(null);

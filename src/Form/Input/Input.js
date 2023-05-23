@@ -148,7 +148,7 @@ export default function Input(
                         notOutline={notOutline} rounded={rounded}
                     />
                 }
-                <div className={"flex flex-row items-center border-r pr-2"}>
+                {(clear || showPassword || limit||_inputType==="number") &&  <div className={"flex flex-row items-center border-r pr-2"}>
                     { clear &&
                         <button className={"dodo-clear bg-gray-50 hover:bg-gray-200 dark:bg-gray-900 text-gray-100 dark:hover:bg-gray-700 dark:hover:text-white rounded-full !ml-2"} onClick={()=>{setValue("");setTextLength(0)}}>
                             <BsX className={`text-gray-500 ${Config.textSizes[size]}`} />
@@ -184,7 +184,7 @@ export default function Input(
 
                     }
 
-                </div>
+                </div>}
             </div>
 
 

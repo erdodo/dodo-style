@@ -27,6 +27,6 @@
   },
   "styleTypes" : {
     "default": "bg-white text-gray-900 border border-gray-300 shadow-gray-300 shadow-lg dark:bg-gray-800 dark:text-gray-100 dark:border-gray-700 dark:shadow-gray-800 dark:shadow-lg",
-    "primary": "bg-primary-500 text-white border border-primary-500 shadow-primary-500/70 shadow-lg dark:bg-primary-600 dark:text-white dark:border-primary-600 dark:shadow-primary-600/70 dark:shadow-lg"
+    "primary": "bg-primary-500 text-white border border-primary-500 shadow-primary-300/70 shadow-lg dark:bg-primary-600 dark:text-white dark:border-primary-600 dark:shadow-primary-700/70 dark:shadow-lg"
   }
 }

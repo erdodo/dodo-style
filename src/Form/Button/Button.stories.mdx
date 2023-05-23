@@ -1,9 +1,10 @@
 import Button from "./Button";
+import * as ButtonStories from "./Button.stories.js";
 
 import {FaFacebookF,FaLinkedinIn,FaGithub,FaYoutube,FaWhatsapp,FaSnapchatGhost,FaTumblr,FaSteamSymbol} from "dodo-icons/react/fa";
-import { Meta,Story } from "@storybook/addon-docs/blocks";
+import { Meta, Story, ArgsTable,Canvas, } from '@storybook/addon-docs';
 
-<Meta title="Form/Button/Örnekler" />
+<Meta title="Form/Button" component={Button} />
 
 
 
@@ -19,23 +20,31 @@ import { Meta,Story } from "@storybook/addon-docs/blocks";
     import { Button } from 'dodo-style'
 ```
 ## Büyüklük örnekleri
-<div style={{display:"flex",flexDirection:"row",alignItems:"center",flexWrap:"wrap"}}>
-    <div style={{margin:"5px"}}>
-        <Button type="primary" size="sm" >Tıkla bana</Button>
+<Canvas>
+
+    <div style={{display:"flex",flexDirection:"row",alignItems:"center",flexWrap:"wrap"}}>
+        <div style={{margin:"5px"}}>
+            <Button type="primary" size="sm" >Tıkla bana</Button>
+        </div>
+        <div style={{margin:"5px"}}>
+            <Button type="primary" size="md" >Tıkla bana</Button>
+        </div>
+        <div style={{margin:"5px"}}>
+            <Button type="primary" size="lg" >Tıkla bana</Button>
+        </div>
+        <div style={{margin:"5px"}}>
+            <Button type="primary" size="xl" >Tıkla bana</Button>
+        </div>
+        <div style={{margin:"5px"}}>
+            <Button type="primary" size="2xl" >Tıkla bana</Button>
+        </div>
     </div>
-    <div style={{margin:"5px"}}>
-        <Button type="primary" size="md" >Tıkla bana</Button>
-    </div>
-    <div style={{margin:"5px"}}>
-        <Button type="primary" size="lg" >Tıkla bana</Button>
-    </div>
-    <div style={{margin:"5px"}}>
-        <Button type="primary" size="xl" >Tıkla bana</Button>
-    </div>
-    <div style={{margin:"5px"}}>
-        <Button type="primary" size="2xl" >Tıkla bana</Button>
-    </div>
-</div>
+
+
+
+</Canvas>
+
+
 
 
 ```jsx
@@ -496,3 +505,6 @@ import { Meta,Story } from "@storybook/addon-docs/blocks";
 <Button style={{width:"200px",backgroundColor:"#90a9d1",border:"1px solid #6189c7"}}>Tıkla bana</Button>
 
 ```
+
+## Props
+<ArgsTable of={Button} />

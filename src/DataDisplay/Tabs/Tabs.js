@@ -1,18 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-export default function Tabs() {
+import { Tab, Tabs, TabList, TabPanel } from './lib';
+import './lib/react-tabs.css';
 
 
-    return (
-        <>
-           <div>Yakında Sizlerle</div>
-        </>
-    );
-}
+export { Tab, Tabs, TabList, TabPanel };
 
-Tabs.propTypes = {
-};
-
-Tabs.defaultProps = {
-
-};

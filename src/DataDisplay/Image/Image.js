@@ -100,7 +100,7 @@ export default function ImageComp(props) {
             }
             {
                 props.avatar &&
-                <div className={` ${_rounded}  ${styleTypes[props.styleType]}`}>
+                <div className={` ${_rounded}  ${styleTypes[props.styleType]} ${props.className}`}>
                     <div className={`flex items-center justify-center h-full w-full  ${sizes[props.size]}`}>
                         {props.avatar}
                     </div>

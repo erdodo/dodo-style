@@ -1,7 +1,8 @@
 import Input from "../../Input";
-import { Meta,Story } from "@storybook/addon-docs/blocks";
+import { Meta,ArgsTable } from "@storybook/addon-docs/blocks";
 
-<Meta title="Form/Input/CheckBox - Switch/Örnekler" />
+<Meta title="Form/Input/CheckBox - Switch" />
+
 
 # Checkbox
 
@@ -188,3 +189,5 @@ Switch ve Checkbox için kullanılabilir değer tipleri aşağıdaki gibidir.
 <Input type={"switch"} />
 <Input type={"switch"}  disabled/>
 ```
+
+<ArgsTable of={Input} exclude={["min","max","clear","showPassword","rows","autoRow","limit","placeholder"]} />

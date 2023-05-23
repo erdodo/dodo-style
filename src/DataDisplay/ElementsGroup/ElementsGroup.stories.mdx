@@ -1,5 +1,11 @@
 import ElementsGroup from './ElementsGroup'
-import { Meta,Story } from "@storybook/addon-docs/blocks";
+import Button from '../../Form/Button/Button'
+import Input from '../../Form/Input/Input'
+import SelectBox from '../../Form/SelectBox/SelectBox'
+import { BsPen,BsTrash,BsEye } from 'dodo-icons/react/bs'
+import { Meta,ArgsTable } from "@storybook/addon-docs/blocks";
+import Image from "../../DataDisplay/Image/Image";
+import {BsFillHouseFill} from "dodo-icons/react/bs";
 
 <Meta title="Veri Gösterimi/ElementsGroup" />
 
@@ -9,8 +15,117 @@ import { Meta,Story } from "@storybook/addon-docs/blocks";
 import { ElementsGroup } from 'dodo-style'
 ```
 
-<h1 style={{color:"danger"}}>Yakında sizlerle</h1>
+## Button grup örneği
 
-<Story name="Test">
-    Yakında sizlerle
-</Story>
+<ElementsGroup>
+    <Button type={"primary"} >Button</Button>
+    <Button type={"secondary"}>Button</Button>
+    <Button type={"danger"}>Button</Button>
+</ElementsGroup>
+
+```jsx
+<ElementsGroup>
+    <Button type={"primary"} >Button</Button>
+    <Button type={"secondary"}>Button</Button>
+    <Button type={"danger"}>Button</Button>
+</ElementsGroup>
+```
+
+<ElementsGroup>
+    <Button type={"primary"} outline size={"sm"}>Önceki</Button>
+    <Button type={"primary"} outline  size={"sm"}>1</Button>
+    <Button type={"primary"}   size={"sm"}>2</Button>
+    <Button type={"primary"} outline  size={"sm"}>3</Button>
+    <Button type={"primary"} outline  size={"sm"}>4</Button>
+    <Button type={"primary"} outline  size={"sm"}>Sonraki</Button>
+</ElementsGroup>
+
+```jsx
+<ElementsGroup>
+    <Button type={"primary"} outline size={"sm"}>Önceki</Button>
+    <Button type={"primary"} outline  size={"sm"}>1</Button>
+    <Button type={"primary"}   size={"sm"}>2</Button>
+    <Button type={"primary"} outline  size={"sm"}>3</Button>
+    <Button type={"primary"} outline  size={"sm"}>4</Button>
+    <Button type={"primary"} outline  size={"sm"}>Sonraki</Button>
+</ElementsGroup>
+```
+
+<ElementsGroup >
+    <Image src={"https://picsum.photos/200/200"} width={"40px"} height={"40px"} />
+    <Button type={"info"} >Photo</Button>
+</ElementsGroup>
+
+```jsx
+<ElementsGroup >
+    <Image src={"https://picsum.photos/200/200"} width={"40px"} height={"40px"} />
+    <Button type={"info"} >Photo</Button>
+</ElementsGroup>
+```
+
+<ElementsGroup className={"h-[20px]"}>
+    <Image avatar={<BsFillHouseFill/>} styleType={"primary"} size={"lg"} width={"40px"} height={"40px"} />
+    <Button type={"primary"} >Home</Button>
+</ElementsGroup>
+
+```jsx
+<ElementsGroup className={"h-[20px]"}>
+    <Image avatar={<BsFillHouseFill/>} styleType={"primary"} size={"lg"} width={"40px"} height={"40px"} />
+    <Button type={"primary"} >Home</Button>
+</ElementsGroup>
+```
+
+## Input grup örneği
+
+<ElementsGroup>
+    <Input placeholder={"Input"} size={"lg"} />
+    <Button type={"info"} >Ara</Button>
+</ElementsGroup>
+
+```jsx
+<ElementsGroup>
+    <Input placeholder={"Input"} size={"lg"} />
+    <Button type={"info"} >Ara</Button>
+</ElementsGroup>
+```
+
+<ElementsGroup>
+    <Input placeholder={"İsim"} size={"lg"} />
+    <Input placeholder={"Soyisim"} size={"lg"} />
+</ElementsGroup>
+
+```jsx
+<ElementsGroup>
+    <Input placeholder={"İsim"} size={"lg"} />
+    <Input placeholder={"Soyisim"} size={"lg"} />
+</ElementsGroup>
+```
+
+<ElementsGroup>
+    <SelectBox />
+    <Button type={"success"} >Kaydet</Button>
+</ElementsGroup>
+
+```jsx
+<ElementsGroup>
+    <Input placeholder={"İsim"} size={"lg"} />
+    <Input placeholder={"Soyisim"} size={"lg"} />
+</ElementsGroup>
+```
+
+### Vertical örneği
+<ElementsGroup vertical>
+    <Button type={"warning"} plain><BsPen/></Button>
+    <Button type={"warning"} plain><BsTrash/></Button>
+    <Button type={"warning"} plain><BsEye/></Button>
+</ElementsGroup>
+
+```jsx
+<ElementsGroup vertical>
+    <Button type={"warning"} plain><BsPen/></Button>
+    <Button type={"warning"} plain><BsTrash/></Button>
+    <Button type={"warning"} plain><BsEye/></Button>
+</ElementsGroup>
+```
+
+<ArgsTable of={ElementsGroup} />

@@ -11,8 +11,3 @@ export default {
 
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 
-export const Template = {
-    args: {
-        src: 'https://picsum.photos/300/300',
-    }
-}

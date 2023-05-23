@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './lib/styles.css';
 import { Slide,Fade,Zoom  } from './lib';
-import {BsArrowLeftShort,BsArrowRightShort} from 'react-icons/bs'
+import {BsArrowLeftShort,BsArrowRightShort} from 'dodo-icons/react/bs'
 export default function Carousel({children,effect, ...props}) {
     const CarouselRef = React.useRef();
     const properties = {

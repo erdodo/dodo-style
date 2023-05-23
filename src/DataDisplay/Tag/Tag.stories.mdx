@@ -1,5 +1,5 @@
 import Tag from './Tag'
-import { Meta,Story } from "@storybook/addon-docs/blocks";
+import { Meta,ArgsTable } from "@storybook/addon-docs/blocks";
 
 <Meta title="Veri Gösterimi/Tag" />
 
@@ -8,9 +8,6 @@ import { Meta,Story } from "@storybook/addon-docs/blocks";
 ```jsx
 import {Tag} from 'dodo-style'
 ```
-<Story name="Test">
-    <Tag type="primary" size="sm" >Örnek Yazı</Tag>
-</Story>
 
 ## Büyüklük örnekleri
 <div style={{display:"flex",flexDirection:"row",alignItems:"center",flexWrap:"wrap"}}>
@@ -341,4 +338,5 @@ import {Tag} from 'dodo-style'
 <Tag style={{width:"200px",backgroundColor:"#90a9d1",border:"1px solid #6189c7"}}>Örnek Yazı</Tag>
 
 ```
-
+## Props
+<ArgsTable of={Tag} />

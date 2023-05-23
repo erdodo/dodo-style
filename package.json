@@ -1,7 +1,7 @@
 {
   "name": "dodo-style",
   "author": "Erdoğan Yeşil",
-  "version": "0.1.67-beta-3",
+  "version": "0.1.67",
   "homepage": "https://dodo-style.vercel.app/",
   "license": "MIT",
   "main": "react/index.js",
@@ -23,11 +23,8 @@
     "win:storybook:deploy": "npm run tailwind:build && npm run storybook:build && vue-cli-service build && xcopy C:\\Users\\erdog\\WebstormProjects\\dodo-style\\vue C:\\Users\\erdog\\WebstormProjects\\dodo-style\\storybook-static\\vue  /E /H /C /I && vercel --prod"
   },
   "dependencies": {
-    "clsx": "^1.2.1",
     "dodo-icons": "^0.2.1",
-    "imask": "^6.6.1",
-    "moment": "^2.29.4"
-
+    "react-tabs": "^6.0.1"
   },
   "eslintConfig": {
     "extends": [
@@ -58,17 +55,18 @@
     ]
   },
   "devDependencies": {
-    "react-slideshow-image": "^4.2.1",
     "@babel/cli": "^7.21.0",
     "@babel/core": "^7.21.4",
     "@babel/polyfill": "^7.12.1",
     "@babel/preset-env": "^7.21.4",
     "@babel/preset-react": "^7.18.6",
+    "@storybook/addon-docs": "^7.0.12",
     "@storybook/addon-essentials": "^7.0.9",
     "@storybook/addon-interactions": "^7.0.9",
     "@storybook/addon-links": "^7.0.9",
     "@storybook/addon-mdx-gfm": "^7.0.9",
     "@storybook/addon-styling": "^1.0.8",
+    "@storybook/addon-toolbars": "^7.0.12",
     "@storybook/blocks": "^7.0.9",
     "@storybook/preset-create-react-app": "^7.0.9",
     "@storybook/react": "^7.0.9",
@@ -80,13 +78,19 @@
     "@vue/cli-service": "~5.0.0",
     "babel-plugin-named-exports-order": "^0.0.2",
     "chai": "^4.3.7",
+    "clsx": "^1.2.1",
     "dodo-style": "^0.1.63-beta-2",
     "enzyme": "^3.11.0",
+    "imask": "^6.6.1",
+    "install": "^0.13.0",
+    "moment": "^2.29.4",
+    "npm": "^9.6.7",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.8.0",
     "react-scripts": "5.0.1",
+    "react-slideshow-image": "^4.2.1",
     "react-styleguidist": "^13.1.1",
     "simple-syntax-highlighter": "^2.2.5",
     "storybook": "^7.0.9",

@@ -18,10 +18,3 @@ export default {
         </Collapse>
     ),
 };
-
-// More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
-export const CollapseStory = (args) => <Collapse {...args} >
-    <CollapseItem title={"Title 1"} content={"Content 1"} />
-    <CollapseItem title={"Title 2"} content={"Content 2"} />
-    </Collapse>
-    ;

@@ -1,6 +1,6 @@
 import Image from './Image'
 import Gallery from "./Gallery";
-import { Meta,Story } from "@storybook/addon-docs/blocks";
+import { Meta,ArgsTable } from "@storybook/addon-docs/blocks";
 import {BsFillHouseDoorFill,BsPeople,BsFacebook,BsWhatsapp,BsInstagram} from 'dodo-icons/react/bs'
 
 <Meta title="Veri Gösterimi/Image" />
@@ -277,3 +277,6 @@ import {BsFillHouseDoorFill, BsPeople, BsFacebook,BsInstagram,BsWhatsapp} from "
 <Image avatar={<BsFacebook/>} size={"lg"} rounded={"full"} styleType={"info"}/>
 <Image avatar={<BsWhatsapp/>} size={"3xl"} rounded={"full"} styleType={"success-plain"}/>
 ```
+
+## Props
+<ArgsTable of={Image}/>
